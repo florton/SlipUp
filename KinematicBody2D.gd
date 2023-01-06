@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	
 	velocity.x += acceleration
+	acceleration *= 0.9
 	
 	print(velocity)
 
@@ -36,7 +37,8 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision && collision.collider.is_in_group("wall"):
-			velocity.x = prevVelocity.x * -1
+			velocity.x = prevVelocity.x * -0.8
+			velocity.y *= 1.1
 #			velocity = velocity.bounce(collision.normal)
 			acceleration *= -1
 			print("Collided with: ", collision.collider.name)
