@@ -5,15 +5,22 @@ export var acc_speed := 4
 export var gravity := 2000
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
+onready var cam = get_node("Camera2D")
 var velocity := Vector2.ZERO
 var jump_speed = 700
+var lasgroundpos= Array()
 
 var acceleration = 0
+var gpymod =0
+var prevgpy =-1
 
 func _physics_process(delta: float) -> void:
 	# reset horizontal velocity
 #	velocity.x = 0
+
 	acceleration = acceleration * 0.3
+
+
 	# set horizontal velocity
 	if Input.is_action_pressed("move_right"):
 		velocity.x += move_speed
@@ -40,6 +47,10 @@ func _physics_process(delta: float) -> void:
 	if velocity.x >0:
 		sprite.flip_h = false
 	#print(velocity)
+	if is_on_floor():
+		lasgroundpos.push_front(global_position)
+		lasgroundpos.resize(5)
+	
 
 	# actually move the player
 #	velocity = move_and_slide(velocity, Vector2.UP)
@@ -53,11 +64,11 @@ func _physics_process(delta: float) -> void:
 			velocity.y *= 1.1
 #			velocity = velocity.bounce(collision.normal)
 			acceleration *= -1
-			print("Collided with: ", collision.collider.name)
+			#print("Collided with: ", collision.collider.name)
 			break
 #	if collide && collide.collider.is_in_group("wall"):
 #	if collide:
-		
+	
 #	else:
 #		velocity = move_and_slide(velocity, Vector2.UP)
 
@@ -72,8 +83,17 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			ap.play("jsqaut")
 			print ("jump")
-	#print(velocity)
-	print(ap.current_animation_position)
+	
+	print()
+	#print(ap.current_animation_position)
 
 func fullhop():
 	velocity.y= -jump_speed - 150
+
+
+
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	self.global_position=lasgroundpos[4]
+	velocity=Vector2.ZERO
+	pass # Replace with function body.

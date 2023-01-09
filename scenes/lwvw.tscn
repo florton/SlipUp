@@ -26,7 +26,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 80, 0, 80 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 128, 80 )
 0/tile_mode = 2
-0/autotile/icon_coordinate = Vector2( 2, 0 )
+0/autotile/icon_coordinate = Vector2( 1, 0 )
 0/autotile/tile_size = Vector2( 32, 80 )
 0/autotile/spacing = 0
 0/autotile/occluder_map = [  ]
@@ -69,7 +69,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 80, 0, 80 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="WallMap" type="TileMap" parent="." groups=["wall"]]
+[node name="WallMap" type="TileMap" parent="." groups=[
+"wall",
+]]
 tile_set = SubResource( 5 )
 cell_size = Vector2( 32, 80 )
 collision_use_kinematic = true
@@ -92,14 +94,23 @@ tile_data = PoolIntArray( 1048577, 0, 1, 1048608, 0, 0, 1048609, 0, 2, 1900576, 
 script = ExtResource( 5 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 119.414, 391.455 )
+position = Vector2( 113.802, 517.732 )
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
-position = Vector2( 153.539, 51.145 )
+position = Vector2( 2.56784, -47.7427 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 19
 limit_right = 530
-limit_bottom = 585
+limit_bottom = 590
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
 drag_margin_top = 0.75
+drag_margin_bottom = 1.0
 editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="KinematicBody2D"]
+position = Vector2( 0, 36.3339 )
+[connection signal="screen_exited" from="KinematicBody2D/VisibilityNotifier2D" to="KinematicBody2D" method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="viewport_exited" from="KinematicBody2D/VisibilityNotifier2D" to="KinematicBody2D" method="_on_VisibilityNotifier2D_viewport_exited"]
