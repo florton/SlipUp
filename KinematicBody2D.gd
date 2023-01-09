@@ -9,6 +9,7 @@ onready var cam = get_node("Camera2D")
 var velocity := Vector2.ZERO
 var jump_speed = 700
 var lasgroundpos= Array()
+var hitstun=false
 
 var acceleration = 0
 var gpymod =0
@@ -22,18 +23,20 @@ func _physics_process(delta: float) -> void:
 
 
 	# set horizontal velocity
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right") and!hitstun:
 		velocity.x += move_speed
 		acceleration += acc_speed
-		if ap.current_animation != "jsqaut":
+		if ap.current_animation != "jsqaut" and is_on_floor():
 			ap.play("WALK")
-	if !Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left") and ap.current_animation != "jsqaut":
+	if !Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left") and ap.current_animation != "jsqaut" and!hitstun and is_on_floor():
 		ap.play("STAND")
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left") and !hitstun:
 		velocity.x -= move_speed
 		acceleration -= acc_speed
-		if ap.current_animation != "jsqaut":
+		if ap.current_animation != "jsqaut" and is_on_floor():
 			ap.play("WALK")
+	if !is_on_floor()and ap.current_animation!= "jsquat" and !hitstun:
+		ap.play("air idle")
 	#else:
 	#	ap.play("STAND")
 	# apply gravity
@@ -49,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	#print(velocity)
 	if is_on_floor():
 		lasgroundpos.push_front(global_position)
-		lasgroundpos.resize(5)
+		lasgroundpos.resize(15)
 	
 
 	# actually move the player
@@ -61,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		if collision && collision.collider.is_in_group("wall"):
 			velocity.x = prevVelocity.x * -0.8
-			velocity.y *= 1.1
+			#velocity.y *= 1.1
 #			velocity = velocity.bounce(collision.normal)
 			acceleration *= -1
 			#print("Collided with: ", collision.collider.name)
@@ -80,7 +83,7 @@ func _physics_process(delta: float) -> void:
 		
 	# jump will happen on the next frame
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
+		if is_on_floor() and !hitstun:
 			ap.play("jsqaut")
 			print ("jump")
 	
@@ -94,6 +97,14 @@ func fullhop():
 
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	self.global_position=lasgroundpos[4]
+	self.global_position=lasgroundpos[14]
 	velocity=Vector2.ZERO
+	hitstun=true
+	ap.play("hurt")
 	pass # Replace with function body.
+func hitstunend():
+	hitstun= false
+	if self.is_on_floor():
+		ap.play("STAND")
+	else:
+		ap.play("air idle")
