@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://wallbgg.tres" type="TileSet" id=1]
 [ext_resource path="res://floor.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/TileMap3.gd" type="Script" id=5]
 [ext_resource path="res://scenes/WallMap.gd" type="Script" id=6]
 [ext_resource path="res://sprite/heart.png" type="Texture" id=7]
+[ext_resource path="res://scenes/Enemies.gd" type="Script" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 32, 80, 0, 80, 0, 0, 32, 0 )
@@ -70,9 +71,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 80, 0, 80 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="WallMap" type="TileMap" parent="." groups=[
-"wall",
-]]
+[node name="WallMap" type="TileMap" parent="." groups=["wall"]]
 tile_set = SubResource( 5 )
 cell_size = Vector2( 32, 80 )
 collision_use_kinematic = true
@@ -120,5 +119,9 @@ position = Vector2( 0, 36.3339 )
 position = Vector2( 1006.21, 17.7016 )
 texture = ExtResource( 7 )
 hframes = 4
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
 [connection signal="screen_exited" from="KinematicBody2D/VisibilityNotifier2D" to="KinematicBody2D" method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="viewport_exited" from="KinematicBody2D/VisibilityNotifier2D" to="KinematicBody2D" method="_on_VisibilityNotifier2D_viewport_exited"]

@@ -87,7 +87,6 @@ func _physics_process(delta: float) -> void:
 			ap.play("jsqaut")
 			print ("jump")
 	
-	print()
 	#print(ap.current_animation_position)
 
 func fullhop():
