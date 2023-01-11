@@ -1,7 +1,7 @@
 extends TileMap
 
 onready var Cactus = preload("res://scenes/cactus.tscn")
-onready var walkingEnemy = preload("res://scenes/walkingEnemy.tscn")
+onready var flyingCactus = preload("res://scenes/flyingCactus.tscn")
 
 
 var y_start = 36
@@ -31,28 +31,35 @@ func loadEntities(coordArray):
 	for x in range(len(coordArray)):
 		if x!= 0 && x!=len(coordArray)-1:
 			if !cactusSet && rng.randf() < 0.05:
-				cactusGen(map_to_world(coordArray[x]))
+				cactusGen(
+					map_to_world(coordArray[x]),
+					map_to_world(coordArray[0]).x,
+					map_to_world(coordArray[len(coordArray)-1]).x
+				)
 				cactusSet = true
 			if !enemySet && rng.randf() < 0.05:
 				enemyGen(
-					map_to_world(coordArray[x]-Vector2(0,1))
+					map_to_world(coordArray[x]-Vector2(0,1)),
+					map_to_world(Vector2(x_start, 0)).x,
+					map_to_world(Vector2(x_end, 0)).x
 				)
 				enemySet = true
 
-func enemyGen(v):
-	var enemy = walkingEnemy.instance()
+func enemyGen(positon, x_min, x_max):
+	var enemy = flyingCactus.instance()
 	add_child(enemy)
 	enemy.add_to_group("enemy")
-	enemy.global_position = v
-	enemy.init(map_to_world(Vector2(x_start, 0)).x, map_to_world(Vector2(x_end, 0)).x)
+	enemy.global_position = positon
+	enemy.init(x_min, x_max)
 
 # Called when the node enters the scene tree for the first time.
-func cactusGen(v):
+func cactusGen(positon, x_min, x_max):
 	var enemy = Cactus.instance()
 	add_child(enemy)
 	enemy.add_to_group("cactus")
 #	enemy.gravity_scale = 0
-	enemy.global_position = v
+	enemy.global_position = positon
+	enemy.init(x_min, x_max)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

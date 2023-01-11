@@ -16,12 +16,8 @@ var gpymod =0
 var prevgpy =-1
 
 func _physics_process(delta: float) -> void:
-	# reset horizontal velocity
-#	velocity.x = 0
-
 	acceleration = acceleration * 0.3
-
-
+	
 	# set horizontal velocity
 	if Input.is_action_pressed("move_right") and!hitstun:
 		velocity.x += move_speed
@@ -56,24 +52,15 @@ func _physics_process(delta: float) -> void:
 	
 
 	# actually move the player
-#	velocity = move_and_slide(velocity, Vector2.UP)
-#	var collide = move_and_collide(velocity * delta)
 	var prevVelocity = velocity
 	velocity = move_and_slide(velocity, Vector2.UP)
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision && collision.collider.is_in_group("wall"):
 			velocity.x = prevVelocity.x * -0.8
-			#velocity.y *= 1.1
-#			velocity = velocity.bounce(collision.normal)
 			acceleration *= -1
 			#print("Collided with: ", collision.collider.name)
 			break
-#	if collide && collide.collider.is_in_group("wall"):
-#	if collide:
-	
-#	else:
-#		velocity = move_and_slide(velocity, Vector2.UP)
 
 	if Input.is_action_just_released("jump") and ap.current_animation == "jsqaut" and ap.current_animation_position < .35:
 		ap.play("air idle")
@@ -92,15 +79,16 @@ func _physics_process(delta: float) -> void:
 func fullhop():
 	velocity.y= -jump_speed - 150
 
-
-
-
-func _on_VisibilityNotifier2D_viewport_exited(viewport):
+func _on_VisibilityNotifier2D_viewport_exited(_viewport):
+	takeDamage()
 	self.global_position=lasgroundpos[14]
+	
+func takeDamage():
 	velocity=Vector2.ZERO
 	hitstun=true
 	ap.play("hurt")
 	pass # Replace with function body.
+
 func hitstunend():
 	hitstun= false
 	if self.is_on_floor():
