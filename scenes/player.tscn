@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://sprite/Pl.png" type="Texture" id=2]
 [ext_resource path="res://ani/WALK.tres" type="Animation" id=3]
 [ext_resource path="res://ani/STAND.tres" type="Animation" id=4]
 [ext_resource path="res://ani/sceneshurt.tres" type="Animation" id=5]
+[ext_resource path="res://ani/grab.tres" type="Animation" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 31.5 )
@@ -58,6 +59,7 @@ position = Vector2( 481, 452 )
 collision_layer = 33
 collision_mask = 33
 script = ExtResource( 1 )
+gravity = 1950
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
@@ -67,10 +69,25 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 vframes = 3
 hframes = 6
+frame = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/STAND = ExtResource( 4 )
 anims/WALK = ExtResource( 3 )
 "anims/air idle" = SubResource( 2 )
+anims/grab = ExtResource( 6 )
 anims/hurt = ExtResource( 5 )
 anims/jsqaut = SubResource( 3 )
+
+[node name="grabbox" type="Area2D" parent="." groups=[
+"hitbox",
+]]
+
+[node name="grabbox" type="CollisionPolygon2D" parent="grabbox" groups=[
+"hitbox",
+]]
+polygon = PoolVector2Array( -5.75, 34.25, 53, 41.25, 48.75, -49.75, -12.75, -51, -31.25, -35.75, -30.5, 33 )
+
+[node name="grab Timer" type="Timer" parent="."]
+[connection signal="area_entered" from="grabbox" to="." method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="grab Timer" to="." method="_on_grab_Timer_timeout"]

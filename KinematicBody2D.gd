@@ -6,32 +6,34 @@ export var gravity := 2000
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
 onready var cam = get_node("Camera2D")
+var grab = false
 var velocity := Vector2.ZERO
 var jump_speed = 700
 var lasgroundpos= Array()
 var hitstun=false
-
+onready var grabtimer= get_node("grab Timer")
 var acceleration = 0
 var gpymod =0
 var prevgpy =-1
+var enemy
 
 func _physics_process(delta: float) -> void:
 	acceleration = acceleration * 0.3
 	
 	# set horizontal velocity
-	if Input.is_action_pressed("move_right") and!hitstun:
+	if Input.is_action_pressed("move_right") and!hitstun and!grab:
 		velocity.x += move_speed
 		acceleration += acc_speed
 		if ap.current_animation != "jsqaut" and is_on_floor():
 			ap.play("WALK")
 	if !Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left") and ap.current_animation != "jsqaut" and!hitstun and is_on_floor():
 		ap.play("STAND")
-	if Input.is_action_pressed("move_left") and !hitstun:
+	if Input.is_action_pressed("move_left") and !hitstun and ! grab:
 		velocity.x -= move_speed
 		acceleration -= acc_speed
 		if ap.current_animation != "jsqaut" and is_on_floor():
 			ap.play("WALK")
-	if !is_on_floor()and ap.current_animation!= "jsquat" and !hitstun:
+	if !is_on_floor()and ap.current_animation!= "jsquat" and !hitstun and ap.current_animation != "grab":
 		ap.play("air idle")
 	#else:
 	#	ap.play("STAND")
@@ -50,7 +52,10 @@ func _physics_process(delta: float) -> void:
 		lasgroundpos.push_front(global_position)
 		lasgroundpos.resize(15)
 	
-
+	#grab
+	if grab:
+		_grab()
+	
 	# actually move the player
 	var prevVelocity = velocity
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -72,8 +77,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() and !hitstun:
 			ap.play("jsqaut")
-			print ("jump")
-	
+	if Input.is_action_just_pressed("jump") and ap.current_animation == "air idle":
+		ap.play("grab")
 	#print(ap.current_animation_position)
 
 func fullhop():
@@ -95,3 +100,47 @@ func hitstunend():
 		ap.play("STAND")
 	else:
 		ap.play("air idle")
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("enemy"):
+		enemy=area
+		grab=true
+		gravity=0
+		velocity=Vector2.ZERO
+		grabtimer.start(0)
+		return area
+		pass
+	pass # Replace with function body.
+
+
+func _on_grab_Timer_timeout():
+	grab = false
+	gravity=2000
+	enemy._throw_up()
+	
+	pass # Replace with function body.
+
+func _grab():
+	grabtimer.stop()
+	if Input.is_action_pressed("move_right"):
+		enemy._throw_right()
+		grab=false
+		gravity=2000
+		velocity=Vector2(-200,-600)
+	if Input.is_action_pressed("move_left"):
+		enemy._throw_left()
+		grab=false
+		gravity=2000
+		velocity=Vector2(200,-600)
+	if Input.is_action_pressed("up"):
+		enemy._throw_up()
+		grab=false
+		gravity=2000
+		velocity=Vector2(0,-600)
+	if Input.is_action_pressed("down"):
+		enemy._throw_down()
+		grab=false
+		gravity=2000
+		velocity=Vector2(0,-800)
+		
