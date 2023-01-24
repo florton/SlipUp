@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x += move_speed
 		acceleration += acc_speed
 		if ap.current_animation != "jsqaut" and is_on_floor():
+			gb.disabled=true
 			ap.play("WALK")
 	if !Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left") and ap.current_animation != "jsqaut" and!hitstun and is_on_floor():
 		ap.play("STAND")
@@ -39,6 +40,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x -= move_speed
 		acceleration -= acc_speed
 		if ap.current_animation != "jsqaut" and is_on_floor():
+			gb.disabled=true
 			ap.play("WALK")
 	if !is_on_floor()and ap.current_animation!= "jsquat" and !hitstun and ap.current_animation != "grab":
 		ap.play("air idle")

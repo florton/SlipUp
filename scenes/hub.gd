@@ -2,7 +2,7 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-var door= true
+var door = false
 # var b = "text"
 
 
@@ -22,10 +22,11 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	door=true
+	if body.is_in_group("player"):
+		door=true
 	pass # Replace with function body.
 
 
 func _on_Area2D_body_exited(body):
-	door==false
+	door=false
 	pass # Replace with function body.
