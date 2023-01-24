@@ -8,7 +8,7 @@
 [ext_resource path="res://ani/grab.tres" type="Animation" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 31.5 )
+extents = Vector2( 13.5, 30.5 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "air idle"
@@ -86,7 +86,9 @@ anims/jsqaut = SubResource( 3 )
 [node name="grabbox" type="CollisionPolygon2D" parent="grabbox" groups=[
 "hitbox",
 ]]
-polygon = PoolVector2Array( -5.75, 34.25, 53, 41.25, 48.75, -49.75, -12.75, -51, -31.25, -35.75, -30.5, 33 )
+position = Vector2( -8.75, -6.5 )
+polygon = PoolVector2Array( -5.75, 34.25, 36.75, 31.75, 29.25, -31, 2, -32.25, -19.75, -24.75, -15.75, 28.5 )
+disabled = true
 
 [node name="grab Timer" type="Timer" parent="."]
 [connection signal="area_entered" from="grabbox" to="." method="_on_Area2D_area_entered"]

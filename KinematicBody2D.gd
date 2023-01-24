@@ -16,6 +16,7 @@ var acceleration = 0
 var gpymod =0
 var prevgpy =-1
 var enemy
+var enemyingbo
 
 func _physics_process(delta: float) -> void:
 	acceleration = acceleration * 0.3
@@ -123,24 +124,44 @@ func _on_grab_Timer_timeout():
 
 func _grab():
 	grabtimer.stop()
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right") and ! Input.is_action_pressed("up") and ! Input.is_action_pressed("down"):
 		enemy._throw_right()
 		grab=false
 		gravity=2000
 		velocity=Vector2(-200,-600)
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left")  and ! Input.is_action_pressed("up") and ! Input.is_action_pressed("down"):
 		enemy._throw_left()
 		grab=false
 		gravity=2000
 		velocity=Vector2(200,-600)
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("up") and ! Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left"):
 		enemy._throw_up()
 		grab=false
 		gravity=2000
 		velocity=Vector2(0,-600)
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("down")and ! Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left"):
 		enemy._throw_down()
 		grab=false
 		gravity=2000
 		velocity=Vector2(0,-800)
 		
+	if Input.is_action_pressed("move_right") and  Input.is_action_pressed("up") and ! Input.is_action_pressed("down"):
+		enemy._throw_upright()
+		grab=false
+		gravity=2000
+		velocity=Vector2(-200,-600)
+	if Input.is_action_pressed("move_left")  and ! Input.is_action_pressed("up") and  Input.is_action_pressed("down"):
+		enemy._throw_downleft()
+		grab=false
+		gravity=2000
+		velocity=Vector2(200,-800)
+	if Input.is_action_pressed("up") and ! Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
+		enemy._throw_upleft()
+		grab=false
+		gravity=2000
+		velocity=Vector2(-200,-600)
+	if Input.is_action_pressed("down")and Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left"):
+		enemy._throw_downright()
+		grab=false
+		gravity=2000
+		velocity=Vector2(200,-800)

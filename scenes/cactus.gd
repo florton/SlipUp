@@ -21,15 +21,19 @@ func _ready():
 func _process(delta):
 	position.x += direction
 	position.y += ydirection
-	if position.x < x_min:
+	if position.x < x_min and !thrown:
 		direction = 1
-	if position.x > x_max:
+	if position.x > x_max and !thrown:
 		direction = -1
 		pass
 
 func _on_cactus_area_entered(area):
 	if area.get_name()== "grabbox":
 		direction=0
+		
+	if area.is_in_group("enemy") and thrown:
+		area.queue_free()
+		queue_free()
 	pass # Replace with function body.
 
 func _throw_up():
