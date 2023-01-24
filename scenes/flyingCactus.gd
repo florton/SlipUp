@@ -2,8 +2,8 @@ extends Area2D
 
 var rng = RandomNumberGenerator.new()
 
-var x_min = 1
-var x_max = 30
+var x_min = 2
+var x_max = 31
 var thrown= false
 
 var speed = 0
@@ -25,13 +25,17 @@ func _process(delta):
 	position.x += direction
 	position.y += ydirection
 	if position.x < x_min:
+		if thrown:
+			queue_free()
 		direction = 1
 	if position.x > x_max:
+		if thrown:
+			queue_free()
 		direction = -1
 
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") && !thrown:
 		body.takeDamage()
 
 

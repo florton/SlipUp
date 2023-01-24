@@ -100,11 +100,11 @@ func _on_VisibilityNotifier2D_viewport_exited(_viewport):
 	self.global_position=lasgroundpos[14]
 	
 func takeDamage():
-	velocity=Vector2.ZERO
-	hitstun=true
-	ap.play("hurt")
-	heath-=1
-	pass # Replace with function body.
+	if !hitstun:
+		velocity=Vector2.ZERO
+		hitstun=true
+		ap.play("hurt")
+		heath-=1
 
 func hitstunend():
 	hitstun= false
@@ -183,3 +183,4 @@ func _on_Area2D_body_entered(body):
 	if Input.is_action_pressed("up"):
 		pass
 	pass # Replace with function body.
+
