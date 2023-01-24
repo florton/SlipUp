@@ -69,7 +69,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 vframes = 3
 hframes = 6
-frame = 13
+frame = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/STAND = ExtResource( 4 )
@@ -87,7 +87,7 @@ anims/jsqaut = SubResource( 3 )
 "hitbox",
 ]]
 position = Vector2( -8.75, -6.5 )
-polygon = PoolVector2Array( 3, 6.5, 15.25, 7, 12.25, 4.25, 5, 3.25 )
+polygon = PoolVector2Array( -5.75, 34.25, 36.75, 31.75, 29.25, -31, 2, -32.25, -19.75, -24.75, -15.75, 28.5 )
 disabled = true
 
 [node name="grab Timer" type="Timer" parent="."]

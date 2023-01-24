@@ -6,6 +6,7 @@ export var gravity := 2000
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
 onready var cam = get_node("Camera2D")
+onready var gb= get_node("grabbox/grabbox")
 var grab = false
 var velocity := Vector2.ZERO
 var jump_speed = 700
@@ -17,6 +18,11 @@ var gpymod =0
 var prevgpy =-1
 var enemy
 var enemyingbo
+var heath=3
+
+
+signal dead 
+
 
 func _physics_process(delta: float) -> void:
 	acceleration = acceleration * 0.3
@@ -56,6 +62,9 @@ func _physics_process(delta: float) -> void:
 	#grab
 	if grab:
 		_grab()
+	if heath>=0:
+		#emit_signal("dead")
+		pass
 	
 	# actually move the player
 	var prevVelocity = velocity
@@ -81,6 +90,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and ap.current_animation == "air idle":
 		ap.play("grab")
 	#print(ap.current_animation_position)
+	
 
 func fullhop():
 	velocity.y= -jump_speed - 150
@@ -93,6 +103,7 @@ func takeDamage():
 	velocity=Vector2.ZERO
 	hitstun=true
 	ap.play("hurt")
+	heath-=1
 	pass # Replace with function body.
 
 func hitstunend():
@@ -124,6 +135,7 @@ func _on_grab_Timer_timeout():
 
 func _grab():
 	grabtimer.stop()
+	gb.disabled = true
 	if Input.is_action_pressed("move_right") and ! Input.is_action_pressed("up") and ! Input.is_action_pressed("down"):
 		enemy._throw_right()
 		grab=false
@@ -165,3 +177,9 @@ func _grab():
 		grab=false
 		gravity=2000
 		velocity=Vector2(200,-800)
+
+
+func _on_Area2D_body_entered(body):
+	if Input.is_action_pressed("up"):
+		pass
+	pass # Replace with function body.

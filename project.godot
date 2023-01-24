@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="jumper"
-run/main_scene="res://scenes/lwvw.tscn"
+run/main_scene="res://scenes/tower.tscn"
 config/icon="res://icon.png"
 
 [filesystem]
