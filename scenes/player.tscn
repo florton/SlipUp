@@ -7,8 +7,7 @@
 [ext_resource path="res://ani/sceneshurt.tres" type="Animation" id=5]
 [ext_resource path="res://ani/grab.tres" type="Animation" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.5, 30.5 )
+[sub_resource type="CapsuleShape2D" id=1]
 
 [sub_resource type="Animation" id=2]
 resource_name = "air idle"

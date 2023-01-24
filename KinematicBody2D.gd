@@ -62,8 +62,8 @@ func _physics_process(delta: float) -> void:
 	#grab
 	if grab:
 		_grab()
-	if heath>=0:
-		#emit_signal("dead")
+	if heath<=0:
+		emit_signal("dead")
 		pass
 	
 	# actually move the player
