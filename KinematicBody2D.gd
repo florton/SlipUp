@@ -5,13 +5,12 @@ export var acc_speed := 4
 export var gravity := 2000
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
-onready var cam = get_node("Camera2D")
+#onready var cam = get_node("Camera2D")
 onready var gb= get_node("grabbox/grabbox")
 var grab = false
 var velocity := Vector2.ZERO
 var jump_speed = 700
 var lasgroundpos= Array()
-var onScreen = true
 var hitstun=false
 onready var grabtimer= get_node("grab Timer")
 var acceleration = 0
@@ -23,6 +22,8 @@ var heath=3
 
 signal dead 
 
+func _ready():
+	lasgroundpos.push_front(global_position)
 
 func _physics_process(delta: float) -> void:
 	acceleration = acceleration * 0.3
@@ -57,9 +58,10 @@ func _physics_process(delta: float) -> void:
 	if velocity.x >0:
 		sprite.flip_h = false
 	#print(velocity)
-	if is_on_floor() && onScreen:
-		lasgroundpos.push_front(global_position)
-		lasgroundpos.resize(15)
+	if is_on_floor():
+		if global_position.y <= lasgroundpos[lasgroundpos.size() - 1].y:
+			lasgroundpos.push_front(global_position)
+			lasgroundpos.resize(clamp(lasgroundpos.size(), 1, 15))
 	
 	#grab
 	if grab:
@@ -174,12 +176,8 @@ func _grab():
 func _on_Area2D_body_entered(body):
 	if Input.is_action_pressed("up"):
 		pass
-	pass # Replace with function body.
 
 func _on_VisibilityNotifier2D_viewport_exited(_viewport):
 	takeDamage()
-	onScreen = false
-	self.global_position=lasgroundpos[14]
+	self.global_position=lasgroundpos[lasgroundpos.size() - 2]
 
-func _on_VisibilityNotifier2D_viewport_entered(viewport):
-	onScreen = true

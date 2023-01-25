@@ -78,5 +78,4 @@ text = "100"
 align = 1
 
 [connection signal="dead" from="KinematicBody2D" to="." method="_on_KinematicBody2D_dead"]
-[connection signal="viewport_entered" from="KinematicBody2D/VisibilityNotifier2D" to="KinematicBody2D" method="_on_VisibilityNotifier2D_viewport_entered"]
 [connection signal="viewport_exited" from="KinematicBody2D/VisibilityNotifier2D" to="KinematicBody2D" method="_on_VisibilityNotifier2D_viewport_exited"]
