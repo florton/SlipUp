@@ -4,17 +4,14 @@
 [ext_resource path="res://scenes/cactus.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 32, 32, 32 )
 
@@ -29,9 +26,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 12, 15.25 )
 
-[node name="cactus" type="Area2D" groups=[
-"enemy",
-]]
+[node name="cactus" type="Area2D" groups=["enemy"]]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -40,4 +35,5 @@ frames = SubResource( 4 )
 [node name="cactus" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 1.75 )
 shape = SubResource( 5 )
+
 [connection signal="area_entered" from="." to="." method="_on_cactus_area_entered"]

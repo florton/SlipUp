@@ -1,21 +1,28 @@
 extends Node2D
 
+onready var scoreLabel = get_node('HighScore')
 
 # Declare member variables here. Examples:
 var door= true
-# var b = "text"
 
+func loadData():
+	var file = File.new()
+	file.open("user://save_game.dat", File.READ)
+	var content = file.get_as_text()
+	var highScore = content
+	scoreLabel.text = highScore if highScore else str(0)
+	file.close()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	OS.window_position.x = 0
 	OS.window_position.y = 0
+	loadData()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("up") and door:
-		print("d")
 		get_tree().change_scene("res://scenes/tower.tscn")
 		pass
 	pass

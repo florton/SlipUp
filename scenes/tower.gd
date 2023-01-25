@@ -6,12 +6,24 @@ onready var scoreLabel = get_node("UI/Score")
 
 var playerStart = 525
 var score = 0
+var highScore = 0
 
+func loadData():
+	var file = File.new()
+	file.open("user://save_game.dat", File.READ)
+	var content = file.get_as_text()
+	highScore = int(content) if content else 0
+	file.close()
+
+func saveData(newScore):
+	var file = File.new()
+	file.open("user://save_game.dat", File.WRITE)
+	file.store_string(str(score))
+	file.close()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	loadData()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,6 +31,9 @@ func _process(delta):
 	var playerY = floor((1 - (player.position.y - playerStart)) / 48)
 	if player.is_on_floor() && playerY > score:
 		score = playerY
+		if score > highScore:
+			saveData(score)
+			scoreLabel.add_color_override("font_color", '00ff28')
 	scoreLabel.text = str(score)
 
 

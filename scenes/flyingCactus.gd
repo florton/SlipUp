@@ -2,8 +2,8 @@ extends Area2D
 
 var rng = RandomNumberGenerator.new()
 
-var x_min = 2
-var x_max = 31
+var x_min = -1000
+var x_max = 1000
 var thrown= false
 
 var speed = 0

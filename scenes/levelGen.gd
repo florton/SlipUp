@@ -40,8 +40,8 @@ func loadEntities(coordArray):
 			if !enemySet && rng.randf() < 0.05:
 				enemyGen(
 					map_to_world(coordArray[x]-Vector2(0,1)),
-					map_to_world(Vector2(x_start, 0)).x,
-					map_to_world(Vector2(x_end, 0)).x
+					map_to_world(Vector2(x_start + 1, 0)).x,
+					map_to_world(Vector2(x_end + 2, 0)).x
 				)
 				enemySet = true
 

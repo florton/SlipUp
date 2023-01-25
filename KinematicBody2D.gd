@@ -11,6 +11,7 @@ var grab = false
 var velocity := Vector2.ZERO
 var jump_speed = 700
 var lasgroundpos= Array()
+var onScreen = true
 var hitstun=false
 onready var grabtimer= get_node("grab Timer")
 var acceleration = 0
@@ -19,7 +20,6 @@ var prevgpy =-1
 var enemy
 var enemyingbo
 var heath=3
-
 
 signal dead 
 
@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	if velocity.x >0:
 		sprite.flip_h = false
 	#print(velocity)
-	if is_on_floor():
+	if is_on_floor() && onScreen:
 		lasgroundpos.push_front(global_position)
 		lasgroundpos.resize(15)
 	
@@ -81,8 +81,6 @@ func _physics_process(delta: float) -> void:
 		ap.play("air idle")
 		velocity.y= -jump_speed 
 		
-		pass
-		
 	# jump will happen on the next frame
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() and !hitstun:
@@ -94,10 +92,6 @@ func _physics_process(delta: float) -> void:
 
 func fullhop():
 	velocity.y= -jump_speed - 150
-
-func _on_VisibilityNotifier2D_viewport_exited(_viewport):
-	takeDamage()
-	self.global_position=lasgroundpos[14]
 	
 func takeDamage():
 	if !hitstun:
@@ -122,16 +116,12 @@ func _on_Area2D_area_entered(area):
 		velocity=Vector2.ZERO
 		grabtimer.start(0)
 		return area
-		pass
-	pass # Replace with function body.
 
 
 func _on_grab_Timer_timeout():
 	grab = false
 	gravity=2000
 	enemy._throw_up()
-	
-	pass # Replace with function body.
 
 func _grab():
 	grabtimer.stop()
@@ -184,3 +174,10 @@ func _on_Area2D_body_entered(body):
 		pass
 	pass # Replace with function body.
 
+func _on_VisibilityNotifier2D_viewport_exited(_viewport):
+	takeDamage()
+	onScreen = false
+	self.global_position=lasgroundpos[14]
+
+func _on_VisibilityNotifier2D_viewport_entered(viewport):
+	onScreen = true
