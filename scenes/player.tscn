@@ -54,9 +54,7 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=[
-"player",
-]]
+[node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
 position = Vector2( 481, 452 )
 collision_layer = 33
 collision_mask = 33
@@ -69,8 +67,8 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-vframes = 3
 hframes = 6
+vframes = 3
 frame = 13
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
@@ -81,17 +79,14 @@ anims/grab = ExtResource( 6 )
 anims/hurt = ExtResource( 5 )
 anims/jsqaut = SubResource( 3 )
 
-[node name="grabbox" type="Area2D" parent="." groups=[
-"hitbox",
-]]
+[node name="grabbox" type="Area2D" parent="." groups=["hitbox"]]
 
-[node name="grabbox" type="CollisionPolygon2D" parent="grabbox" groups=[
-"hitbox",
-]]
+[node name="grabbox" type="CollisionPolygon2D" parent="grabbox" groups=["hitbox"]]
 position = Vector2( -8.75, -6.5 )
 polygon = PoolVector2Array( 3, 6.5, 15.25, 7, 12.25, 4.25, 5, 3.25 )
 disabled = true
 
 [node name="grab Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="grabbox" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="grab Timer" to="." method="_on_grab_Timer_timeout"]

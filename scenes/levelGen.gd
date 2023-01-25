@@ -5,7 +5,7 @@ onready var flyingCactus = preload("res://scenes/flyingCactus.tscn")
 
 
 var y_start = 36
-var y_end = -200
+var y_end = -500
 
 var x_start = 1
 var x_end = 30
