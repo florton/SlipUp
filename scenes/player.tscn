@@ -27,6 +27,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 length = 0.6
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -34,7 +35,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.05, 0.0666667 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 7, 8, 9, 10 ]
@@ -46,7 +47,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.0833333 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -71,7 +72,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 vframes = 3
 hframes = 6
-frame = 13
+frame = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/STAND = ExtResource( 4 )
@@ -89,7 +90,7 @@ anims/jsqaut = SubResource( 3 )
 "hitbox",
 ]]
 position = Vector2( -8.75, -6.5 )
-polygon = PoolVector2Array( 3, 6.5, 15.25, 7, 12.25, 4.25, 5, 3.25 )
+polygon = PoolVector2Array( -5.75, 34.25, 36.75, 31.75, 29.25, -31, 2, -32.25, -19.75, -24.75, -15.75, 28.5 )
 disabled = true
 
 [node name="grab Timer" type="Timer" parent="."]

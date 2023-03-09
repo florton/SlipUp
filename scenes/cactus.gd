@@ -5,9 +5,11 @@ var rng = RandomNumberGenerator.new()
 var x_min = -1000
 var x_max = 1000
 var thrown = false
+var dying = false
 
 var direction = 1
 var ydirection = 0
+onready var part= get_node("Particles2D")
 func init(x0, x1):
 	x_min = x0
 	x_max = x1
@@ -21,19 +23,22 @@ func _ready():
 func _process(delta):
 	position.x += direction
 	position.y += ydirection
-	if position.x < x_min and !thrown:
+	if position.x < x_min and !thrown and !dying:
 		direction = 1
-	if position.x > x_max and !thrown:
+	if position.x > x_max and !thrown and !dying:
 		direction = -1
 		pass
+	if dying and !part.emitting:
+		queue_free()
 
 func _on_cactus_area_entered(area):
 	if area.get_name()== "grabbox":
 		direction=0
 		
 	if area.is_in_group("enemy") and thrown:
-		area.queue_free()
-		queue_free()
+		area._die()
+		_die()
+		
 	pass # Replace with function body.
 
 func _throw_up():
@@ -76,3 +81,7 @@ func _throw_downleft():
 	direction=-1
 	ydirection=1
 	
+func _die():
+	part.emitting = true
+	dying= true
+	pass

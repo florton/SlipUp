@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.331818 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+width = 2053
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.23
+emission_shape = 1
+emission_sphere_radius = 2.47
+direction = Vector3( 1, -10, 0 )
+spread = 180.0
+gravity = Vector3( 0, 100, 0 )
+initial_velocity = 19.23
+initial_velocity_random = 0.12
+linear_accel = 1.5
+linear_accel_random = 0.37
+scale = 4.0
+scale_curve = SubResource( 2 )
+color = Color( 0.580392, 0.709804, 0.0588235, 1 )
+
+[node name="Particles2D" type="Particles2D"]
+position = Vector2( 0.540535, 0.571604 )
+emitting = false
+amount = 150
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.4
+randomness = 0.17
+process_material = SubResource( 3 )
