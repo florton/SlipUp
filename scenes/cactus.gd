@@ -1,6 +1,7 @@
 extends Area2D
 
 var rng = RandomNumberGenerator.new()
+onready var Coin = preload("res://scenes/coin.tscn")
 
 var x_min = -1000
 var x_max = 1000
@@ -84,4 +85,9 @@ func _throw_downleft():
 func _die():
 	part.emitting = true
 	dying= true
+	var c=Coin.instance()
+	var parent = get_parent().get_parent()
+	parent.add_child(c)
+	c.global_position=global_position
+	print(parent)
 	pass
