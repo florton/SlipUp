@@ -7,8 +7,8 @@ onready var flyingCactus = preload("res://scenes/flyingCactus.tscn")
 var y_start = 36
 var y_end = -500
 
-var x_start = 1
-var x_end = 30
+var x_start = 2
+var x_end = 29
 
 var rng = RandomNumberGenerator.new()
 
@@ -38,14 +38,14 @@ func loadEntities(coordArray):
 				)
 				cactusSet = true
 			if !enemySet && rng.randf() < 0.05:
-				enemyGen(
+				flyingCactusGen(
 					map_to_world(coordArray[x]-Vector2(0,1)),
 					map_to_world(Vector2(x_start + 1, 0)).x,
 					map_to_world(Vector2(x_end + 2, 0)).x
 				)
 				enemySet = true
 
-func enemyGen(positon, x_min, x_max):
+func flyingCactusGen(positon, x_min, x_max):
 	var enemy = flyingCactus.instance()
 	add_child(enemy)
 	enemy.add_to_group("enemy")

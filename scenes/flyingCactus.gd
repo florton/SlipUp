@@ -23,16 +23,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x += direction
-	position.y += ydirection
-	if position.x < x_min:
-		if thrown:
-			_die()
-		direction = 1
-	if position.x > x_max:
-		if thrown:
-			_die()
-		direction = -1
+	if !dying:
+		position.x += direction
+		position.y += ydirection
+		if position.x < x_min:
+			if thrown:
+				_die()
+			direction = 1
+		if position.x > x_max:
+			if thrown:
+				_die()
+			direction = -1
 	if dying and !part.emitting:
 		queue_free()
 
@@ -40,15 +41,12 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("player") && !thrown:
 		body.takeDamage()
 
-
 func _on_Area2D_area_entered(area):
 	if area.get_name()== "grabbox":
 		direction=0
 	if area.is_in_group("enemy") and thrown:
 		area._die()
 		_die()
-		
-	pass # Replace with function body.
 	
 func _throw_up():
 	thrown=true
@@ -90,7 +88,6 @@ func _throw_downleft():
 	direction=-1
 	ydirection=1
 	
-	
 func _die():
 	part.emitting = true
 	dying= true
@@ -99,5 +96,4 @@ func _die():
 	parent.add_child(c)
 	c.global_position=global_position
 	print(parent)
-	
-	pass
+

@@ -12,5 +12,6 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	body.getCoin()
-	queue_free()
+	if (body.has_method("getCoin")):
+		body.getCoin()
+		queue_free()
