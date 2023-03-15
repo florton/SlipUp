@@ -77,13 +77,22 @@ rect_scale = Vector2( 2, 2 )
 custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
 text = "100"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Coins" type="Label" parent="UI"]
+margin_left = 376.0
+margin_top = 30.0
+margin_right = 510.0
+margin_bottom = 57.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.0588235, 0.67451, 0.109804, 1 )
+text = "0"
+align = 1
 
 [node name="HP" type="AnimatedSprite" parent="UI"]
 position = Vector2( 941.781, 519.296 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 5 )
+
 [connection signal="dead" from="KinematicBody2D" to="." method="_on_KinematicBody2D_dead"]
+[connection signal="get_coin" from="KinematicBody2D" to="." method="_on_KinematicBody2D_get_coin"]
 [connection signal="viewport_exited" from="KinematicBody2D/VisibilityNotifier2D" to="KinematicBody2D" method="_on_VisibilityNotifier2D_viewport_exited"]

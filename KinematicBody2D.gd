@@ -21,6 +21,7 @@ var enemyingbo
 var heath=3
 
 signal dead 
+signal get_coin
 
 func _ready():
 	lasgroundpos.push_front(global_position)
@@ -103,6 +104,9 @@ func takeDamage():
 		hitstun=true
 		ap.play("hurt")
 		heath-=1
+		
+func getCoin():
+	emit_signal("get_coin")
 
 func hitstunend():
 	hitstun= false
@@ -173,9 +177,9 @@ func _grab():
 		velocity=Vector2(200,-800)
 
 
-func _on_Area2D_body_entered(body):
-	if Input.is_action_pressed("up"):
-		pass
+#func _on_Area2D_body_entered(body):
+#	if Input.is_action_pressed("up"):
+#		pass
 
 func _on_VisibilityNotifier2D_viewport_exited(_viewport):
 	takeDamage()

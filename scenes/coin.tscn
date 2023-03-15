@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://sprite/coin.png" type="Texture" id=1]
 [ext_resource path="res://ani/coin.tres" type="Animation" id=2]
+[ext_resource path="res://scenes/coin.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.3554
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -18,7 +20,10 @@ method_call_mode = 1
 "anims/New Anim" = ExtResource( 2 )
 anims/coin = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="Sprite"]
+[node name="Area2D" type="Area2D" parent="Sprite" groups=["coin"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
 shape = SubResource( 1 )
+
+[connection signal="area_entered" from="Sprite/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_Area2D_body_entered"]

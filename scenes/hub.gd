@@ -1,17 +1,24 @@
 extends Node2D
 
 onready var scoreLabel = get_node('HighScore')
+onready var coinsLabel = get_node('Coins')
 
 # Declare member variables here. Examples:
 var door = false
-# var b = "text"
+
+var highScore = 0
+var totalCoins = 0
 
 func loadData():
 	var file = File.new()
 	file.open("user://save_game.dat", File.READ)
 	var content = file.get_as_text()
-	var highScore = content
+	var values = content.split("|")
+	highScore = values[0]
+	if (len(values) > 1):
+		totalCoins = values[1]
 	scoreLabel.text = highScore if highScore else str(0)
+	coinsLabel.text = totalCoins if totalCoins else str(0)
 	file.close()
 
 # Called when the node enters the scene tree for the first time.
