@@ -39,8 +39,6 @@ func _on_cactus_area_entered(area):
 	if area.is_in_group("enemy") and thrown:
 		area._die()
 		_die()
-		
-	pass # Replace with function body.
 
 func _throw_up():
 	thrown=true
@@ -89,5 +87,3 @@ func _die():
 	var parent = get_parent().get_parent()
 	parent.add_child(c)
 	c.global_position=global_position
-	print(parent)
-	pass

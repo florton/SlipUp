@@ -4,6 +4,10 @@ onready var player = get_node("KinematicBody2D")
 onready var healthSprite = get_node("UI/HP")
 onready var scoreLabel = get_node("UI/Score")
 onready var coinsLabel = get_node("UI/Coins")
+onready var cam = get_node("Camera2D")
+
+const camera_offset_y = 50
+const death_offset_y = 250
 
 var playerStart = 525
 var score = 0
@@ -29,6 +33,7 @@ func saveData(newScore, totalCoins):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	cam.global_position.y = player.global_position.y - camera_offset_y
 	loadData()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,7 +46,12 @@ func _process(delta):
 			saveData(score, totalCoins + coins)
 			scoreLabel.add_color_override("font_color", '00ff28')
 	scoreLabel.text = str(score)
-
+	if player.global_position.y - camera_offset_y < cam.global_position.y:
+		cam.global_position.y = player.global_position.y - camera_offset_y
+		
+	if player.global_position.y - death_offset_y > cam.global_position.y:
+		player.fallDown()
+	
 func _on_KinematicBody2D_dead():
 	get_tree().change_scene("res://scenes/hub.tscn")
 
