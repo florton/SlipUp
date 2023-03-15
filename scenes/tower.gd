@@ -7,6 +7,7 @@ onready var scoreLabel = get_node("UI/Score")
 var playerStart = 525
 var score = 0
 var highScore = 0
+var coins = 0
 
 func loadData():
 	var file = File.new()
