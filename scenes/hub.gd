@@ -18,14 +18,13 @@ func loadData():
 	highScore = values[0]
 	if (len(values) > 1):
 		totalCoins = values[1]
-	scoreLabel.text = highScore if highScore else str(0)
-	coinsLabel.text = totalCoins if totalCoins else str(0)
+	scoreLabel.text ="highest lvl"+highScore 
+	coinsLabel.text = "coins"+totalCoins 
 	file.close()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	OS.window_position.x = 0
-	OS.window_position.y = 0
+
 	loadData()
 
 

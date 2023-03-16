@@ -46,7 +46,7 @@ func _process(delta):
 		if score > highScore:
 			saveData(score, totalCoins + coins)
 			scoreLabel.add_color_override("font_color", '00ff28')
-	scoreLabel.text = str(score)
+	scoreLabel.text = str("LVL.",score)
 	if player.global_position.y - camera_offset_y < cam.global_position.y:
 		cam.global_position.y = player.global_position.y - camera_offset_y
 		
@@ -58,4 +58,4 @@ func _on_KinematicBody2D_dead():
 
 func _on_KinematicBody2D_get_coin():
 	coins = coins + 1
-	coinsLabel.text = str(coins)
+	coinsLabel.text = str("$",coins)

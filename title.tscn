@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprite/Ts.png" type="Texture" id=1]
+[ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://font/retro_gaming/Retro Gaming.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "run"
+loop = true
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.5, 0.633333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 4, 5, 6, 7, 8, 9, 11, 0 ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 62
+font_data = ExtResource( 3 )
+
+[node name="tgbackground" type="Node2D"]
+
+[node name="bgsprite" type="Sprite" parent="."]
+position = Vector2( 514.976, 302.29 )
+scale = Vector2( 3.2174, 3.35629 )
+texture = ExtResource( 1 )
+vframes = 7
+hframes = 2
+
+[node name="bgap" type="AnimationPlayer" parent="bgsprite"]
+anims/run = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="bgsprite"]
+follow_viewport_scale = 10.0
+
+[node name="Label" type="Label" parent="bgsprite/CanvasLayer"]
+margin_left = 759.306
+margin_top = 352.913
+margin_right = 932.306
+margin_bottom = 388.913
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+text = "continue"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="bgsprite/CanvasLayer"]
+margin_left = 710.409
+margin_top = 78.6182
+margin_right = 915.409
+margin_bottom = 239.618
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+text = "SLIP 
+UP"
+align = 2
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
