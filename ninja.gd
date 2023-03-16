@@ -7,7 +7,7 @@ export var gravity := 2000
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
 onready var ap2 = get_node("Sprite/AnimationPlayer/AnimationPlayer2")
-
+onready var hb = get_node("hitbox/CollisionShape2D")
 var velocity := Vector2.ZERO
 var jump_speed = 700
 var lasgroundpos= Array()
@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 	
 	if hitstun:
 		acceleration = 0
+	if is_on_floor():
+		hb.disabled=true
 	
 	# set horizontal velocity
 	if Input.is_action_pressed("move_right") and!hitstun:
@@ -86,8 +88,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() and !hitstun:
 			ap2.play("jump")
-	if Input.is_action_just_pressed("jump") and ap.current_animation == "air idle":
-		ap.play("grab")
+	if Input.is_action_just_pressed("jump") and ap.current_animation == "airidle":
+		ap.play("dash")
+		hb.disabled=false
+		if sprite.flip_h == true:
+			velocity=Vector2(-800,-700)
+		if sprite.flip_h == false:
+			velocity=Vector2(800,-700)
 func fullhop():
 	velocity.y= -jump_speed - 150
 	
@@ -111,3 +118,10 @@ func hitstunend():
 func fallDown():
 	takeDamage()
 	self.global_position=lasgroundpos[lasgroundpos.size() - 8]
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("enemy"):
+		area._die()
+		
+	pass # Replace with function body.
