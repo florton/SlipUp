@@ -8,7 +8,7 @@ var y_start = 36
 var y_end = -500
 
 var x_start = 2
-var x_end = 29
+var x_end = 48
 
 var rng = RandomNumberGenerator.new()
 
@@ -17,7 +17,7 @@ func floorGen(gap):
 	while y > y_end:
 		y -= gap
 		var floorStart = rng.randi_range(x_start, x_end)
-		var floorLen = rng.randi_range(4, 10)
+		var floorLen = rng.randi_range(4, 15)
 		var coordArray = []
 		for x in range(floorLen):
 			set_cell(floorStart + x,y,0)
@@ -64,6 +64,7 @@ func cactusGen(positon, x_min, x_max):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
+	floorGen(8)
 	floorGen(8)
 	floorGen(4)
 #
