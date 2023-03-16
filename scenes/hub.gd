@@ -4,7 +4,8 @@ onready var scoreLabel = get_node('HighScore')
 onready var coinsLabel = get_node('Coins')
 
 # Declare member variables here. Examples:
-var door = false
+var door1 = false
+var door2 = false
 
 var highScore = 0
 var totalCoins = 0
@@ -30,18 +31,32 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("up") and door:
-		get_tree().change_scene("res://scenes/tower.tscn")
+	if Input.is_action_pressed("up"):
+		if door1:
+			get_tree().change_scene("res://scenes/tower.tscn")
+		if door2:
+			get_tree().change_scene("res://scenes/bar.tscn")
 		pass
 	pass
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(body,name):
 	if body.is_in_group("player"):
-		door=true
+		if name == "door1":
+			door1=true
+			pass
+		if name == "door2":
+			door2=true
+			pass
 	pass # Replace with function body.
 
 
 func _on_Area2D_body_exited(body):
-	door=false
+	door1=false
+
+	pass # Replace with function body.
+
+
+func _on_door2_body_exited(body):
+	door2=false
 	pass # Replace with function body.

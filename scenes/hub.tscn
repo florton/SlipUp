@@ -19,7 +19,7 @@ tile_data = PoolIntArray( 2424832, 0, 0, 2424833, 0, 1, 2424834, 0, 1, 2424835, 
 script = null
 
 [node name="WallMap" parent="." instance=ExtResource( 2 )]
-tile_data = PoolIntArray( 0, 0, 3, 65536, 0, 2, 131072, 0, 1, 196608, 0, 2, 196639, 0, 2, 262144, 0, 2, 262175, 0, 0, 327680, 0, 3, 327711, 0, 2, 393216, 0, 3, 393247, 0, 1, 458752, 0, 1, 458783, 0, 2 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65536, 0, 2, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 131072, 0, 1, 196608, 0, 2, 196639, 0, 2, 262144, 0, 2, 262175, 0, 0, 327680, 0, 3, 327711, 0, 2, 393216, 0, 3, 393247, 0, 1, 458752, 0, 1, 458783, 0, 2 )
 script = null
 
 [node name="BackgroundMap" parent="." instance=ExtResource( 3 )]
@@ -29,29 +29,29 @@ tile_data = PoolIntArray( -589824, 536870912, 0, -589823, 536870912, 0, -589822,
 [node name="KinematicBody2D" parent="." instance=ExtResource( 4 )]
 z_index = 1
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="door1" type="Sprite" parent="."]
 position = Vector2( 226.737, 529.802 )
 texture = ExtResource( 5 )
 
-[node name="Area2D" type="Area2D" parent="Sprite"]
+[node name="door1" type="Area2D" parent="door1"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door1/door1"]
 shape = SubResource( 1 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="door2" type="Sprite" parent="."]
 position = Vector2( 428.726, 531.69 )
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Area2D" type="Area2D" parent="Sprite2"]
+[node name="door2" type="Area2D" parent="door2"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door2/door2"]
 shape = SubResource( 1 )
 
 [node name="HighScore" type="Label" parent="."]
@@ -77,6 +77,9 @@ custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 text = "0"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HighScoreText" type="Label" parent="."]
 visible = false
@@ -93,8 +96,7 @@ z_index = -1
 texture = ExtResource( 7 )
 hframes = 3
 frame = 1
-
-[connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="Sprite/Area2D" to="KinematicBody2D" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Sprite/Area2D" to="." method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="Sprite2/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="door1/door1" to="." method="_on_Area2D_body_entered" binds= [ "door1" ]]
+[connection signal="body_exited" from="door1/door1" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="door2/door2" to="." method="_on_Area2D_body_entered" binds= [ "door2" ]]
+[connection signal="body_exited" from="door2/door2" to="." method="_on_door2_body_exited"]

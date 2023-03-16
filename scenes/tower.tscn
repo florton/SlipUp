@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/BackgroundMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/tower.gd" type="Script" id=6]
 [ext_resource path="res://scenes/BackgroundMap.gd" type="Script" id=7]
 [ext_resource path="res://scenes/coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprite/dot.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -90,5 +91,29 @@ position = Vector2( 941.781, 519.296 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 5 )
 
+[node name="last life bar" type="Sprite" parent="."]
+position = Vector2( 1204.65, 54.5436 )
+scale = Vector2( 126.929, 2.68369 )
+texture = ExtResource( 9 )
+
+[node name="pbbar" type="Node2D" parent="."]
+
+[node name="pb bar" type="Sprite" parent="pbbar"]
+position = Vector2( 275.414, 0 )
+scale = Vector2( 126.929, 2.68369 )
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="pbbar"]
+margin_left = 20.4454
+margin_top = -5.66366
+margin_right = 533.445
+margin_bottom = 8.33634
+custom_colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+text = "PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB       "
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="dead" from="KinematicBody2D" to="." method="_on_KinematicBody2D_dead"]
 [connection signal="get_coin" from="KinematicBody2D" to="." method="_on_KinematicBody2D_get_coin"]

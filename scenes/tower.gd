@@ -5,7 +5,7 @@ onready var healthSprite = get_node("UI/HP")
 onready var scoreLabel = get_node("UI/Score")
 onready var coinsLabel = get_node("UI/Coins")
 onready var cam = get_node("Camera2D")
-
+onready var pbar= get_node("pbbar")
 const camera_offset_y = 50
 const death_offset_y = 250
 
@@ -35,6 +35,7 @@ func saveData(newScore, totalCoins):
 func _ready():
 	cam.global_position.y = player.global_position.y - camera_offset_y
 	loadData()
+	pbar.position.y=(1 - (highScore * 48)) + playerStart
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
