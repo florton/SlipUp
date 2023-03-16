@@ -29,6 +29,9 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	acceleration = acceleration * 0.3
 	
+	if hitstun:
+		acceleration = 0
+	
 	# set horizontal velocity
 	if Input.is_action_pressed("move_right") and!hitstun and!grab:
 		velocity.x += move_speed
@@ -173,5 +176,5 @@ func _grab():
 
 func fallDown():
 	takeDamage()
-	self.global_position=lasgroundpos[lasgroundpos.size() - 4]
+	self.global_position=lasgroundpos[lasgroundpos.size() - 8]
 
