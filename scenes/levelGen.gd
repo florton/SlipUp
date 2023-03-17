@@ -12,7 +12,7 @@ var x_end = 48
 
 var rng = RandomNumberGenerator.new()
 
-func floorGen(gap):
+func floorGen(gap, spawnEnemies):
 	var y = y_start
 	while y > y_end:
 		y -= gap
@@ -22,7 +22,8 @@ func floorGen(gap):
 		for x in range(floorLen):
 			set_cell(floorStart + x,y,0)
 			coordArray.append(Vector2(floorStart + x,y - 1))
-		loadEntities(coordArray)
+		if spawnEnemies:
+			loadEntities(coordArray)
 	update_bitmask_region(Vector2(x_start, y_start), Vector2(x_end, y_end))
 	
 func loadEntities(coordArray):
@@ -64,9 +65,9 @@ func cactusGen(positon, x_min, x_max):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	floorGen(8)
-	floorGen(8)
-	floorGen(4)
+	floorGen(8, true)
+	floorGen(8, false)
+	floorGen(4, true)
 #
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

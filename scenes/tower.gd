@@ -7,7 +7,7 @@ onready var coinsLabel = get_node("UI/Coins")
 onready var cam = get_node("Camera2D")
 onready var pbar= get_node("pbbar")
 const camera_offset_y = 50
-const death_offset_y = 240
+const death_offset_y = 380
 
 var playerStart = 525
 var score = 0
@@ -49,7 +49,8 @@ func _process(delta):
 	scoreLabel.text = str("LVL.",score)
 	if player.global_position.y - camera_offset_y < cam.global_position.y:
 		cam.global_position.y = player.global_position.y - camera_offset_y
-		
+#
+#	print(player.global_position.y - cam.global_position.y)
 	if player.global_position.y - death_offset_y > cam.global_position.y:
 		player.fallDown()
 	
