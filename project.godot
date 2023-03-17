@@ -18,6 +18,10 @@ config/name="jumper"
 run/main_scene="res://scenes/hub.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.tscn"
+
 [display]
 
 window/stretch/mode="viewport"

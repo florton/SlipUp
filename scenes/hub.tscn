@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/WallMap.tscn" type="PackedScene" id=2]
@@ -8,20 +8,240 @@
 [ext_resource path="res://scenes/hub.gd" type="Script" id=6]
 [ext_resource path="res://sprite/Pb frame.png" type="Texture" id=7]
 [ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=8]
-[ext_resource path="res://ninja.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Select.gd" type="Script" id=9]
+[ext_resource path="res://sprite/Pl.png" type="Texture" id=10]
+[ext_resource path="res://sprite/ninja.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.8657, 65.317 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15.5, 56.75 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 99, 100 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 7 )
+region = Rect2( 99, 0, 99, 100 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 7 )
+region = Rect2( 198, 0, 99, 100 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 7 )
+region = Rect2( 297, 0, 99, 100 )
+
+[sub_resource type="SpriteFrames" id=48]
+animations = [ {
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 34.2345
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 7 )
+region = Rect2( 297, 0, 99, 100 )
+
+[sub_resource type="SpriteFrames" id=50]
+animations = [ {
+"frames": [ SubResource( 49 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 10 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 10 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 10 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 10 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 10 )
+region = Rect2( 256, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 10 )
+region = Rect2( 320, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 10 )
+region = Rect2( 192, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 10 )
+region = Rect2( 256, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 10 )
+region = Rect2( 320, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 256, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 256, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 256, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 320, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 320, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 320, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 384, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 11 )
+region = Rect2( 64, 384, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 11 )
+region = Rect2( 128, 384, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=43]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "guy",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "ninja",
+"speed": 5.0
+} ]
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
 
+[node name="Camera0" type="Camera2D" parent="."]
+position = Vector2( 512, 298 )
+current = true
+
+[node name="Camera1" type="Camera2D" parent="."]
+position = Vector2( 1502, 298 )
+
 [node name="FloorMap2" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( 2424832, 0, 0, 2424833, 0, 1, 2424834, 0, 1, 2424835, 0, 1, 2424836, 0, 1, 2424837, 0, 1, 2424838, 0, 1, 2424839, 0, 1, 2424840, 0, 1, 2424841, 0, 1, 2424842, 0, 1, 2424843, 0, 1, 2424844, 0, 1, 2424845, 0, 1, 2424846, 0, 1, 2424847, 0, 1, 2424848, 0, 1, 2424849, 0, 1, 2424850, 0, 1, 2424851, 0, 1, 2424852, 0, 1, 2424853, 0, 1, 2424854, 0, 1, 2424855, 0, 1, 2424856, 0, 1, 2424857, 0, 1, 2424858, 0, 1, 2424859, 0, 1, 2424860, 0, 1, 2424861, 0, 1, 2424862, 0, 1, 2424863, 0, 1, 2424864, 0, 1, 2424865, 0, 1, 2424866, 0, 1, 2424867, 0, 1, 2424868, 0, 1, 2424869, 0, 1, 2424870, 0, 1, 2424871, 0, 1, 2424872, 0, 1, 2424873, 0, 1, 2424874, 0, 1, 2424875, 0, 1, 2424876, 0, 1, 2424877, 0, 1, 2424878, 0, 1, 2424879, 0, 1, 2424880, 0, 1, 2424881, 0, 1, 2424882, 0, 1, 2424883, 0, 1, 2424884, 0, 1, 2424885, 0, 1, 2424886, 0, 1, 2424887, 0, 1, 2424888, 0, 1, 2424889, 0, 1, 2424890, 0, 1, 2424891, 0, 1, 2424892, 0, 1, 2424893, 0, 1, 2424894, 0, 1, 2424895, 0, 1, 2424896, 0, 2 )
+tile_data = PoolIntArray( 2424832, 0, 0, 2424833, 0, 1, 2424834, 0, 1, 2424835, 0, 1, 2424836, 0, 1, 2424837, 0, 1, 2424838, 0, 1, 2424839, 0, 1, 2424840, 0, 1, 2424841, 0, 1, 2424842, 0, 1, 2424843, 0, 1, 2424844, 0, 1, 2424845, 0, 1, 2424846, 0, 1, 2424847, 0, 1, 2424848, 0, 1, 2424849, 0, 1, 2424850, 0, 1, 2424851, 0, 1, 2424852, 0, 1, 2424853, 0, 1, 2424854, 0, 1, 2424855, 0, 1, 2424856, 0, 1, 2424857, 0, 1, 2424858, 0, 1, 2424859, 0, 1, 2424860, 0, 1, 2424861, 0, 1, 2424862, 0, 1, 2424863, 0, 1, 2424864, 0, 1, 2424865, 0, 1, 2424866, 0, 1, 2424867, 0, 1, 2424868, 0, 1, 2424869, 0, 1, 2424870, 0, 1, 2424871, 0, 1, 2424872, 0, 1, 2424873, 0, 1, 2424874, 0, 1, 2424875, 0, 1, 2424876, 0, 1, 2424877, 0, 1, 2424878, 0, 1, 2424879, 0, 1, 2424880, 0, 1, 2424881, 0, 1, 2424882, 0, 1, 2424883, 0, 1, 2424884, 0, 1, 2424885, 0, 1, 2424886, 0, 1, 2424887, 0, 1, 2424888, 0, 1, 2424889, 0, 1, 2424890, 0, 1, 2424891, 0, 1, 2424892, 0, 1, 2424893, 0, 1, 2424894, 0, 1, 2424895, 0, 1, 2424896, 0, 1, 2424897, 0, 1, 2424898, 0, 1, 2424899, 0, 1, 2424900, 0, 1, 2424901, 0, 1, 2424902, 0, 1, 2424903, 0, 1, 2424904, 0, 1, 2424905, 0, 1, 2424906, 0, 1, 2424907, 0, 1, 2424908, 0, 1, 2424909, 0, 1, 2424910, 0, 1, 2424911, 0, 1, 2424912, 0, 1, 2424913, 0, 1, 2424914, 0, 1, 2424915, 0, 1, 2424916, 0, 1, 2424917, 0, 1, 2424918, 0, 1, 2424919, 0, 1, 2424920, 0, 1, 2424921, 0, 1, 2424922, 0, 1, 2424923, 0, 1, 2424924, 0, 1, 2424925, 0, 1, 2424926, 0, 1, 2424927, 0, 1, 2424928, 0, 1, 2424929, 0, 1, 2424930, 0, 1, 2424931, 0, 1, 2424932, 0, 1, 2424933, 0, 1, 2424934, 0, 1, 2424935, 0, 1, 2424936, 0, 1, 2424937, 0, 1, 2424938, 0, 1, 2424939, 0, 1, 2424940, 0, 1, 2424941, 0, 1, 2424942, 0, 1, 2424943, 0, 1, 2424944, 0, 1, 2424945, 0, 1, 2424946, 0, 1, 2424947, 0, 1, 2424948, 0, 1, 2424949, 0, 1, 2424950, 0, 1, 2424951, 0, 1, 2424952, 0, 1, 2424953, 0, 1, 2424954, 0, 1, 2424955, 0, 1, 2424956, 0, 1, 2424957, 0, 1, 2424958, 0, 2 )
 script = null
 
 [node name="WallMap" parent="." instance=ExtResource( 2 )]
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65536, 0, 2, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 131072, 0, 1, 196608, 0, 2, 196639, 0, 2, 262144, 0, 2, 262175, 0, 0, 327680, 0, 3, 327711, 0, 2, 393216, 0, 3, 393247, 0, 1, 458752, 0, 1, 458783, 0, 2 )
+tile_data = PoolIntArray( 0, 0, 0, 31, 0, 3, 62, 0, 2, 65536, 0, 2, 65567, 0, 1, 65598, 0, 2, 131072, 0, 1, 131103, 0, 1, 131134, 0, 2, 196608, 0, 2, 196639, 0, 2, 196670, 0, 2, 262144, 0, 2, 262175, 0, 0, 262206, 0, 2, 327680, 0, 3, 327711, 0, 2, 327742, 0, 2, 393216, 0, 3, 393278, 0, 2, 458752, 0, 1, 458814, 0, 2 )
 script = null
 
 [node name="BackgroundMap" parent="." instance=ExtResource( 3 )]
@@ -29,7 +249,7 @@ scale = Vector2( 2, 2 )
 tile_data = PoolIntArray( -589824, 536870912, 0, -589823, 536870912, 0, -589822, 536870912, 0, -589821, 536870912, 0, -589820, 536870912, 0, -589819, 536870912, 0, -589818, 536870912, 0, -589817, 536870912, 0, -589816, 536870912, 0, -589815, 536870912, 0, -589814, 536870912, 0, -589813, 536870912, 0, -589812, 536870912, 0, -589811, 536870912, 0, -589810, 536870912, 0, -589809, 536870912, 0, -589808, 536870912, 0, -589807, 536870912, 0, -524288, 536870912, 0, -524287, 536870912, 0, -524286, 536870912, 2, -524285, 536870912, 65537, -524284, 536870912, 0, -524283, 536870912, 0, -524282, 536870912, 65537, -524281, 536870912, 0, -524280, 536870912, 0, -524279, 536870912, 2, -524278, 536870912, 65536, -524277, 536870912, 0, -524276, 536870912, 0, -524275, 536870912, 65536, -524274, 536870912, 0, -524273, 536870912, 65536, -524272, 536870912, 65537, -524271, 536870912, 0, -458752, 536870912, 0, -458751, 536870912, 65538, -458750, 536870912, 0, -458749, 536870912, 65536, -458748, 536870912, 65536, -458747, 536870912, 0, -458746, 536870912, 65536, -458745, 536870912, 1, -458744, 536870912, 2, -458743, 536870912, 65536, -458742, 536870912, 0, -458741, 536870912, 65536, -458740, 536870912, 65536, -458739, 536870912, 0, -458738, 536870912, 1, -458737, 536870912, 0, -458736, 536870912, 0, -458735, 536870912, 0, -393216, 536870912, 0, -393215, 536870912, 0, -393214, 536870912, 0, -393213, 536870912, 65538, -393212, 536870912, 0, -393211, 536870912, 65536, -393210, 536870912, 65536, -393209, 536870912, 65536, -393208, 536870912, 0, -393207, 536870912, 0, -393206, 536870912, 0, -393205, 536870912, 65538, -393204, 536870912, 0, -393203, 536870912, 65536, -393202, 536870912, 0, -393201, 536870912, 0, -393200, 536870912, 65538, -393199, 536870912, 0, -327680, 536870912, 0, -327679, 536870912, 65536, -327678, 536870912, 0, -327677, 536870912, 65536, -327676, 536870912, 65536, -327675, 536870912, 0, -327674, 536870912, 0, -327673, 536870912, 65536, -327672, 536870912, 0, -327671, 536870912, 65536, -327670, 536870912, 65538, -327669, 536870912, 65537, -327668, 536870912, 65537, -327667, 536870912, 0, -327666, 536870912, 2, -327665, 536870912, 65536, -327664, 536870912, 0, -327663, 536870912, 0, -262144, 536870912, 0, -262143, 536870912, 0, -262142, 536870912, 2, -262141, 536870912, 0, -262140, 536870912, 0, -262139, 536870912, 65536, -262138, 536870912, 65538, -262137, 536870912, 0, -262136, 536870912, 0, -262135, 536870912, 0, -262134, 536870912, 65536, -262133, 536870912, 65537, -262132, 536870912, 65536, -262131, 536870912, 0, -262130, 536870912, 0, -262129, 536870912, 65536, -262128, 536870912, 65537, -262127, 536870912, 0, -196608, 536870912, 0, -196607, 536870912, 0, -196606, 536870912, 0, -196605, 536870912, 0, -196604, 536870912, 0, -196603, 536870912, 65536, -196602, 536870912, 65538, -196601, 536870912, 65536, -196600, 536870912, 0, -196599, 536870912, 65537, -196598, 536870912, 65537, -196597, 536870912, 65536, -196596, 536870912, 65536, -196595, 536870912, 0, -196594, 536870912, 65537, -196593, 536870912, 65536, -196592, 536870912, 0, -196591, 536870912, 0, -131072, 536870912, 0, -131071, 536870912, 0, -131070, 536870912, 0, -131069, 536870912, 65538, -131068, 536870912, 0, -131067, 0, 1, -131066, 536870912, 65536, -131065, 536870912, 65537, -131064, 536870912, 65536, -131063, 536870912, 0, -131062, 536870912, 65537, -131061, 536870912, 0, -131060, 536870912, 0, -131059, 536870912, 0, -131058, 536870912, 0, -131057, 536870912, 65538, -131056, 536870912, 0, -131055, 536870912, 0, -65536, 536870912, 0, -65535, 536870912, 0, -65534, 536870912, 65536, -65533, 536870912, 0, -65532, 0, 0, -65531, 0, 2, -65530, 536870912, 65537, -65529, 536870912, 0, -65528, 536870912, 65536, -65527, 536870912, 65537, -65526, 536870912, 0, -65525, 536870912, 65537, -65524, 536870912, 65536, -65523, 536870912, 65538, -65522, 536870912, 0, -65521, 536870912, 65537, -65520, 536870912, 65536, -65519, 536870912, 0, 0, 536870912, 0, 1, 536870912, 65536, 2, 536870912, 0, 3, 0, 65537, 4, 0, 65537, 5, 0, 1, 6, 0, 2, 7, 536870912, 0, 8, 536870912, 65537, 9, 536870912, 65536, 10, 536870912, 0, 11, 536870912, 0, 12, 536870912, 1, 13, 536870912, 65536, 14, 536870912, 2, 15, 536870912, 65537, 16, 536870912, 1, 17, 536870912, 0, 131071, 0, 65536, 65536, 0, 65536, 65537, 0, 65538, 65538, 0, 0, 65539, 0, 0, 65540, 0, 2, 65541, 0, 65537, 65542, 0, 65537, 65543, 536870912, 65536, 65544, 536870912, 0, 65545, 536870912, 65536, 65546, 536870912, 65537, 65547, 536870912, 1, 65548, 536870912, 0, 65549, 536870912, 65537, 65550, 536870912, 2, 65551, 536870912, 0, 65552, 536870912, 0, 65553, 536870912, 0, 131072, 0, 65537, 131073, 0, 65536, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 65536, 131080, 536870912, 0, 131081, 536870912, 0, 131082, 536870912, 65536, 131083, 536870912, 1, 131084, 536870912, 65538, 131085, 536870912, 65536, 131086, 536870912, 1, 131087, 536870912, 65536, 131088, 536870912, 0, 131089, 536870912, 0, 196608, 0, 0, 196609, 0, 65538, 196610, 0, 1, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 65537, 196615, 536870912, 65537, 196616, 536870912, 0, 196617, 536870912, 65536, 196618, 536870912, 65537, 196619, 536870912, 65536, 196620, 536870912, 0, 196621, 536870912, 65537, 196622, 536870912, 0, 196623, 536870912, 0, 196624, 536870912, 0, 196625, 536870912, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 65537, 262148, 0, 1, 262149, 0, 1, 262150, 0, 1, 262151, 0, 0, 262152, 536870912, 65538, 262153, 536870912, 0, 262154, 536870912, 65537, 262155, 536870912, 0, 262156, 536870912, 65537, 262157, 536870912, 0, 262158, 536870912, 65536, 262159, 536870912, 0, 262160, 536870912, 0, 262161, 536870912, 0, 393215, 0, 2, 327680, 0, 0, 327681, 0, 65537, 327682, 0, 0, 327683, 0, 0, 327684, 0, 65538, 327685, 0, 1, 327686, 0, 0, 327687, 536870912, 0, 327688, 536870912, 0, 327689, 536870912, 1, 327690, 536870912, 65537, 327691, 536870912, 0, 327692, 536870912, 0, 327693, 536870912, 65537, 327694, 536870912, 0, 327695, 536870912, 65536, 327696, 536870912, 0, 327697, 536870912, 0, 393216, 0, 65536, 393217, 0, 0, 393218, 0, 0, 393219, 0, 65536, 393220, 0, 0, 393221, 0, 65538, 393222, 0, 0, 393223, 0, 2, 393224, 536870912, 0, 393225, 536870912, 0, 393226, 536870912, 65537, 393227, 536870912, 0, 393228, 536870912, 65538, 393229, 536870912, 0, 393230, 536870912, 0, 393231, 536870912, 0, 393232, 536870912, 0, 393233, 536870912, 0, 458752, 536870912, 0, 458753, 536870912, 2, 458754, 536870912, 0, 458755, 0, 65536, 458756, 0, 65537, 458757, 0, 0, 458758, 0, 65536, 458759, 536870912, 1, 458760, 536870912, 0, 458761, 536870912, 65537, 458762, 536870912, 65537, 458763, 536870912, 0, 458764, 536870912, 65536, 458765, 536870912, 65536, 458766, 536870912, 0, 458767, 536870912, 0, 458768, 536870912, 65537, 458769, 536870912, 0, 524288, 536870912, 0, 524289, 536870912, 0, 524290, 536870912, 65537, 524291, 0, 1, 524292, 0, 0, 524293, 0, 65538, 524294, 0, 1, 524295, 536870912, 65536, 524296, 536870912, 65536, 524297, 536870912, 0, 524298, 536870912, 65536, 524299, 536870912, 0, 524300, 536870912, 0, 524301, 536870912, 0, 524302, 536870912, 65538, 524303, 536870912, 65536, 524304, 536870912, 0, 524305, 536870912, 0, 589824, 536870912, 0, 589825, 536870912, 0, 589826, 536870912, 65536, 589827, 0, 1, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 536870912, 0, 589832, 536870912, 0, 589833, 536870912, 65536, 589834, 536870912, 0, 589835, 536870912, 65536, 589836, 536870912, 65538, 589837, 536870912, 65536, 589838, 536870912, 1, 589839, 536870912, 1, 589840, 536870912, 2, 589841, 536870912, 0, 655360, 536870912, 0, 655361, 536870912, 0, 655362, 536870912, 0, 655363, 536870912, 0, 655364, 0, 65536, 655365, 0, 0, 655366, 0, 0, 655367, 536870912, 0, 655368, 536870912, 0, 655369, 536870912, 0, 655370, 536870912, 0, 655371, 536870912, 0, 655372, 536870912, 0, 655373, 536870912, 0, 655374, 536870912, 0, 655375, 536870912, 0, 655376, 536870912, 0, 655377, 536870912, 0, 720901, 0, 65536, 720902, 0, 65536 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 4 )]
-z_index = 1
+position = Vector2( 500, 70 )
 
 [node name="door1" type="Sprite" parent="."]
 position = Vector2( 226.737, 529.802 )
@@ -55,6 +275,19 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door2/door2"]
 shape = SubResource( 1 )
+
+[node name="door3" type="Area2D" parent="."]
+position = Vector2( -62, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door3"]
+position = Vector2( 1052, 537 )
+shape = SubResource( 2 )
+
+[node name="door4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door4"]
+position = Vector2( 1024, 537 )
+shape = SubResource( 2 )
 
 [node name="HighScore" type="Label" parent="."]
 margin_left = 635.0
@@ -92,17 +325,48 @@ margin_bottom = 491.0
 rect_scale = Vector2( 3, 3 )
 text = "PB"
 
-[node name="pd frame" type="Sprite" parent="."]
+[node name="pd frame" type="AnimatedSprite" parent="."]
 position = Vector2( 723.506, 488.595 )
 z_index = -1
-texture = ExtResource( 7 )
-hframes = 3
+frames = SubResource( 48 )
 frame = 1
 
-[node name="ninja" parent="." instance=ExtResource( 9 )]
-position = Vector2( 581.427, 439.845 )
+[node name="Select" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="Guy" type="Area2D" parent="Select"]
+position = Vector2( 1317, 425 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Select/Guy"]
+shape = SubResource( 3 )
+
+[node name="frame" type="AnimatedSprite" parent="Select/Guy"]
+position = Vector2( -8, 1 )
+frames = SubResource( 50 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Select/Guy"]
+frames = SubResource( 43 )
+animation = "guy"
+
+[node name="Ninja" type="Area2D" parent="Select"]
+position = Vector2( 1687, 426 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Select/Ninja"]
+shape = SubResource( 3 )
+
+[node name="frame" type="AnimatedSprite" parent="Select/Ninja"]
+position = Vector2( -10, 2 )
+frames = SubResource( 50 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Select/Ninja"]
+frames = SubResource( 43 )
+animation = "ninja"
 
 [connection signal="body_entered" from="door1/door1" to="." method="_on_Area2D_body_entered" binds= [ "door1" ]]
 [connection signal="body_exited" from="door1/door1" to="." method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="door2/door2" to="." method="_on_Area2D_body_entered" binds= [ "door2" ]]
 [connection signal="body_exited" from="door2/door2" to="." method="_on_door2_body_exited"]
+[connection signal="body_entered" from="door3" to="." method="_on_door3_body_entered"]
+[connection signal="body_entered" from="door4" to="." method="_on_door4_body_entered"]
+[connection signal="body_entered" from="Select/Guy" to="Select" method="_on_Guy_body_entered"]
+[connection signal="body_entered" from="Select/Ninja" to="Select" method="_on_Ninja_body_entered"]

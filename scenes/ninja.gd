@@ -95,6 +95,7 @@ func _physics_process(delta: float) -> void:
 			velocity=Vector2(-800,-700)
 		if sprite.flip_h == false:
 			velocity=Vector2(800,-700)
+
 func fullhop():
 	velocity.y= -jump_speed - 150
 	
@@ -109,19 +110,17 @@ func getCoin():
 	emit_signal("get_coin")
 
 func hitstunend():
-	
 	hitstun= false
 	if self.is_on_floor():
 		ap.play("STAND")
 	else:
 		ap.play("air idle")
+
 func fallDown():
 	takeDamage()
 	self.global_position=lasgroundpos[lasgroundpos.size() - 8]
 
-
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("enemy"):
 		area._die()
-		
-	pass # Replace with function body.
+

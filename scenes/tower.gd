@@ -1,5 +1,7 @@
 extends Node2D
 
+const Ninja = preload("res://scenes/ninja.tscn")
+
 onready var player = get_node("KinematicBody2D")
 onready var healthSprite = get_node("UI/HP")
 onready var scoreLabel = get_node("UI/Score")
@@ -36,6 +38,14 @@ func _ready():
 	cam.global_position.y = player.global_position.y - camera_offset_y
 	loadData()
 	pbar.position.y=(1 - (highScore * 48)) + playerStart
+	if Global.character == "ninja":
+		var ninja = Ninja.instance()
+		ninja.global_position = player.global_position
+		player.queue_free()
+		player = ninja
+		get_parent().add_child(ninja)
+	player.connect("dead", self, "_on_KinematicBody2D_dead")
+	player.connect("get_coin", self, "_on_KinematicBody2D_get_coin")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -55,6 +65,7 @@ func _process(delta):
 		player.fallDown()
 	
 func _on_KinematicBody2D_dead():
+	player.queue_free()
 	get_tree().change_scene("res://scenes/hub.tscn")
 
 func _on_KinematicBody2D_get_coin():

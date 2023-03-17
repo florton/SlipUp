@@ -8,7 +8,7 @@ var y_start = 36
 var y_end = -500
 
 var x_start = 2
-var x_end = 48
+var x_end = 45
 
 var rng = RandomNumberGenerator.new()
 
