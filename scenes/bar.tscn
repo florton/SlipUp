@@ -74,5 +74,6 @@ frame = 1
 [node name="KinematicBody2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 702.997, 472.182 )
 scale = Vector2( 2, 2 )
+
 [connection signal="body_entered" from="door/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="door/Area2D" to="." method="_on_Area2D_body_exited"]

@@ -41,6 +41,7 @@ func _ready():
 	if Global.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position
+		ninja.scale = player.scale
 		player.queue_free()
 		player = ninja
 		get_parent().add_child(ninja)

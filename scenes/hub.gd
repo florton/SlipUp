@@ -34,8 +34,10 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("up"):
 		if door1:
+			door1 = false
 			get_tree().change_scene("res://scenes/tower.tscn")
 		if door2:
+			door2 = false
 			get_tree().change_scene("res://scenes/bar.tscn")
 		pass
 	pass
