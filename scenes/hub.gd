@@ -16,14 +16,14 @@ var totalCoins = 0
 
 func loadData():
 	var file = File.new()
-	file.open("user://save_game.dat", File.READ)
+	file.open("user://save.dat", File.READ)
 	var content = file.get_as_text()
 	var values = content.split("|")
 	highScore = values[0]
 	if (len(values) > 1):
 		totalCoins = values[1]
-	scoreLabel.text ="highest lvl"+highScore 
-	coinsLabel.text = "coins"+totalCoins 
+	scoreLabel.text ="highest lvl"+str(highScore )
+	coinsLabel.text = "coins"+str(totalCoins )
 	file.close()
 
 # Called when the node enters the scene tree for the first time.

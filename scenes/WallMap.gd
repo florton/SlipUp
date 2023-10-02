@@ -3,7 +3,7 @@ extends TileMap
 var y_start = 100
 var y_end = -500
 var x_start = 0
-var x_end = 24
+var x_end = 16
 
 var xtiles = 4
 

@@ -9,7 +9,7 @@ onready var coinsLabel = get_node("UI/Coins")
 onready var cam = get_node("Camera2D")
 onready var pbar= get_node("pbbar")
 const camera_offset_y = 50
-const death_offset_y = 380
+const death_offset_y = 280
 
 var playerStart = 525
 var score = 0
@@ -19,7 +19,7 @@ var coins = 0
 
 func loadData():
 	var file = File.new()
-	file.open("user://save_game.dat", File.READ)
+	file.open("user://save.dat", File.READ)
 	var content = file.get_as_text()
 	var values = content.split("|")
 	highScore = int(values[0]) if content else 0
@@ -29,7 +29,7 @@ func loadData():
 
 func saveData(newScore, totalCoins):
 	var file = File.new()
-	file.open("user://save_game.dat", File.WRITE)
+	file.open("user://save.dat", File.WRITE)
 	file.store_string(str(score) + "|" + str(totalCoins))
 	file.close()
 

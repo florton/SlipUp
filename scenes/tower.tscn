@@ -52,7 +52,7 @@ tile_data = PoolIntArray( 2359296, 0, 0, 2359297, 0, 1, 2359298, 536870912, 1, 2
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 272, 496 )
 current = true
-zoom = Vector2( 0.75, 0.75 )
+zoom = Vector2( 0.5, 0.5 )
 limit_left = 19
 limit_right = 788
 limit_bottom = 590
@@ -65,6 +65,7 @@ editor_draw_drag_margin = true
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 113.802, 517.732 )
+scale = Vector2( 0.7, 0.7 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -82,27 +83,24 @@ __meta__ = {
 }
 
 [node name="Coins" type="Label" parent="UI"]
-margin_left = 25.7463
-margin_top = 510.652
-margin_right = 69.7463
-margin_bottom = 546.652
+margin_left = 26.0
+margin_top = 511.0
+margin_right = 70.0
+margin_bottom = 547.0
 rect_scale = Vector2( 2, 2 )
 custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "$0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HP" type="AnimatedSprite" parent="UI"]
-position = Vector2( 941.781, 519.296 )
-scale = Vector2( 5, 5 )
+position = Vector2( 985.391, 562.906 )
+scale = Vector2( 2.27441, 2.27441 )
 frames = SubResource( 5 )
 
 [node name="last life bar" type="Sprite" parent="."]
-position = Vector2( 1204.65, 54.5436 )
-scale = Vector2( 126.929, 2.68369 )
+position = Vector2( 1304.65, 54.544 )
+scale = Vector2( 200, 2.684 )
 texture = ExtResource( 9 )
 
 [node name="pbbar" type="Node2D" parent="."]
@@ -118,9 +116,6 @@ margin_top = -5.66366
 margin_right = 533.445
 margin_bottom = 8.33634
 custom_colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
-text = "PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB       "
+text = "PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     "
 align = 1
 valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
