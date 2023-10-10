@@ -9,7 +9,7 @@ onready var ap = get_node("Sprite/AnimationPlayer")
 
 var velocity := Vector2.ZERO
 var jump_speed = 700
-var lasgroundpos= Array()
+#var lasgroundpos= Array()
 var hitstun=false
 var acceleration = 0
 var gpymod =0
@@ -22,9 +22,6 @@ var hitstun_time = 1
 
 signal dead 
 signal get_coin
-
-func _ready():
-	lasgroundpos.push_front(global_position)
 
 func _physics_process(delta: float) -> void:
 	acceleration = acceleration * 0.3
@@ -49,13 +46,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = true
 	if velocity.x >0:
 		sprite.flip_h = false
-	if is_on_floor():
-			lasgroundpos.push_front(global_position)
-			lasgroundpos.resize(clamp(lasgroundpos.size(), 1, 15))
 	
-	#grab
-	# if grab:
-	# 	_grab()
 	if heath<=0:
 		emit_signal("dead")
 		pass
@@ -68,7 +59,6 @@ func _physics_process(delta: float) -> void:
 		if collision && collision.collider.is_in_group("wall"):
 			velocity.x = prevVelocity.x * -0.8
 			acceleration *= -1
-			#print("Collided with: ", collision.collider.name)
 			break
 
 	if Input.is_action_just_released("jump") and ap.current_animation == "jsqaut"  and !hitstun and ap.current_animation_position < .35:
@@ -103,8 +93,6 @@ func fallDown():
 	takeDamage()
 	if heath <= 0:
 		return
-	self.global_position = lasgroundpos[lasgroundpos.size() - 8]
-	yield(get_tree().create_timer(0.001), "timeout")
 	var floors = get_parent().find_node("FloorMap").floor_coords
 	while !get_parent().playerOnScreen:
 		var found_floor = 0

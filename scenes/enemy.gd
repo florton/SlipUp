@@ -50,7 +50,7 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_area_entered(area):
 	if area.get_name()== "grabbox":
 		direction=0
-	if area.is_in_group("enemy") and thrown:
+	if (area.is_in_group("enemy") or area.is_in_group("cactus"))and thrown:
 		area._die()
 		_die()
 	
@@ -97,6 +97,7 @@ func _throw_downleft():
 func _die():
 	part.emitting = true
 	dying= true
+	find_node("AnimatedSprite").visible = false
 	if is_bonus:
 		var player = get_parent().get_parent().find_node("KinematicBody2D")
 		player.heath = clamp(player.heath + 1, 1, 3)
