@@ -1,8 +1,8 @@
 extends TileMap
 
 onready var Cactus = preload("res://scenes/cactus.tscn")
+onready var Spider = preload("res://scenes/spider.tscn")
 onready var flyingCactus = preload("res://scenes/flyingCactus.tscn")
-
 
 var y_start = 36
 var y_end = -500
@@ -32,26 +32,26 @@ func floorGen(gap, spawnEnemies):
 	update_bitmask_region(Vector2(x_start, y_start), Vector2(x_end, y_end))
 	
 func loadEntities(coordArray):
-	var cactusSet = false
-	var enemySet = false
+	var walkingEnemy = false
+	var flyingEnemy = false
 	for x in range(len(coordArray)):
 		if x!= 0 && x!=len(coordArray)-1:
-			if !cactusSet && rng.randf() < 0.05:
-				cactusGen(
+			if !walkingEnemy && rng.randf() < 0.05:
+				walkingEnemyGen(
 					map_to_world(coordArray[x]),
-					map_to_world(coordArray[0]).x,
+					map_to_world(coordArray[1]).x,
 					map_to_world(coordArray[len(coordArray)-1]).x
 				)
-				cactusSet = true
-			if !enemySet && rng.randf() < 0.05:
-				flyingCactusGen(
+				walkingEnemy = true
+			if !flyingEnemy && rng.randf() < 0.05:
+				flyingEnemyGen(
 					map_to_world(coordArray[x]-Vector2(0,1)),
 					map_to_world(Vector2(x_start + 1, 0)).x,
 					map_to_world(Vector2(x_end + 2, 0)).x
 				)
-				enemySet = true
+				flyingEnemy = true
 
-func flyingCactusGen(positon, x_min, x_max):
+func flyingEnemyGen(positon, x_min, x_max):
 	var enemy = flyingCactus.instance()
 	add_child(enemy)
 	enemy.add_to_group("enemy")
@@ -59,8 +59,13 @@ func flyingCactusGen(positon, x_min, x_max):
 	enemy.init(x_min, x_max)
 
 # Called when the node enters the scene tree for the first time.
-func cactusGen(positon, x_min, x_max):
-	var enemy = Cactus.instance()
+func walkingEnemyGen(positon, x_min, x_max):
+	var num = rng.randi_range(0, 2)
+	var enemy = null
+	if num < 2:
+		enemy = Cactus.instance()
+	else:
+		enemy = Spider.instance()
 	add_child(enemy)
 	enemy.add_to_group("cactus")
 #	enemy.gravity_scale = 0
@@ -76,7 +81,7 @@ func _ready():
 	floorGen(4, true)
 #
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+# func _process(delta):
+# 	pass
 	
 
