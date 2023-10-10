@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 export var move_speed := 4
-export var acc_speed := 4
+export var acc_speed := 5
+export var vertical_speed_modifier := 70
 export var gravity := 2000
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
@@ -17,6 +18,7 @@ var enemy
 var enemyingbo
 var heath=3
 var moveDisabled = false
+var hitstun_time = 2
 
 signal dead 
 signal get_coin
@@ -31,14 +33,16 @@ func _physics_process(delta: float) -> void:
 		acceleration = 0
 	
 	# set horizontal velocity
-	if Input.is_action_pressed("move_right") and!hitstun and !moveDisabled:
+	if Input.is_action_pressed("move_right") and !hitstun and !moveDisabled:
 		velocity.x += move_speed
 		acceleration += acc_speed
 	if Input.is_action_pressed("move_left") and !hitstun and ! moveDisabled:
 		velocity.x -= move_speed
 		acceleration -= acc_speed
 	velocity.y += gravity * delta
-	
+
+	if velocity.y < 0:
+		velocity.y -= abs(velocity.x / vertical_speed_modifier)
 	velocity.x += acceleration
 	acceleration *= 0.9
 	if velocity.x <0:
@@ -67,7 +71,7 @@ func _physics_process(delta: float) -> void:
 			#print("Collided with: ", collision.collider.name)
 			break
 
-	if Input.is_action_just_released("jump") and ap.current_animation == "jsqaut" and ap.current_animation_position < .35:
+	if Input.is_action_just_released("jump") and ap.current_animation == "jsqaut"  and !hitstun and ap.current_animation_position < .35:
 		ap.play("air idle")
 		velocity.y= -jump_speed 
 
@@ -81,7 +85,7 @@ func takeDamage():
 		hitstun=true
 		ap.play("hurt")
 		heath-=1
-		yield(get_tree().create_timer(2), "timeout")
+		yield(get_tree().create_timer(hitstun_time), "timeout")
 		hitstunend()
 		
 func getCoin():
@@ -93,8 +97,25 @@ func hitstunend():
 		ap.play("STAND")
 	else:
 		ap.play("air idle")
+	sprite.modulate = Color("#FFFFFF")
 
 func fallDown():
 	takeDamage()
-	self.global_position=lasgroundpos[lasgroundpos.size() - 8]
-
+	if heath <= 0:
+		return
+	self.global_position = lasgroundpos[lasgroundpos.size() - 8]
+	yield(get_tree().create_timer(0.001), "timeout")
+	var floors = get_parent().find_node("FloorMap").floor_coords
+	while !get_parent().playerOnScreen:
+		var found_floor = 0
+		for i in range(100):
+			if (floors.has(floor(position.y) - i)):
+				found_floor = floor(position.y) - i
+		if found_floor == 0:
+			self.global_position.y -= 100
+			yield(get_tree().create_timer(0.001), "timeout")
+		else:
+			var x = floor(len(floors[found_floor])/2)
+			self.global_position = floors[found_floor][x]
+			self.global_position.y -= 10
+			yield(get_tree().create_timer(0.001), "timeout")

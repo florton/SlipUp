@@ -9,13 +9,15 @@ onready var coinsLabel = get_node("UI/Coins")
 onready var cam = get_node("Camera2D")
 onready var pbar= get_node("pbbar")
 const camera_offset_y = 50
-const death_offset_y = 270
+const death_offset_y = 250
 
 var playerStart = 525
 var score = 0
 var highScore = 0
 var totalCoins = 0
 var coins = 0
+
+var playerOnScreen = true
 
 func loadData():
 	var file = File.new()
@@ -44,7 +46,7 @@ func _ready():
 		ninja.scale = player.scale
 		player.queue_free()
 		player = ninja
-		get_parent().add_child(ninja)
+		add_child(ninja)
 	player.connect("dead", self, "_on_KinematicBody2D_dead")
 	player.connect("get_coin", self, "_on_KinematicBody2D_get_coin")
 
@@ -62,7 +64,8 @@ func _process(delta):
 		cam.global_position.y = player.global_position.y - camera_offset_y
 #
 #	print(player.global_position.y - cam.global_position.y)
-	if player.global_position.y - death_offset_y > cam.global_position.y:
+	playerOnScreen = player.global_position.y - death_offset_y <= cam.global_position.y
+	if !playerOnScreen:
 		player.fallDown()
 	
 func _on_KinematicBody2D_dead():

@@ -61,9 +61,6 @@ z_index = 1
 collision_layer = 33
 collision_mask = 33
 script = ExtResource( 4 )
-move_speed = null
-acc_speed = null
-gravity = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2.97302, 10.1487 )
@@ -73,7 +70,6 @@ shape = SubResource( 1 )
 texture = ExtResource( 5 )
 hframes = 6
 vframes = 3
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/STAND = ExtResource( 2 )

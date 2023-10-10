@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and ap.current_animation == "air idle":
 		ap.play("grab")
 
-func _on_Area2D_area_entered(area):
+func _on_grabbox_area_entered(area):
 	if area.is_in_group("enemy"):
 		enemy=area
 		grab=true

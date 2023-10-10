@@ -7,7 +7,7 @@ onready var hb = get_node("hitbox/CollisionShape2D")
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		hb.disabled=true
-		if ap.current_animation != "jumpsqa" and is_on_floor():
+		if ap.current_animation != "jumpsqa" and !hitstun and is_on_floor():
 			ap.play("run")
 	if !Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left") and ap.current_animation != "jumpsqa" and!hitstun and is_on_floor():
 		ap.play("stand")
@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() and !hitstun:
 			ap2.play("jump")
-	if Input.is_action_just_pressed("jump") and ap.current_animation == "airidle":
+	if Input.is_action_just_pressed("jump") and ap.current_animation == "airidle" and !hitstun:
 		ap.play("dash")
 		hb.disabled=false
 		if sprite.flip_h == true:

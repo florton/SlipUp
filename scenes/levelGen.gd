@@ -10,6 +10,8 @@ var y_end = -500
 var x_start = 2
 var x_end = 20
 
+var floor_coords = {}
+
 var rng = RandomNumberGenerator.new()
 
 func floorGen(gap, spawnEnemies):
@@ -19,9 +21,12 @@ func floorGen(gap, spawnEnemies):
 		var floorStart = rng.randi_range(x_start, x_end)
 		var floorLen = rng.randi_range(2, clamp(10 - y/10,2,10))
 		var coordArray = []
+		var worldCoordArray = []
 		for x in range(floorLen):
 			set_cell(floorStart + x,y,0)
 			coordArray.append(Vector2(floorStart + x,y - 1))
+			worldCoordArray.append(map_to_world(Vector2(floorStart + x,y - 1)))
+		floor_coords[floor(map_to_world(Vector2(0,y - 1)).y)] = worldCoordArray
 		if spawnEnemies:
 			loadEntities(coordArray)
 	update_bitmask_region(Vector2(x_start, y_start), Vector2(x_end, y_end))
