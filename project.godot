@@ -14,13 +14,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="jumper"
+config/name="Slip Up"
 run/main_scene="res://scenes/startmenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Global.tscn"
+Global="*res://scenes/Global.tscn"
 
 [display]
 

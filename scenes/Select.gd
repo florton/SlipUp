@@ -1,7 +1,7 @@
 extends Node2D
 
 const Ninja = preload("res://scenes/ninja.tscn")
-const Guy = preload("res://scenes/player.tscn")
+const Guy = preload("res://scenes/guy.tscn")
 
 onready var player = get_parent().get_node("KinematicBody2D")
 

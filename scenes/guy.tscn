@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://sprite/Pl.png" type="Texture" id=2]
-[ext_resource path="res://ani/WALK.tres" type="Animation" id=3]
-[ext_resource path="res://ani/STAND.tres" type="Animation" id=4]
-[ext_resource path="res://ani/sceneshurt.tres" type="Animation" id=5]
+[ext_resource path="res://ani/WALK.tres" type="Animation" id=1]
+[ext_resource path="res://ani/STAND.tres" type="Animation" id=2]
+[ext_resource path="res://ani/sceneshurt.tres" type="Animation" id=3]
+[ext_resource path="res://scenes/guy.gd" type="Script" id=4]
+[ext_resource path="res://sprite/Pl.png" type="Texture" id=5]
 [ext_resource path="res://ani/grab.tres" type="Animation" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -60,25 +60,27 @@ position = Vector2( 481, 452 )
 z_index = 1
 collision_layer = 33
 collision_mask = 33
-script = ExtResource( 1 )
-gravity = 1950
+script = ExtResource( 4 )
+move_speed = null
+acc_speed = null
+gravity = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2.97302, 10.1487 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 hframes = 6
 vframes = 3
-frame = 17
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/STAND = ExtResource( 4 )
-anims/WALK = ExtResource( 3 )
+anims/STAND = ExtResource( 2 )
+anims/WALK = ExtResource( 1 )
 "anims/air idle" = SubResource( 2 )
 anims/grab = ExtResource( 6 )
-anims/hurt = ExtResource( 5 )
+anims/hurt = ExtResource( 3 )
 anims/jsqaut = SubResource( 3 )
 
 [node name="grabbox" type="Area2D" parent="." groups=["hitbox"]]
@@ -90,5 +92,5 @@ disabled = true
 
 [node name="grab Timer" type="Timer" parent="."]
 
-[connection signal="area_entered" from="grabbox" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="grabbox" to="." method="_on_grabbox_area_entered"]
 [connection signal="timeout" from="grab Timer" to="." method="_on_grab_Timer_timeout"]
