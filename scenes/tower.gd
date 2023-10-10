@@ -32,7 +32,8 @@ func loadData():
 func saveData(newScore, totalCoins):
 	var file = File.new()
 	file.open("user://save.dat", File.WRITE)
-	file.store_string(str(score) + "|" + str(totalCoins))
+	var highscore_setter = 2 if Global.character == "ninja" else 1
+	file.store_string(str(score) + "|" + str(totalCoins) + "|" + str(highscore_setter))
 	file.close()
 
 # Called when the node enters the scene tree for the first time.

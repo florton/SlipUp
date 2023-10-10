@@ -2,6 +2,7 @@ extends Node2D
 
 onready var scoreLabel = get_node('HighScore')
 onready var coinsLabel = get_node('Coins')
+onready var pbFrame = get_node('pb_frame')
 
 onready var cam0 = find_node("Camera0")
 onready var cam1 = find_node("Camera1")
@@ -19,11 +20,15 @@ func loadData():
 	file.open("user://save.dat", File.READ)
 	var content = file.get_as_text()
 	var values = content.split("|")
+	var highscore_setter = 1
 	highScore = values[0]
 	if (len(values) > 1):
 		totalCoins = values[1]
+	if (len(values) > 2):
+		highscore_setter = values[2]
 	scoreLabel.text ="highest lvl"+str(highScore )
 	coinsLabel.text = "coins"+str(totalCoins )
+	pbFrame.frame = int(highscore_setter)
 	file.close()
 
 # Called when the node enters the scene tree for the first time.

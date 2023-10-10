@@ -323,7 +323,7 @@ margin_bottom = 491.0
 rect_scale = Vector2( 3, 3 )
 text = "PB"
 
-[node name="pd frame" type="AnimatedSprite" parent="."]
+[node name="pb_frame" type="AnimatedSprite" parent="."]
 position = Vector2( 723.506, 488.595 )
 z_index = -1
 frames = SubResource( 48 )

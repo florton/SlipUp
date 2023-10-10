@@ -2,7 +2,8 @@ extends TileMap
 
 onready var Cactus = preload("res://scenes/cactus.tscn")
 onready var Spider = preload("res://scenes/spider.tscn")
-onready var flyingCactus = preload("res://scenes/flyingCactus.tscn")
+onready var FlyingCactus = preload("res://scenes/flyingCactus.tscn")
+onready var EyeBird = preload("res://scenes/eyebird.tscn")
 
 var y_start = 36
 var y_end = -500
@@ -52,7 +53,12 @@ func loadEntities(coordArray):
 				flyingEnemy = true
 
 func flyingEnemyGen(positon, x_min, x_max):
-	var enemy = flyingCactus.instance()
+	var num = rng.randi_range(0, 2)
+	var enemy = null
+	if num < 2:
+		enemy = FlyingCactus.instance()
+	else:
+		enemy = EyeBird.instance()
 	add_child(enemy)
 	enemy.add_to_group("enemy")
 	enemy.global_position = positon
