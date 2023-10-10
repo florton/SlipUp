@@ -43,17 +43,17 @@ func _process(delta):
 		queue_free()
 
 func _on_Area2D_body_entered(body):
-	if can_hurt:
+	if can_hurt and !dying:
 		if body.is_in_group("player") && !thrown:
 			body.takeDamage()
 
 func _on_Area2D_area_entered(area):
 	if area.get_name()== "grabbox":
 		direction=0
-	if (area.is_in_group("enemy") or area.is_in_group("cactus"))and thrown:
+	if area.is_in_group("enemy") and thrown:
 		area._die()
 		_die()
-	
+
 func _throw_up():
 	thrown=true
 	direction=0

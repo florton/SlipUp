@@ -36,7 +36,7 @@ rotation = 0.785398
 frames = SubResource( 4 )
 frame = 1
 
-[node name="cactus" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 0 )
 shape = SubResource( 5 )
 

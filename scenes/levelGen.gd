@@ -80,7 +80,7 @@ func walkingEnemyGen(positon, x_min, x_max):
 	else:
 		enemy = BonusWalk.instance()
 	add_child(enemy)
-	enemy.add_to_group("cactus")
+	enemy.add_to_group("enemy")
 #	enemy.gravity_scale = 0
 	enemy.global_position = positon
 	enemy.init(x_min, x_max)

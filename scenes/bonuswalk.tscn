@@ -54,11 +54,11 @@ is_bonus = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "bonuswalk"
-frame = 1
+frame = 2
 speed_scale = 0.7
 playing = true
 
-[node name="cactus" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.5, 5 )
 shape = SubResource( 5 )
 
