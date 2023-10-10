@@ -6,8 +6,8 @@ var x_min = -1000
 var x_max = 1000
 var thrown= false
 var dying = false
-var speed = 0
 
+export var speed = 1.0
 export var can_hurt = true
 export var is_bonus = false
 
@@ -27,7 +27,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !dying:
-		position.x += direction
+		position.x += direction * speed
 		position.y += ydirection
 		if position.x < x_min:
 			if thrown:

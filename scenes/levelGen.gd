@@ -31,22 +31,23 @@ func floorGen(gap, spawnEnemies):
 			worldCoordArray.append(map_to_world(Vector2(floorStart + x,y - 1)))
 		floor_coords[floor(map_to_world(Vector2(0,y - 1)).y)] = worldCoordArray
 		if spawnEnemies:
-			loadEntities(coordArray)
+			loadEntities(coordArray, y)
 	update_bitmask_region(Vector2(x_start, y_start), Vector2(x_end, y_end))
 	
-func loadEntities(coordArray):
+func loadEntities(coordArray, y):
+	var enemyChance = 0.05 - (y / 10000.0)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):
 		if x!= 0 && x!=len(coordArray)-1:
-			if !walkingEnemy && rng.randf() < 0.05:
+			if !walkingEnemy && rng.randf() < enemyChance:
 				walkingEnemyGen(
 					map_to_world(coordArray[x]),
 					map_to_world(coordArray[1]).x,
 					map_to_world(coordArray[len(coordArray)-1]).x
 				)
 				walkingEnemy = true
-			if !flyingEnemy && rng.randf() < 0.05:
+			if !flyingEnemy && rng.randf() < enemyChance:
 				flyingEnemyGen(
 					map_to_world(coordArray[x]-Vector2(0,1)),
 					map_to_world(Vector2(x_start + 1, 0)).x,

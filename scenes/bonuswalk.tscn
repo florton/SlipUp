@@ -47,13 +47,14 @@ extents = Vector2( 9.5, 12 )
 
 [node name="Area2D" type="Area2D" groups=["enemy"]]
 script = ExtResource( 3 )
+speed = 2.0
 can_hurt = false
 is_bonus = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "bonuswalk"
-frame = 2
+frame = 1
 speed_scale = 0.7
 playing = true
 

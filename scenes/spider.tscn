@@ -30,6 +30,7 @@ extents = Vector2( 16.5, 18.5 )
 
 [node name="Area2D" type="Area2D" groups=["enemy"]]
 script = ExtResource( 2 )
+speed = 0.8
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -10 )
