@@ -1,9 +1,22 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://sprite/Cactus.png" type="Texture" id=1]
-[ext_resource path="res://scenes/Particles2D.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/enemy.gd" type="Script" id=3]
-[ext_resource path="res://sprite/Eyebird.png" type="Texture" id=4]
+[ext_resource path="res://sprite/Eyebird.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Particles2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemy.gd" type="Script" id=4]
+[ext_resource path="res://sprite/Bounus 26.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -18,19 +31,24 @@ atlas = ExtResource( 1 )
 region = Rect2( 0, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 48, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 2 )
 region = Rect2( 48, 0, 48, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 2 )
 region = Rect2( 96, 0, 48, 32 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "bonusfly",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "default",
@@ -43,23 +61,25 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 11.5, 12 )
+extents = Vector2( 7.5, 14.5 )
 
 [node name="Area2D" type="Area2D" groups=["enemy"]]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+can_hurt = false
+is_bonus = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
-animation = "eyebird"
+animation = "bonusfly"
 frame = 2
 speed_scale = 0.7
 playing = true
 
 [node name="cactus" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, -1 )
+position = Vector2( -0.5, 1.5 )
 shape = SubResource( 5 )
 
-[node name="Particles2D" parent="." instance=ExtResource( 2 )]
+[node name="Particles2D" parent="." instance=ExtResource( 3 )]
 lifetime = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]

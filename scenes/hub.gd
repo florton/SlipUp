@@ -44,20 +44,13 @@ func _process(delta):
 		if door2:
 			door2 = false
 			get_tree().change_scene("res://scenes/bar.tscn")
-		pass
-	pass
-
 
 func _on_Area2D_body_entered(body,name):
 	if body.is_in_group("player"):
 		if name == "door1":
 			door1=true
-			pass
 		if name == "door2":
 			door2=true
-			pass
-	pass # Replace with function body.
-
 
 func _on_Area2D_body_exited(body):
 	door1=false

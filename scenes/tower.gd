@@ -40,7 +40,7 @@ func saveData(newScore, totalCoins):
 func _ready():
 	cam.global_position.y = player.global_position.y - camera_offset_y
 	loadData()
-	pbar.position.y=(1 - (highScore * 48)) + playerStart
+	pbar.position.y=(1 - (highScore * 48)) + playerStart - 50
 	if Global.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position

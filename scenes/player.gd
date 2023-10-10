@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var move_speed := 4
-export var acc_speed := 5
+export var acc_speed := 4
 export var vertical_speed_modifier := 70
 export var gravity := 2000
 onready var sprite = get_node("Sprite")
@@ -18,7 +18,7 @@ var enemy
 var enemyingbo
 var heath=3
 var moveDisabled = false
-var hitstun_time = 2
+var hitstun_time = 1
 
 signal dead 
 signal get_coin

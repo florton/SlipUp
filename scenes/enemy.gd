@@ -9,6 +9,7 @@ var dying = false
 var speed = 0
 
 export var can_hurt = true
+export var is_bonus = false
 
 var direction = 1
 var ydirection = 0
@@ -36,8 +37,8 @@ func _process(delta):
 			if thrown:
 				_die()
 			direction = -1
-	if direction != 0:
-		scale.x = direction * -1
+		if direction == 1 || direction == -1:
+			scale.x = direction * -1
 	if dying and !part.emitting:
 		queue_free()
 
@@ -94,11 +95,14 @@ func _throw_downleft():
 	ydirection=1
 	
 func _die():
-		part.emitting = true
-		dying= true
+	part.emitting = true
+	dying= true
+	if is_bonus:
+		var player = get_parent().get_parent().find_node("KinematicBody2D")
+		player.heath = clamp(player.heath + 1, 1, 3)
+	else:
 		var c=Coin.instance()
 		var parent = get_parent().get_parent()
 		parent.add_child(c)
 		c.global_position=global_position
-		# print(parent)
 
