@@ -7,6 +7,9 @@ onready var text = get_node("Text")
 
 var rng = RandomNumberGenerator.new()
 var door = false
+var ninjabox = false
+var totalCoins =0
+var oldtext
 
 var phrases = [
 	"You can do it",
@@ -67,9 +70,21 @@ var phrases = [
 ]
 
 # Called when the node enters the scene tree for the first time.
+func loadData():
+	var file = File.new()
+	file.open("user://save.dat", File.READ)
+	var content = file.get_as_text()
+	var values = content.split("|")
+	if (len(values) > 1):
+		totalCoins = int(values[1])
 func _ready():
+	loadData()
 	rng.randomize()
 	text.text = phrases[rng.randi_range(0, len(phrases)-1)]
+	if !Global.ninjaunlocked:
+		var ninja = get_child(4)
+		ninja.visible = true
+		pass 
 	if Global.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position
@@ -80,9 +95,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("up") and door:
-		player.queue_free()
-		get_tree().change_scene("res://scenes/hub.tscn")
+	if Input.is_action_pressed("up"):
+		if door:
+			player.queue_free()
+			get_tree().change_scene("res://scenes/hub.tscn")
+		if ninjabox and totalCoins >= 10 :
+			
+			Global.ninjaunlocked=true
+			pass
+			
 	pass
 
 
@@ -94,4 +115,20 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	door=false
+	pass # Replace with function body.
+
+
+func _on_ninjabox_body_entered(body):
+	if body.is_in_group("player"):
+		oldtext = text.text
+		text.text = "For 10 coins i'll join in"
+		ninjabox = true
+		pass
+	pass # Replace with function body.
+
+
+func _on_ninjabox_body_exited(body):
+	if body.is_in_group("player"):
+		text.text = oldtext
+		ninjabox = false
 	pass # Replace with function body.

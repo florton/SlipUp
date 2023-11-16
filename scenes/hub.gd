@@ -3,6 +3,7 @@ extends Node2D
 onready var scoreLabel = get_node('HighScore')
 onready var coinsLabel = get_node('Coins')
 onready var pbFrame = get_node('pb_frame')
+onready var ninjaframe = get_node("Select/Ninja")
 
 onready var cam0 = find_node("Camera0")
 onready var cam1 = find_node("Camera1")
@@ -34,6 +35,8 @@ func loadData():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	loadData()
+	if !Global.ninjaunlocked:
+		ninjaframe.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
