@@ -35,7 +35,7 @@ func loadData():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	loadData()
-	if !Global.ninjaunlocked:
+	if !Global.savedata.ninjaunlocked:
 		ninjaframe.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

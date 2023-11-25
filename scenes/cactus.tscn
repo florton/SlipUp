@@ -27,7 +27,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 12, 15.25 )
 
-[node name="Area2D" type="Area2D" groups=["enemy"]]
+[node name="Area2D" type="Area2D" groups=[
+"enemy",
+]]
 script = ExtResource( 2 )
 can_hurt = false
 
@@ -40,6 +42,5 @@ shape = SubResource( 5 )
 
 [node name="Particles2D" parent="." instance=ExtResource( 3 )]
 lifetime = 1.0
-
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

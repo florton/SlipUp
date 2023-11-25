@@ -9,6 +9,7 @@ var isDashing = false
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		isDashing = false
+		invinc = false
 		if ap.current_animation != "jumpsqa" and !hitstun and is_on_floor():
 			ap.play("run")
 	if !Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left") and ap.current_animation != "jumpsqa" and!hitstun and is_on_floor():

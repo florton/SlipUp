@@ -1,9 +1,10 @@
 extends KinematicBody2D
 
-export var move_speed := 4
-export var acc_speed := 4
+export var move_speed := 3
+export var acc_speed := 2
 export var vertical_speed_modifier := 70
 export var gravity := 2000
+export var invinc = false
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
 
@@ -24,7 +25,7 @@ signal dead
 signal get_coin
 
 func _physics_process(delta: float) -> void:
-	acceleration = acceleration * 0.3
+	acceleration = acceleration * 0.5
 	
 	if hitstun:
 		acceleration = 0
@@ -70,7 +71,7 @@ func fullhop():
 	velocity.y= -jump_speed - 150
 	
 func takeDamage():
-	if !hitstun:
+	if !hitstun and !invinc:
 		velocity=Vector2.ZERO
 		hitstun=true
 		ap.play("hurt")

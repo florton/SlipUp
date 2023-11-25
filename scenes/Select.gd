@@ -7,7 +7,7 @@ onready var player = get_parent().get_node("KinematicBody2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Global.character == "ninja":
+	if Global.savedata.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position
 		player.queue_free()

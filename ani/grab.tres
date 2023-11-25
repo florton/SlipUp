@@ -40,3 +40,27 @@ tracks/2/keys = {
 "update": 1,
 "values": [ PoolVector2Array( 3, 6.5, 15.25, 7, 12.25, 4.25, 5, 3.25 ), PoolVector2Array( -5.75, 34.25, 36.75, 31.75, 29.25, -31, 2, -32.25, -19.75, -24.75, -15.75, 28.5 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0.05, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("..:invinc")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.0166667, 0.133333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}

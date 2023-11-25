@@ -16,32 +16,36 @@ var score = 0
 var highScore = 0
 var totalCoins = 0
 var coins = 0
-
+var save1 = "user://save1.res"
 var playerOnScreen = true
 
-func loadData():
-	var file = File.new()
-	file.open("user://save.dat", File.READ)
-	var content = file.get_as_text()
-	var values = content.split("|")
-	highScore = int(values[0]) if content else 0
-	if (len(values) > 1):
-		totalCoins = int(values[1]) if content else 0
-	file.close()
+
+#func loadData():
+	#var file = File.new()
+	#file.open("user://save.dat", File.READ)
+	#var content = file.get_as_text()
+	#var values = content.split("|")
+	#highScore = int(values[0]) if content else 0
+	#if (len(values) > 1):
+	#	totalCoins = int(values[1]) if content else 0
+	#file.close()
 
 func saveData(newScore, totalCoins):
-	var file = File.new()
-	file.open("user://save.dat", File.WRITE)
-	var highscore_setter = 2 if Global.character == "ninja" else 1
-	file.store_string(str(score) + "|" + str(totalCoins) + "|" + str(highscore_setter))
-	file.close()
+	#var file = File.new()
+	#file.open("user://save.dat", File.WRITE)
+	Global.savedata.highscoresetter = 2 if Global.savedata.character == "ninja" else 1
+	var saveres= Global.new()
+	#file.store_string(str(score) + "|" + str(totalCoins) + "|" + str(highscore_setter))
+	var save = ResourceSaver.save("user://save1.res", saveres)
+	
+	#file.close()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	cam.global_position.y = player.global_position.y - camera_offset_y
-	loadData()
+	Global.load_data("res://customres/save1.tres")
 	pbar.position.y=(1 - (highScore * 48)) + playerStart - 50
-	if Global.character == "ninja":
+	if Global.savedata.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position
 		ninja.scale = player.scale
@@ -58,7 +62,7 @@ func _process(delta):
 	if player.is_on_floor() && playerY > score:
 		score = playerY
 		if score > highScore:
-			saveData(score, totalCoins + coins)
+			Global.save_data()
 			scoreLabel.add_color_override("font_color", '00ff28')
 	scoreLabel.text = str("LVL.",score)
 	if player.global_position.y - camera_offset_y < cam.global_position.y:

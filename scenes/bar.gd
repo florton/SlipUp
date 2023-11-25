@@ -78,20 +78,21 @@ func loadData():
 	if (len(values) > 1):
 		totalCoins = int(values[1])
 func _ready():
-	loadData()
 	rng.randomize()
 	text.text = phrases[rng.randi_range(0, len(phrases)-1)]
-	if !Global.ninjaunlocked:
+	Global.savedata.coins 
+	if !Global.savedata.ninjaunlocked:
 		var ninja = get_child(4)
 		ninja.visible = true
 		pass 
-	if Global.character == "ninja":
+	if Global.savedata.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position
 		ninja.scale = player.scale
 		player.queue_free()
 		player = ninja
 		get_parent().call_deferred("add_child", ninja)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -99,9 +100,10 @@ func _process(delta):
 		if door:
 			player.queue_free()
 			get_tree().change_scene("res://scenes/hub.tscn")
-		if ninjabox and totalCoins >= 10 :
-			
-			Global.ninjaunlocked=true
+		if ninjabox and Global.savedata.coins  >= 10 :
+			Global.savedata.coins -= 10
+			Global.savedata.ninjaunlocked=true
+			Global.save_data()
 			pass
 			
 	pass
