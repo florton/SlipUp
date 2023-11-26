@@ -44,7 +44,9 @@ func saveData(newScore, totalCoins):
 func _ready():
 	cam.global_position.y = player.global_position.y - camera_offset_y
 	Global.load_data("res://customres/save1.tres")
+	highScore = Global.savedata.highscore
 	pbar.position.y=(1 - (highScore * 48)) + playerStart - 50
+	
 	if Global.savedata.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position
@@ -62,6 +64,8 @@ func _process(delta):
 	if player.is_on_floor() && playerY > score:
 		score = playerY
 		if score > highScore:
+			Global.savedata.highscore=score
+			Global.savedata.coins+=coins
 			Global.save_data()
 			scoreLabel.add_color_override("font_color", '00ff28')
 	scoreLabel.text = str("LVL.",score)

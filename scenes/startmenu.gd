@@ -42,7 +42,7 @@ func _on_Quit_input_event(viewport, event, shape_idx):
 func _on_newgamebutton_pressed():
 	Global.add_a_save()
 	Global.currentsave=+1 
-	Global.savedata.Ftp=false
+	Global.savedata.fpt = true
 	Global.save_data()
 	get_tree().change_scene_to(load('res://scenes/hub.tscn'))
 	pass # Replace with function body.

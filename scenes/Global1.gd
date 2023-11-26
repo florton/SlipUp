@@ -15,7 +15,7 @@ func _ready():
 	pass # Replace with function body.
 func add_a_save():
 	var savedatta2 = savedata
-	saves[currentsave+1]=savedatta2
+	saves.append(savedatta2)
 	pass
 func save_data():
 	ResourceSaver.save("res://customres/save1.tres",savedata)

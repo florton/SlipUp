@@ -27,16 +27,16 @@ func loadData():
 		totalCoins = values[1]
 	if (len(values) > 2):
 		highscore_setter = values[2]
-	scoreLabel.text ="highest lvl"+str(highScore )
-	coinsLabel.text = "coins"+str(totalCoins )
-	pbFrame.frame = int(highscore_setter)
+
 	file.close()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	loadData()
 	if !Global.savedata.ninjaunlocked:
 		ninjaframe.queue_free()
+	scoreLabel.text ="highest lvl"+str(Global.savedata.highscore )
+	coinsLabel.text = "coins"+str(Global.savedata.coins )
+	pbFrame.frame = int(Global.savedata.highscoresetter)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

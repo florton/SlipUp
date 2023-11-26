@@ -7,6 +7,8 @@ export var gravity := 2000
 export var invinc = false
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
+var in_turnaround =false
+var turntimer=0
 
 var velocity := Vector2.ZERO
 var jump_speed = 700
@@ -31,14 +33,47 @@ func _physics_process(delta: float) -> void:
 		acceleration = 0
 	
 	# set horizontal velocity
-	if Input.is_action_pressed("move_right") and !hitstun and !moveDisabled:
-		velocity.x += move_speed
-		acceleration += acc_speed
-	if Input.is_action_pressed("move_left") and !hitstun and ! moveDisabled:
-		velocity.x -= move_speed
-		acceleration -= acc_speed
-	velocity.y += gravity * delta
+	if !hitstun and ! moveDisabled and !in_turnaround:
+		if Input.is_action_pressed("move_right"):
+			
+			if velocity.x <=-200 :
+				turntimer+=delta
+				
+				if turntimer>=.3:
+					if self.is_on_floor():
+						turntimer=0
+						turn_around()
+					else:
+						turntimer=0
+						air_turn_around()
+			else:
+				velocity.x += move_speed
+				acceleration += acc_speed
+		if Input.is_action_pressed("move_left"):
+			if velocity.x >=200:
+				turntimer-=delta
 
+				if turntimer<=-.4:
+					if self.is_on_floor():
+						turntimer=0
+						turn_around()
+					else:
+						turntimer=0
+						air_turn_around()
+			else:
+				velocity.x -= move_speed
+				acceleration -= acc_speed
+		if Input.is_action_just_released("move_left"):
+			if turntimer<0&&turntimer>-.4:
+				velocity.x*=.2
+				turntimer=0
+				print("ok")
+		if Input.is_action_just_released("move_right") :
+			if turntimer>0&&turntimer<.4:
+				velocity.x*=.2
+				turntimer=0
+	velocity.y += gravity * delta
+	print (velocity.x)
 	if velocity.y < 0:
 		velocity.y -= abs(velocity.x / vertical_speed_modifier)
 	velocity.x += acceleration
@@ -91,6 +126,7 @@ func hitstunend():
 	sprite.modulate = Color("#FFFFFF")
 
 func fallDown():
+	invinc=false
 	takeDamage()
 	if heath <= 0:
 		return
@@ -108,3 +144,47 @@ func fallDown():
 			self.global_position = floors[found_floor][x]
 			self.global_position.y -= 10
 			yield(get_tree().create_timer(0.001), "timeout")
+func turn_around():
+	in_turnaround=true
+	var curntvelo=velocity.x
+	velocity.x=velocity.x * .5
+	var t= Timer.new()
+	t.set_wait_time(.02)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t,"timeout")
+	velocity.x=0
+	t.queue_free()
+	t= Timer.new()
+	t.set_wait_time(.02)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t,"timeout")
+	velocity.x = curntvelo*-.9
+	in_turnaround=false
+	t.queue_free()
+func air_turn_around():
+	in_turnaround=true
+	var curntvelo=velocity.x
+	velocity.x=velocity.x * .8
+	var t= Timer.new()
+	t.set_wait_time(.05)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t,"timeout")
+	velocity.x=0
+	t.queue_free()
+	t= Timer.new()
+	t.set_wait_time(.05)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t,"timeout")
+	velocity.x = curntvelo*-.8
+	t.queue_free()
+	in_turnaround=false
+
+	

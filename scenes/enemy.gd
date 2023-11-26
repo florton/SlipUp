@@ -100,7 +100,7 @@ func _die():
 	find_node("AnimatedSprite").visible = false
 	if is_bonus:
 		var player = get_parent().get_parent().find_node("KinematicBody2D")
-		player.heath = clamp(player.heath + 1, 1, 3)
+		#player.heath = clamp(player.heath + 1, 1, 3)
 	else:
 		var c=Coin.instance()
 		var parent = get_parent().get_parent()

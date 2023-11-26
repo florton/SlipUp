@@ -17,21 +17,23 @@ func _ready():
 
 func _on_Guy_body_entered(body):
 	if body.is_in_group("player"):
-		if Global.character != "guy":
-			Global.character = "guy"
+		if Global.savedata.character != "guy":
+			Global.savedata.character = "guy"
 			var guy = Guy.instance()
 			guy.global_position = player.global_position
 			player.queue_free()
 			player = guy
 			get_parent().add_child(guy)
+			Global.save_data()
 
 
 func _on_Ninja_body_entered(body):
 	if body.is_in_group("player"):
-		if Global.character != "ninja":
-			Global.character = "ninja"
+		if Global.savedata.character != "ninja":
+			Global.savedata.character = "ninja"
 			var ninja = Ninja.instance()
 			ninja.global_position = player.global_position
 			player.queue_free()
 			player = ninja
 			get_parent().add_child(ninja)
+			Global.save_data()
