@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://themes/sliptheme.tres" type="Theme" id=1]
+
+[node name="openigg" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1019.0
+margin_bottom = 592.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_right = 0.02
+margin_left = 163.88
+margin_top = 114.491
+margin_right = 385.5
+margin_bottom = 391.491
+text = "label explaininggg story"
+__meta__ = {
+"_edit_use_anchors_": false
+}

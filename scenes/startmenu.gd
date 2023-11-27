@@ -13,16 +13,16 @@ onready var Butcont =  find_node("countbutton")
 		#else:
 		#	print("nodata")
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	var s1 = "res://customres/save1.tres"
-	var loaddata = Global.load_data(s1)
-	print(loaddata)
-	if loaddata.fpt == true:
+
+func process():
+#	Global.load_data("res://customres/save1.tres")
+#	var s1 = "user://customres/save1.tres"
+#	var loaddata = Global.load_data(s1)
+#	print(loaddata)
+	if Global.savedata.fpt == true:
 		Butcont.disabled =false
-		print(loaddata)
-		pass
-	
-	pass
+#		print(loaddata)
+#		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -40,10 +40,9 @@ func _on_Quit_input_event(viewport, event, shape_idx):
 
 
 func _on_newgamebutton_pressed():
-	Global.add_a_save()
-	Global.currentsave=+1 
-	Global.savedata.fpt = true
+	Global.currentsave+=1 
 	Global.save_data()
+# Load opening here
 	get_tree().change_scene_to(load('res://scenes/hub.tscn'))
 	pass # Replace with function body.
 

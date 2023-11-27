@@ -10,12 +10,24 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "Char_data",
+"language": "GDScript",
+"path": "res://PlayerData.gd"
+}, {
+"base": "Resource",
 "class": "saveggame",
 "language": "GDScript",
 "path": "res://scenes/saveggame.gd"
+}, {
+"base": "Resource",
+"class": "saveres",
+"language": "GDScript",
+"path": "res://savetemp.gd"
 } ]
 _global_script_class_icons={
-"saveggame": ""
+"Char_data": "",
+"saveggame": "",
+"saveres": ""
 }
 
 [application]

@@ -121,7 +121,7 @@ func _on_Area2D_body_exited(body):
 
 
 func _on_ninjabox_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") && !Global.savedata.ninjaunlocked:
 		oldtext = text.text
 		text.text = "For 10 coins i'll join in"
 		ninjabox = true
