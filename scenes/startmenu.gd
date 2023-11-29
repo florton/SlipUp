@@ -4,7 +4,6 @@ extends Node2D
 
 # Declare member variables here. Examples:
 # var a = 2
-onready var Butcont =  find_node("countbutton")
 
 #func load_data(save1):
 	#	var save = ResourceLoader.load(save1)
@@ -14,13 +13,13 @@ onready var Butcont =  find_node("countbutton")
 		#	print("nodata")
 # Called when the node enters the scene tree for the first time.
 
-func process():
+func _ready():
 #	Global.load_data("res://customres/save1.tres")
 #	var s1 = "user://customres/save1.tres"
 #	var loaddata = Global.load_data(s1)
 #	print(loaddata)
-	if Global.savedata.fpt == true:
-		Butcont.disabled =false
+	if ResourceLoader.exists("user://save1.tres"):
+		$countbutton.disabled=false
 #		print(loaddata)
 #		pass
 
@@ -48,7 +47,6 @@ func _on_newgamebutton_pressed():
 
 
 func _on_countbutton_pressed():
-	var butpanel = Butcont.get_child(0)
-	butpanel.visible=true
+	$countbutton/Panel.visible=true
 	
 	pass # Replace with function body.

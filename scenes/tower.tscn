@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/BackgroundMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/coin.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprite/dot.png" type="Texture" id=9]
 [ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=10]
+[ext_resource path="res://sprite/purse.png" type="Texture" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -34,6 +35,22 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
@@ -103,7 +120,18 @@ position = Vector2( 1304.65, 54.544 )
 scale = Vector2( 200, 2.684 )
 texture = ExtResource( 9 )
 
+[node name="purse" type="Sprite" parent="."]
+position = Vector2( 271.62, -46.4711 )
+texture = ExtResource( 11 )
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="purse"]
+autoplay = "idle"
+anims/idle = SubResource( 6 )
+
 [node name="pbbar" type="Node2D" parent="."]
+position = Vector2( 15.102, 3.7755 )
 
 [node name="pb bar" type="Sprite" parent="pbbar"]
 position = Vector2( 275.414, 0 )

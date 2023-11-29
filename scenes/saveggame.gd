@@ -9,6 +9,7 @@ export var fpt = false
 export var highscoresetter =1
 export (Resource) var guy_data
 export (Resource) var ninja_data
+export (Resource) var purse
 
 
 # Called when the node enters the scene tree for the first time.

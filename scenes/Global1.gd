@@ -19,8 +19,6 @@ func _ready():
 			currentsave += 1
 			saves.append(data)
 	
-func save_saves():
-	ResourceSaver.save("user://saves.tres",saves)
 	
 func add_a_save():
 	var savedatta2 = savedata

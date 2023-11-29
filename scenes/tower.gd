@@ -18,6 +18,7 @@ var totalCoins = 0
 var coins = 0
 var save1 = "user://save1.res"
 var playerOnScreen = true
+var pget=false
 
 
 #func loadData():
@@ -45,7 +46,11 @@ func _ready():
 	Global.load_data("res://customres/save1.tres")
 	highScore = Global.savedata.highscore
 	pbar.position.y=(1 - (highScore * 48)) + playerStart - 50
-	
+	if Global.savedata.purse.coins!=0:
+		
+		$purse.position.y=(1 - (Global.savedata.purse.lvl * 48)) + playerStart - 50
+	else:
+		$purse.queue_free()
 	if Global.savedata.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position
@@ -66,10 +71,13 @@ func _process(delta):
 	var playerY = floor((1 - (player.position.y - playerStart)) / 48)
 	if player.is_on_floor() && playerY > score:
 		score = playerY
+		if score> Global.savedata.purse.lvl && !pget:
+			coins+=Global.savedata.purse.coins
+			coinsLabel.text = str("$",coins)
+			if $purse:
+				$purse.queue_free()
+			pget=true
 		if score > highScore:
-			Global.savedata.highscore=score
-			Global.savedata.coins+=coins
-			Global.save_data()
 			scoreLabel.add_color_override("font_color", '00ff28')
 	scoreLabel.text = str("LVL.",score)
 	if player.global_position.y - camera_offset_y < cam.global_position.y:
@@ -81,9 +89,18 @@ func _process(delta):
 		player.fallDown()
 	
 func _on_KinematicBody2D_dead():
+	Global.savedata.purse.lvl=score
+	Global.savedata.purse.coins=coins
+	if score > highScore:
+		Global.savedata.highscore=score
+		Global.savedata.coins+=coins
+		Global.savedata.purse.lvl=0
+		Global.savedata.purse.coins=0
+		scoreLabel.add_color_override("font_color", '00ff28')
+
+	Global.save_data()
 	player.queue_free()
 	get_tree().change_scene("res://scenes/hub.tscn")
-
 func _on_KinematicBody2D_get_coin():
 	coins = coins + 1
 	coinsLabel.text = str("$",coins)
