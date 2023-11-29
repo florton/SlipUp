@@ -26,6 +26,7 @@ func set_cost():
 			$Label.text = "Jump maxxed"
 			$Label/costLabel.text=""
 		$Label/costLabel.text="+"+str(lvl)+"\n"+str(cost)
+		$Sprite2.frame =Global.savedata.guy_data.jump_str
 		
 	if Global.savedata.character=="ninja":
 		var lvl = Global.savedata.ninja_data.jump_str+1
@@ -35,6 +36,7 @@ func set_cost():
 			$Label/costLabel.text=""
 			self.disabled=true
 		$Label/costLabel.text="+"+str(lvl)+"\n"+str(cost)
+		$Sprite2.frame =Global.savedata.ninja_data.jump_str
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

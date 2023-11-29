@@ -26,7 +26,7 @@ func set_cost():
 			$Label.text = "speed maxxed"
 			$Label/costLabel.text=""
 		$Label/costLabel.text="+"+str(lvl)+"\n"+str(cost)
-		
+		$Sprite.frame =Global.savedata.guy_data.speed
 	if Global.savedata.character=="ninja":
 		var lvl = Global.savedata.ninja_data.speed+1
 		cost = lvl*20
@@ -35,7 +35,7 @@ func set_cost():
 			self.disabled=true
 			$Label.text = "speed maxxed"
 			$Label/costLabel.text=""
-	
+		$Sprite.frame =Global.savedata.ninja_data.speed
 	
 		
 		 

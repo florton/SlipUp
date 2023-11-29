@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://sprite/Outside.png" type="Texture" id=1]
 [ext_resource path="res://sprite/ven.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://scenes/speedButton.gd" type="Script" id=9]
 [ext_resource path="res://scenes/jumpboostButton.gd" type="Script" id=10]
 [ext_resource path="res://scenes/coinlabel.gd" type="Script" id=11]
+[ext_resource path="res://sprite/drink.png" type="Texture" id=12]
+[ext_resource path="res://sprite/shoe.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -43,9 +45,6 @@ offset = Vector2( 204, 123 )
 position = Vector2( 398.25, 438.279 )
 scale = Vector2( 1.15295, 1.10067 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Panel" type="Panel" parent="Sprite"]
 visible = false
@@ -88,16 +87,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="Sprite/Panel/Button"]
+position = Vector2( 57.3091, 49.3668 )
+scale = Vector2( 1.5628, 1.5628 )
+texture = ExtResource( 12 )
+hframes = 5
+frame = 4
+
 [node name="Label" type="Label" parent="Sprite/Panel/Button"]
 margin_left = 80.0
 margin_top = 19.0
 margin_right = 355.0
 margin_bottom = 87.0
 text = "Speed juice"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="costLabel" type="Label" parent="Sprite/Panel/Button/Label"]
 margin_left = 284.432
-margin_top = -5.51364
+margin_top = -5.51363
 margin_right = 386.432
 margin_bottom = 85.4864
 text = "+1
@@ -115,6 +124,12 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite2" type="Sprite" parent="Sprite/Panel/Button2"]
+position = Vector2( 67.8867, 57.4074 )
+scale = Vector2( 1.5628, 1.5628 )
+texture = ExtResource( 13 )
+hframes = 5
 
 [node name="Label" type="Label" parent="Sprite/Panel/Button2"]
 margin_left = 81.9727
