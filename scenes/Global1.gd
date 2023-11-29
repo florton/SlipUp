@@ -28,7 +28,7 @@ func add_a_save():
 	pass
 
 func save_data():
-	ResourceSaver.save("user://save" + str(currentsave) + ".tres",savedata)
+	ResourceSaver.save("user://save" + str(currentsave) + ".tres",savedata,2)
 	
 func load_data(save1):
 	if ResourceLoader.exists(save1):

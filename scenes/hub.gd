@@ -72,3 +72,9 @@ func _on_door4_body_entered(body):
 		if hubSide == 0:
 			hubSide = 1
 			cam1. current = true
+
+
+func _on_door5_body_entered(body):
+	if body.is_in_group("player"):
+		get_tree().change_scene("res://scenes/outside.tscn")
+	pass # Replace with function body.

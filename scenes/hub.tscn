@@ -241,7 +241,7 @@ tile_data = PoolIntArray( 2424832, 0, 0, 2424833, 0, 1, 2424834, 0, 1, 2424835, 
 script = null
 
 [node name="WallMap" parent="." instance=ExtResource( 2 )]
-tile_data = PoolIntArray( 0, 0, 0, 31, 0, 3, 62, 0, 2, 65536, 0, 2, 65567, 0, 1, 65598, 0, 2, 131072, 0, 1, 131103, 0, 0, 131134, 0, 2, 196608, 0, 2, 196639, 0, 2, 196670, 0, 2, 262144, 0, 2, 262175, 0, 1, 262206, 0, 2, 327680, 0, 3, 327711, 0, 2, 327742, 0, 2, 393216, 0, 3, 393278, 0, 2, 458752, 0, 1, 458814, 0, 2 )
+tile_data = PoolIntArray( 0, 0, 0, 31, 0, 3, 62, 0, 2, 65536, 0, 2, 65567, 0, 1, 65598, 0, 2, 131072, 0, 1, 131103, 0, 0, 131134, 0, 2, 196608, 0, 2, 196639, 0, 2, 196670, 0, 2, 262144, 0, 2, 262175, 0, 1, 262206, 0, 2, 327680, 0, 3, 327711, 0, 2, 327742, 0, 2, 393216, 0, 3, 458752, 0, 1 )
 script = null
 
 [node name="BackgroundMap" parent="." instance=ExtResource( 3 )]
@@ -287,6 +287,13 @@ shape = SubResource( 2 )
 [node name="door4" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door4"]
+position = Vector2( 1024, 537 )
+shape = SubResource( 2 )
+
+[node name="door5" type="Area2D" parent="."]
+position = Vector2( 966.444, 5.4057 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door5"]
 position = Vector2( 1024, 537 )
 shape = SubResource( 2 )
 
@@ -368,5 +375,6 @@ animation = "ninja"
 [connection signal="body_exited" from="door2/door2" to="." method="_on_door2_body_exited"]
 [connection signal="body_entered" from="door3" to="." method="_on_door3_body_entered"]
 [connection signal="body_entered" from="door4" to="." method="_on_door4_body_entered"]
+[connection signal="body_entered" from="door5" to="." method="_on_door5_body_entered"]
 [connection signal="body_entered" from="Select/Guy" to="Select" method="_on_Guy_body_entered"]
 [connection signal="body_entered" from="Select/Ninja" to="Select" method="_on_Ninja_body_entered"]

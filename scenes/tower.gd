@@ -30,13 +30,12 @@ var playerOnScreen = true
 	#	totalCoins = int(values[1]) if content else 0
 	#file.close()
 
-func saveData(newScore, totalCoins):
+#func saveData(newScore, totalCoins):
 	#var file = File.new()
 	#file.open("user://save.dat", File.WRITE)
-	Global.savedata.highscoresetter = 2 if Global.savedata.character == "ninja" else 1
-	var saveres= Global.new()
+	##var saveres= Global.new()
 	#file.store_string(str(score) + "|" + str(totalCoins) + "|" + str(highscore_setter))
-	var save = ResourceSaver.save("user://save1.res", saveres)
+	#var save = ResourceSaver.save("user://save1.res", saveres)
 	
 	#file.close()
 
@@ -53,10 +52,14 @@ func _ready():
 		ninja.scale = player.scale
 		player.queue_free()
 		player = ninja
+		player.move_speed+=Global.savedata.ninja_data.speed
+		player.jump_speed+=Global.savedata.ninja_data.jump_str*150
 		add_child(ninja)
 	player.connect("dead", self, "_on_KinematicBody2D_dead")
 	player.connect("get_coin", self, "_on_KinematicBody2D_get_coin")
-
+	if Global.savedata.character=="guy":
+		player.move_speed+=Global.savedata.guy_data.speed
+		player.jump_speed+=Global.savedata.guy_data.jump_str*50
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	healthSprite.frame = player.heath

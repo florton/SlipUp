@@ -73,7 +73,7 @@ func _physics_process(delta: float) -> void:
 				velocity.x*=.2
 				turntimer=0
 	velocity.y += gravity * delta
-	print (velocity.x)
+
 	if velocity.y < 0:
 		velocity.y -= abs(velocity.x / vertical_speed_modifier)
 	velocity.x += acceleration
