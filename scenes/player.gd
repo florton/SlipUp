@@ -142,7 +142,7 @@ func fallDown():
 		else:
 			var x = floor(len(floors[found_floor])/2)
 			self.global_position = floors[found_floor][x]
-			self.global_position.y -= 10
+			self.global_position.y -= 15
 			yield(get_tree().create_timer(0.001), "timeout")
 func turn_around():
 	in_turnaround=true
@@ -183,7 +183,7 @@ func air_turn_around():
 	self.add_child(t)
 	t.start()
 	yield(t,"timeout")
-	velocity.x = curntvelo*-.8
+	velocity.x = curntvelo*-.5
 	t.queue_free()
 	in_turnaround=false
 

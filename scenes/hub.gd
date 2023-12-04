@@ -40,6 +40,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	for child in get_children():
+		if child is KinematicBody2D:
+			if child.global_position.y>=620:
+				child.global_position.y=300
 	if Input.is_action_pressed("up"):
 		if door1:
 			door1 = false

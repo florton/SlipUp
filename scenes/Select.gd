@@ -9,11 +9,10 @@ onready var player = get_parent().get_node("KinematicBody2D")
 func _ready():
 	if Global.savedata.character == "ninja":
 		var ninja = Ninja.instance()
-		ninja.global_position = player.global_position
+		ninja.global_position =Vector2 (player.global_position.x,player.global_position.y-20)
 		player.queue_free()
 		player = ninja
 		get_parent().call_deferred("add_child", ninja)
-
 
 func _on_Guy_body_entered(body):
 	if body.is_in_group("player"):
