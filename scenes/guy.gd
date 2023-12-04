@@ -28,7 +28,8 @@ func _physics_process(delta: float) -> void:
 		_grab()
 
 	# jump will happen on the next frame
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_pressed("jump"):
+
 		if is_on_floor() and !hitstun:
 			ap.play("jsqaut")
 	if Input.is_action_just_pressed("jump") and ap.current_animation == "air idle":
@@ -92,3 +93,8 @@ func _grab():
 		grab=false
 		gravity=2000
 		velocity=Vector2(200,-800)
+
+
+func _on_prejump_timeout():
+	
+	pass # Replace with function body.

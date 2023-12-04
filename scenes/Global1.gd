@@ -5,6 +5,7 @@ extends Node
 export var currentsave = 0
 var savedata
 var playtime  = 0
+var rngseed=RandomNumberGenerator.new()
 # var b = "text"
 #var saveresource = get_child(0)
 export (Array,Resource) var saves
@@ -38,7 +39,12 @@ func load_data(save1):
 			
 func _process(delta):
 	playtime += delta
-	print(playtime)
+	if int(Global.playtime) % 30 == 0:
+		rngseed.randomize()
+		print(rngseed.seed)
+		
+		
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
