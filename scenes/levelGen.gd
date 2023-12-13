@@ -7,8 +7,8 @@ onready var EyeBird = preload("res://scenes/eyebird.tscn")
 onready var BonusFly = preload("res://scenes/bonusfly.tscn")
 onready var BonusWalk = preload("res://scenes/bonuswalk.tscn")
 
-var y_start = 36
-var y_end = -500
+var y_start = 36.0
+var y_end = -500.0
 
 var x_start = 2
 var x_end = 20
@@ -22,7 +22,8 @@ func floorGen(gap, spawnEnemies):
 	while y > y_end:
 		y -= gap
 		var floorStart = rng.randi_range(x_start, x_end)
-		var floorLen = rng.randi_range(2, clamp(10 - y/10,2,10))
+		var progress =(1 - (y / y_end))
+		var floorLen = rng.randi_range(clamp(10 * progress,2,20), clamp(20 * progress,2,20))
 		var coordArray = []
 		var worldCoordArray = []
 		for x in range(floorLen):
@@ -35,7 +36,8 @@ func floorGen(gap, spawnEnemies):
 	update_bitmask_region(Vector2(x_start, y_start), Vector2(x_end, y_end))
 	
 func loadEntities(coordArray, y):
-	var enemyChance = 0.05 - (y / 10000.0)
+	var progress =(y / y_end)
+	var enemyChance = 0.03 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):
@@ -44,23 +46,26 @@ func loadEntities(coordArray, y):
 				walkingEnemyGen(
 					map_to_world(coordArray[x]),
 					map_to_world(coordArray[1]).x,
-					map_to_world(coordArray[len(coordArray)-1]).x
+					map_to_world(coordArray[len(coordArray)-1]).x,
+					y
 				)
 				walkingEnemy = true
 			if !flyingEnemy && rng.randf() < enemyChance:
 				flyingEnemyGen(
 					map_to_world(coordArray[x]-Vector2(0,1)),
 					map_to_world(Vector2(x_start + 1, 0)).x,
-					map_to_world(Vector2(x_end + 2, 0)).x
+					map_to_world(Vector2(x_end + 2, 0)).x,
+					y
 				)
 				flyingEnemy = true
 
-func flyingEnemyGen(positon, x_min, x_max):
-	var num = rng.randi_range(0, 10)
+func flyingEnemyGen(positon, x_min, x_max, y):
+	var progress =(y / y_end)
+	var num = rng.randi_range(0, progress*10)
 	var enemy = null
-	if num < 5:
+	if num < 3:
 		enemy = FlyingCactus.instance()
-	elif num < 10:
+	elif num < 6:
 		enemy = EyeBird.instance()
 	else:
 		enemy = BonusFly.instance()
@@ -70,12 +75,14 @@ func flyingEnemyGen(positon, x_min, x_max):
 	enemy.init(x_min, x_max)
 
 # Called when the node enters the scene tree for the first time.
-func walkingEnemyGen(positon, x_min, x_max):
-	var num = rng.randi_range(0, 10)
+func walkingEnemyGen(positon, x_min, x_max, y):
+	var progress =(y / y_end)
+	print(progress)
+	var num = rng.randi_range(0, progress*10)
 	var enemy = null
-	if num < 6:
+	if num < 3:
 		enemy = Cactus.instance()
-	elif num < 10:
+	elif num < 5:
 		enemy = Spider.instance()
 	else:
 		enemy = BonusWalk.instance()
@@ -88,9 +95,9 @@ func walkingEnemyGen(positon, x_min, x_max):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	floorGen(16, true)
+#	floorGen(16, true)
 	floorGen(8, true)
-	floorGen(8, false)
+#	floorGen(8, false)
 	floorGen(4, true)
 #
 # Called every frame. 'delta' is the elapsed time since the previous frame.

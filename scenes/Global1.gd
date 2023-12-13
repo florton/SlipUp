@@ -41,7 +41,7 @@ func _process(delta):
 	playtime += delta
 	if int(Global.playtime) % 30 == 0:
 		rngseed.randomize()
-		print(rngseed.seed)
+#		print(rngseed.seed)
 		
 		
 	
