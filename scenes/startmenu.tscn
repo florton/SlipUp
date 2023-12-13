@@ -91,7 +91,7 @@ script = ExtResource( 2 )
 position = Vector2( 2, 1 )
 scale = Vector2( 3.2, 3.4 )
 frames = SubResource( 15 )
-frame = 13
+frame = 10
 playing = true
 offset = Vector2( 160.156, 89.5595 )
 
@@ -119,10 +119,10 @@ margin_left = 719.0
 margin_top = 39.0
 margin_right = 968.0
 margin_bottom = 196.0
-custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0.552941, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+custom_fonts/font = SubResource( 18 )
 text = "Slip Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,6 +200,7 @@ text = "quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="input_event" from="New" to="." method="_on_New_input_event"]
 [connection signal="input_event" from="continue" to="." method="_on_continue_input_event"]
 [connection signal="input_event" from="Quit" to="." method="_on_Quit_input_event"]

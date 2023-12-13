@@ -6,6 +6,7 @@ export var currentsave = 0
 var savedata
 var playtime  = 0
 var rngseed=RandomNumberGenerator.new()
+var backwards = false
 # var b = "text"
 #var saveresource = get_child(0)
 export (Array,Resource) var saves

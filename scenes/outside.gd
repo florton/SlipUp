@@ -11,6 +11,7 @@ var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.backwards = true
 	if Global.savedata.character=="guy":
 		var player=Guy.instance()
 		player.global_position=Vector2(798,528)
@@ -59,5 +60,6 @@ func _on_Area2D_body_exited(body):
 
 func _on_door_body_entered(body):
 	if body.is_in_group("player"):
+		Global.backwards = false
 		get_tree().change_scene("res://scenes/hub.tscn")
 	pass # Replace with function body.

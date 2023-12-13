@@ -4,7 +4,7 @@ export var move_speed := 3
 export var acc_speed := 2
 export var vertical_speed_modifier := 70
 export var gravity := 2000
-export var invinc = false
+var invinc = false
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
 var in_turnaround =false
@@ -73,15 +73,14 @@ func _physics_process(delta: float) -> void:
 				velocity.x*=.2
 				turntimer=0
 	velocity.y += gravity * delta
-
 	if velocity.y < 0:
 		velocity.y -= abs(velocity.x / vertical_speed_modifier)
 	velocity.x += acceleration
 	acceleration *= 0.9
 	if velocity.x <0:
-		sprite.flip_h = true
+		sprite.flip_h = !Global.backwards
 	if velocity.x >0:
-		sprite.flip_h = false
+		sprite.flip_h = Global.backwards
 	
 	if heath<=0:
 		emit_signal("dead")
