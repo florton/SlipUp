@@ -72,7 +72,7 @@ is_bonus = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "bonusfly"
-frame = 2
+frame = 1
 speed_scale = 0.7
 playing = true
 

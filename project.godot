@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Char_data",
 "language": "GDScript",
-"path": "res://PlayerData.gd"
+"path": "res://scenes/PlayerData.gd"
 }, {
 "base": "Resource",
 "class": "purse",
 "language": "GDScript",
-"path": "res://purse.gd"
+"path": "res://scenes/purse.gd"
 }, {
 "base": "Resource",
 "class": "saveggame",
@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "saveres",
 "language": "GDScript",
-"path": "res://savetemp.gd"
+"path": "res://scenes/savetemp.gd"
 } ]
 _global_script_class_icons={
 "Char_data": "",

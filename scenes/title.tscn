@@ -33,8 +33,8 @@ script = ExtResource( 4 )
 position = Vector2( 514.976, 302.29 )
 scale = Vector2( 3.2174, 3.35629 )
 texture = ExtResource( 1 )
-vframes = 7
 hframes = 2
+vframes = 7
 
 [node name="bgap" type="AnimationPlayer" parent="bgsprite"]
 autoplay = "run"
@@ -48,9 +48,9 @@ margin_left = 759.306
 margin_top = 352.913
 margin_right = 932.306
 margin_bottom = 388.913
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "continue"
 align = 1
 valign = 1
@@ -73,10 +73,10 @@ margin_left = 710.409
 margin_top = 78.6182
 margin_right = 915.409
 margin_bottom = 239.618
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
+custom_fonts/font = SubResource( 2 )
 text = "SLIP 
 UP"
 align = 2
@@ -84,5 +84,6 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="mouse_entered" from="bgsprite/CanvasLayer/Label" to="." method="_on_Label_mouse_entered"]
 [connection signal="pressed" from="bgsprite/CanvasLayer/Label/Button" to="." method="_on_Button_pressed"]

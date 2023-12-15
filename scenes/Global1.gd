@@ -15,7 +15,6 @@ func _ready():
 	var save1="res://customres/blank_save.tres"
 	savedata = load_data("res://customres/blank_save.tres")
 	for i in range(100):
-	
 		var data = load_data("user://save" + str(i) + ".tres")
 		if data:
 			currentsave += 1

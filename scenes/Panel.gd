@@ -8,7 +8,7 @@ onready var savebutton = preload("res://scenes/savemenubtn.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var savebutton1=$ScrollContainer/VBoxContainer/save1
+#	var savebutton1=$ScrollContainer/VBoxContainer/save1
 	var saves = Global.saves
 	var c = 0
 	for save in saves:

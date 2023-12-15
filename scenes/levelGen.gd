@@ -77,7 +77,6 @@ func flyingEnemyGen(positon, x_min, x_max, y):
 # Called when the node enters the scene tree for the first time.
 func walkingEnemyGen(positon, x_min, x_max, y):
 	var progress =(y / y_end)
-	print(progress)
 	var num = rng.randi_range(0, progress*10)
 	var enemy = null
 	if num < 3:

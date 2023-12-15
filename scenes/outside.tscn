@@ -15,9 +15,9 @@
 [ext_resource path="res://sprite/shoe.png" type="Texture" id=13]
 [ext_resource path="res://scenes/well.gd" type="Script" id=14]
 [ext_resource path="res://scenes/bird.gd" type="Script" id=15]
-[ext_resource path="res://ctoe.tres" type="Animation" id=16]
-[ext_resource path="res://bunny.tres" type="Animation" id=17]
-[ext_resource path="res://bird.tres" type="Animation" id=18]
+[ext_resource path="res://customres/ctoe.tres" type="Animation" id=16]
+[ext_resource path="res://customres/bunny.tres" type="Animation" id=17]
+[ext_resource path="res://customres/bird.tres" type="Animation" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
