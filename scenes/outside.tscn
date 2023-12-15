@@ -51,7 +51,7 @@ tracks/0/keys = {
 extents = Vector2( 44.9521, 63.5602 )
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 1023, -21 )
+position = Vector2( 1023, -10 )
 scale = Vector2( -1, 1 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -66,19 +66,17 @@ offset = Vector2( 204, 123 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 398.25, 438.279 )
-scale = Vector2( 1.15295, 1.10067 )
+scale = Vector2( 1.15, 1.1 )
 texture = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="Sprite"]
 visible = false
-margin_left = -108.0
+margin_left = 393.0
 margin_top = -394.0
-margin_right = 411.0
+margin_right = 912.0
 margin_bottom = -28.0
+rect_scale = Vector2( -1, 1 )
 theme = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="Sprite/Panel"]
 margin_left = 128.0

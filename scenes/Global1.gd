@@ -1,6 +1,7 @@
 extends Node
 
 
+
 # Declare member variables here. Examples:
 export var currentsave = 0
 var savedata
@@ -12,7 +13,7 @@ var backwards = false
 export (Array,Resource) var saves
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var save1="res://customres/blank_save.tres"
+	# var save1="res://customres/blank_save.tres"
 	savedata = load_data("res://customres/blank_save.tres")
 	for i in range(100):
 		var data = load_data("user://save" + str(i) + ".tres")
