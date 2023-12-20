@@ -91,7 +91,7 @@ script = ExtResource( 2 )
 position = Vector2( 2, 1 )
 scale = Vector2( 3.2, 3.4 )
 frames = SubResource( 15 )
-frame = 7
+frame = 11
 playing = true
 offset = Vector2( 160.156, 89.5595 )
 
@@ -119,10 +119,10 @@ margin_left = 719.0
 margin_top = 39.0
 margin_right = 968.0
 margin_bottom = 196.0
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0.552941, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0.0588235, 0.219608, 0.0588235, 1 )
-custom_fonts/font = SubResource( 18 )
 text = "Slip Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -153,7 +153,6 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="countbutton"]
-visible = false
 material = SubResource( 19 )
 use_parent_material = true
 anchor_right = 1.0
@@ -180,8 +179,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="countbutton/Panel/ScrollContainer"]
-margin_right = 636.0
-margin_bottom = 1000.0
+margin_top = -1.0
+margin_right = 624.0
+margin_bottom = 999.0
 rect_min_size = Vector2( 0, 1000 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -200,7 +200,6 @@ text = "quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="input_event" from="New" to="." method="_on_New_input_event"]
 [connection signal="input_event" from="continue" to="." method="_on_continue_input_event"]
 [connection signal="input_event" from="Quit" to="." method="_on_Quit_input_event"]

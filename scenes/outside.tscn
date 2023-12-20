@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://sprite/Outside.png" type="Texture" id=1]
 [ext_resource path="res://sprite/ven.png" type="Texture" id=2]
@@ -18,6 +18,10 @@
 [ext_resource path="res://customres/ctoe.tres" type="Animation" id=16]
 [ext_resource path="res://customres/bunny.tres" type="Animation" id=17]
 [ext_resource path="res://customres/bird.tres" type="Animation" id=18]
+[ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=19]
+[ext_resource path="res://sprite/dot.png" type="Texture" id=20]
+[ext_resource path="res://sprite/hats.png" type="Texture" id=21]
+[ext_resource path="res://ani/hat.tres" type="Animation" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -47,7 +51,16 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.18
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 255.56
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 44.9521, 63.5602 )
 
 [node name="Node2D" type="Node2D"]
@@ -59,7 +72,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 5.99232, -1.144 )
+position = Vector2( -2.98737, 10.0806 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 1 )
 offset = Vector2( 204, 123 )
@@ -94,7 +107,7 @@ margin_left = -2.0
 margin_top = -2.51367
 margin_right = 228.037
 margin_bottom = 55.5263
-text = "SHOP"
+text = "Shop"
 align = 1
 valign = 1
 
@@ -196,6 +209,7 @@ position = Vector2( 661.814, 523.935 )
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 6 )
 hframes = 7
+frame = 3
 script = ExtResource( 15 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="bird"]
@@ -204,6 +218,7 @@ anims/bird = ExtResource( 18 )
 anims/bunny = ExtResource( 17 )
 anims/ctoe = ExtResource( 16 )
 anims/empty = SubResource( 3 )
+anims/hat = ExtResource( 22 )
 
 [node name="well" type="Sprite" parent="."]
 position = Vector2( 135.488, 528.643 )
@@ -212,14 +227,103 @@ texture = ExtResource( 7 )
 hframes = 3
 script = ExtResource( 14 )
 
+[node name="Areawell" type="Area2D" parent="well"]
+position = Vector2( -5.29521, -35.3456 )
+scale = Vector2( 0.46, 0.44 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="well/Areawell"]
+position = Vector2( 10.6908, 31.1815 )
+shape = SubResource( 2 )
+
+[node name="Panel" type="Panel" parent="well"]
+visible = false
+margin_left = 90.3046
+margin_top = -145.827
+margin_right = 216.305
+margin_bottom = -55.8271
+rect_scale = Vector2( -1, 1 )
+theme = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="well/Panel"]
+margin_left = 7.0
+margin_top = 10.0
+margin_right = 352.0
+margin_bottom = 237.0
+rect_scale = Vector2( 0.33, 0.33 )
+text = "throw
+coins?"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="well/Panel"]
+margin_left = 13.5003
+margin_top = 90.8469
+margin_right = 118.041
+margin_bottom = 134.847
+rect_scale = Vector2( 0.733, 0.801 )
+action_mode = 0
+keep_pressed_outside = true
+text = "sure"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Particles2D" type="Particles2D" parent="well"]
+position = Vector2( -0.599274, -2.99663 )
+emitting = false
+amount = 330
+lifetime = 0.6
+one_shot = true
+process_material = SubResource( 4 )
+texture = ExtResource( 20 )
+
+[node name="Sprite" type="Sprite" parent="well"]
+visible = false
+position = Vector2( -4.52243, -3.3542 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+texture = ExtResource( 21 )
+hframes = 15
+
+[node name="Label" type="Label" parent="well/Sprite"]
+margin_left = 44.9187
+margin_top = -8.29116
+margin_right = 218.18
+margin_bottom = 35.7088
+rect_scale = Vector2( -0.5, 0.5 )
+rect_pivot_offset = Vector2( 0.036, 0 )
+theme = ExtResource( 8 )
+custom_fonts/font = ExtResource( 19 )
+custom_colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+custom_constants/line_spacing = 0
+text = "HAT GET"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="well"]
+anims/hat = ExtResource( 22 )
+
 [node name="door" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door"]
 position = Vector2( 983.1, 459.116 )
-shape = SubResource( 4 )
-
+shape = SubResource( 5 )
 [connection signal="pressed" from="Sprite/Panel/Button" to="Sprite/Panel/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Sprite/Panel/Button2" to="Sprite/Panel/Button2" method="_on_Button2_pressed"]
 [connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Sprite/Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="ch" from="well" to="." method="_on_well_ch"]
+[connection signal="body_entered" from="well/Areawell" to="well" method="_on_Areawell_body_entered"]
+[connection signal="body_exited" from="well/Areawell" to="well" method="_on_Areawell_body_exited"]
+[connection signal="pressed" from="well/Panel/Button" to="well" method="_on_Button_pressed"]
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]

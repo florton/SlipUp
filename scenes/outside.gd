@@ -63,3 +63,17 @@ func _on_door_body_entered(body):
 		Global.backwards = false
 		get_tree().change_scene("res://scenes/hub.tscn")
 	pass # Replace with function body.
+
+
+func _on_Areawell_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_well_changehats():
+
+	pass # Replace with function body.
+
+
+func _on_well_ch():
+	$KinematicBody2D.change_hat()
+	pass # Replace with function body.

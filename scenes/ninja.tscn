@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/ninja.gd" type="Script" id=1]
 [ext_resource path="res://sprite/ninja.png" type="Texture" id=2]
+[ext_resource path="res://sprite/hats.png" type="Texture" id=3]
+[ext_resource path="res://scenes/nhat.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "air idle start"
@@ -18,6 +20,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 12, 15, 16 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hat:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hat:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -25.7977, -24.6394 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -36,6 +62,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 16, 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hat:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -111,6 +149,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 9, 12 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("hat:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 14.5198, -25.8993 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 0.416667
@@ -128,6 +178,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 2, 9 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("hat:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11.37, -20.8597 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 loop = true
@@ -142,6 +204,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hat:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.22926, -32.1989 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -179,16 +253,19 @@ height = 24.595
 [sub_resource type="CircleShape2D" id=10]
 radius = 36.0034
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=["ninja", "player"]]
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+"ninja",
+"player",
+]]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.297302, 0 )
 z_index = 1
 texture = ExtResource( 2 )
-hframes = 3
 vframes = 7
-frame = 9
+hframes = 3
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "stand"
@@ -203,6 +280,14 @@ anims/stand = SubResource( 7 )
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Sprite/AnimationPlayer"]
 anims/jump = SubResource( 8 )
 
+[node name="hat" type="Sprite" parent="Sprite"]
+position = Vector2( -25.7977, -24.6394 )
+rotation = -0.785398
+texture = ExtResource( 3 )
+hframes = 15
+frame = 14
+script = ExtResource( 4 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7.72984 )
 shape = SubResource( 9 )
@@ -211,5 +296,4 @@ shape = SubResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource( 10 )
-
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

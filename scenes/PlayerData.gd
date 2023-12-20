@@ -6,7 +6,7 @@ export var speed=0
 export var health=3
 export var jump_str=0
 export var characther=1
-
+export var hat = 15
 # var b = "text"
 
 

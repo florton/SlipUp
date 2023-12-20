@@ -13,8 +13,7 @@ func _ready():
 	print("ready")
 	self.disabled=false
 	set_cost()
-	print(Global.savedata.guy_data.jump_str)
-	print(Global.savedata.ninja_data.jump_str)
+
 	pass # Replace with function body.
 
 
@@ -54,7 +53,6 @@ func _on_Button2_pressed():
 			Global.savedata.guy_data.jump_str+=1
 		if Global.savedata.character=="ninja":
 			Global.savedata.ninja_data.jump_str+=1
-			print("fff")
 		set_cost()
 		Global.save_data()
 	pass # Replace with function body.
