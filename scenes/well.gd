@@ -11,7 +11,7 @@ var wellmax =60
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var i = abs(Global.rngseed.seed %100)
+	var i = 99#abs(Global.rngseed.seed %100)
 	
 	if i<25:
 		state="mushroom"
@@ -48,9 +48,9 @@ func get_hat():
 
 func _on_Areawell_body_entered(body):
 	if body.is_in_group("player"):
+		body.velocity.x=0
 		if state=="well":
-			$Panel.visible=true
-			$Panel/Label.text="Throw/nCoins?"
+			$AnimationPlayer.play("popin")
 			if wellmax<0:
 				$Panel/Label.text="no more coins pls"
 				$Panel/Button.disabled=false
@@ -67,7 +67,7 @@ func _on_Button_pressed():
 	$Panel.visible=false
 	$Particles2D.emitting=true
 	yield(get_tree().create_timer(1.5),"timeout")
-	var hat=Global.rngseed.randi()%750
+	var hat=Global.rngseed.randi()%10
 	if hat <10:
 		get_hat()
 		yield(get_tree().create_timer(1.5),"timeout")
@@ -82,6 +82,6 @@ func _on_Button_pressed():
 
 
 func _on_Areawell_body_exited(body):
-	if body.is_in_group("player"):
-		$Panel.visible=false
+	if body.is_in_group("player")and $Panel.visible:
+		$AnimationPlayer.play("popout")
 	pass # Replace with function body.

@@ -26,9 +26,9 @@ func _physics_process(delta: float) -> void:
 		ap.play("dash")
 		isDashing = true
 		if sprite.flip_h == true:
-			velocity=Vector2(-800,-700)
+			velocity=Vector2(-500,-400)
 		if sprite.flip_h == false:
-			velocity=Vector2(800,-700)
+			velocity=Vector2(500,-400)
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("enemy") && isDashing:

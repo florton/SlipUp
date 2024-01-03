@@ -2,15 +2,15 @@ extends KinematicBody2D
 
 export var move_speed := 3
 export var acc_speed := 2
-export var vertical_speed_modifier := 70
-export var gravity := 2000
+export var vertical_speed_modifier := 30
+export var gravity := 1200
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
 var in_turnaround =false
 var turntimer=0
 
 var velocity := Vector2.ZERO
-var jump_speed = 700
+var jump_speed = 550
 #var lasgroundpos= Array()
 var invinc = false
 var hitstun=false
@@ -78,10 +78,9 @@ func _physics_process(delta: float) -> void:
 	velocity.x += acceleration
 	acceleration *= 0.9
 	if velocity.x <0:
-		sprite.flip_h = !Global.backwards
+		sprite.scale.x = -1 if !Global.backwards else 1
 	if velocity.x >0:
-		sprite.flip_h = Global.backwards
-	
+		sprite.scale.x = -1 if Global.backwards else 1
 	if heath<=0:
 		emit_signal("dead")
 		pass
@@ -102,7 +101,7 @@ func _physics_process(delta: float) -> void:
 
 
 func fullhop():
-	velocity.y= -jump_speed - 150
+	velocity.y= -jump_speed - 75
 	
 func takeDamage():
 	if !hitstun and !invinc:
@@ -185,5 +184,14 @@ func air_turn_around():
 	velocity.x = curntvelo*-.5
 	t.queue_free()
 	in_turnaround=false
-
+	
+func change_hat():
+	
+	if Global.savedata.character=="guy":
+		$Sprite/Sprite.frame=Global.savedata.guy_data.hat
+	
+	if Global.savedata.character=="ninja":
+		$Sprite/Sprite.frame=Global.savedata.ninja_data.hat
+	
+	pass
 	

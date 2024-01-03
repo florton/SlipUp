@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://themes/sliptheme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/dailoge.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "dpopin"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 615.326 ), Vector2( 0, 419 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "dpopout"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 419 ), Vector2( 0, 615.326 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="dailoge" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/dpopin = SubResource( 1 )
+anims/dpopout = SubResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 615.326
+margin_right = 1026.0
+margin_bottom = 788.326
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_left = 0.019
+anchor_top = 0.171
+anchor_right = 0.983
+anchor_bottom = 0.918
+margin_left = -8.494
+margin_top = -12.583
+margin_right = -0.558044
+margin_bottom = 1.18599
+text = "ygfhgkhgggkgkjhjhljhlhlhhhhkggnbvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+autowrap = true
+clip_text = true
+percent_visible = 0.84
+max_lines_visible = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

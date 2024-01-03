@@ -8,8 +8,10 @@ onready var text = get_node("Text")
 var rng = RandomNumberGenerator.new()
 var door = false
 var ninjabox = false
+var barmanbox =false
 var totalCoins =0
 var oldtext
+var bargguystuff
 
 var phrases = [
 	"You can do it",
@@ -79,7 +81,7 @@ func loadData():
 		totalCoins = int(values[1])
 func _ready():
 	rng.randomize()
-	text.text = phrases[rng.randi_range(0, len(phrases)-1)]
+	bargguystuff = phrases[rng.randi_range(0, len(phrases)-1)]
 	Global.savedata.coins 
 	if !Global.savedata.ninjaunlocked:
 		var ninja = get_child(4)
@@ -105,7 +107,9 @@ func _process(delta):
 			Global.savedata.ninjaunlocked=true
 			Global.save_data()
 			pass
-			
+		if barmanbox:
+			$dailoge/AnimationPlayer.play("dpopin")
+			$dailoge._display_text(bargguystuff,.1)
 	pass
 
 
@@ -122,8 +126,8 @@ func _on_Area2D_body_exited(body):
 
 func _on_ninjabox_body_entered(body):
 	if body.is_in_group("player") && !Global.savedata.ninjaunlocked:
-		oldtext = text.text
-		text.text = "For 10 coins i'll join in"
+		$dailoge/AnimationPlayer.play("dpopin")
+		$dailoge._display_text("For ten coins I'll join you.",.1)
 		ninjabox = true
 		pass
 	pass # Replace with function body.
@@ -131,6 +135,16 @@ func _on_ninjabox_body_entered(body):
 
 func _on_ninjabox_body_exited(body):
 	if body.is_in_group("player"):
-		text.text = oldtext
 		ninjabox = false
+	pass # Replace with function body.
+
+
+func _on_bman_body_entered(body):
+	if body.is_in_group("player"):
+		barmanbox=true
+	pass # Replace with function body.
+
+
+func _on_bman_body_exited(body):
+	barmanbox=false
 	pass # Replace with function body.

@@ -1,0 +1,60 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "popin"
+length = 2.75
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.166667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.166667, 0.916667 ),
+"transitions": PoolRealArray( 6.72717, 2.92817 ),
+"update": 0,
+"values": [ Vector2( 17.9191, -4.23083 ), Vector2( 90.3046, -145.827 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.166667, 0.916667 ),
+"transitions": PoolRealArray( 1.93187, 1.86607 ),
+"update": 0,
+"values": [ Vector2( -0.333, 0.091 ), Vector2( -1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Panel/Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.916667, 1.08333, 1.25, 1.41667, 1.58333, 1.75, 1.91667, 2.08333, 2.25, 2.41667, 2.58333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "", "t", "th", "thr", "thr0", "throw
+", "throw
+c", "throw
+co", "throw
+coin", "throw
+coins", "throw
+coins?" ]
+}

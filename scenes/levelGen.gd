@@ -37,7 +37,7 @@ func floorGen(gap, spawnEnemies):
 	
 func loadEntities(coordArray, y):
 	var progress =(y / y_end)
-	var enemyChance = 0.03 + (progress / 10)
+	var enemyChance = 0.015 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):
@@ -95,9 +95,9 @@ func walkingEnemyGen(positon, x_min, x_max, y):
 func _ready():
 	rng.randomize()
 #	floorGen(16, true)
-	floorGen(8, true)
+	floorGen(10, true)
 #	floorGen(8, false)
-	floorGen(4, true)
+	floorGen(5, true)
 #
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # func _process(delta):

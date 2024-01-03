@@ -93,9 +93,7 @@ func _grab():
 		grab=false
 		gravity=2000
 		velocity=Vector2(200,-800)
-func change_hat():
-	$Sprite/Sprite.frame=Global.savedata.guy_data.hat
-	pass
+
 
 func _on_prejump_timeout():
 	

@@ -57,7 +57,7 @@ func _ready():
 		player.queue_free()
 		player = ninja
 		player.move_speed+=Global.savedata.ninja_data.speed
-		player.jump_speed+=Global.savedata.ninja_data.jump_str*150
+		player.jump_speed+=Global.savedata.ninja_data.jump_str*50
 		add_child(ninja)
 	player.connect("dead", self, "_on_KinematicBody2D_dead")
 	player.connect("get_coin", self, "_on_KinematicBody2D_get_coin")

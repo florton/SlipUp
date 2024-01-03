@@ -4,6 +4,7 @@
 [ext_resource path="res://sprite/ninja.png" type="Texture" id=2]
 [ext_resource path="res://sprite/hats.png" type="Texture" id=3]
 [ext_resource path="res://scenes/nhat.gd" type="Script" id=4]
+[ext_resource path="res://ani/ninSTAND.tres" type="Animation" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "air idle start"
@@ -22,7 +23,7 @@ tracks/0/keys = {
 "values": [ 12, 15, 16 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("hat:rotation_degrees")
+tracks/1/path = NodePath("Sprite:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +35,7 @@ tracks/1/keys = {
 "values": [ -45.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("hat:position")
+tracks/2/path = NodePath("Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -64,7 +65,7 @@ tracks/0/keys = {
 "values": [ 16, 15 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("hat:visible")
+tracks/1/path = NodePath("Sprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -102,6 +103,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -150,7 +163,7 @@ tracks/0/keys = {
 "values": [ 9, 12 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("hat:position")
+tracks/1/path = NodePath("Sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -179,7 +192,7 @@ tracks/0/keys = {
 "values": [ 2, 9 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("hat:position")
+tracks/1/path = NodePath("Sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -189,33 +202,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 11.37, -20.8597 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("hat:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -1.22926, -32.1989 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -258,14 +244,19 @@ radius = 36.0034
 "player",
 ]]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ -192.558 ]
+}
+vertical_speed_modifier = 35
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.297302, 0 )
+scale = Vector2( -1, 1 )
 z_index = 1
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 3
-frame = 12
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "stand"
@@ -275,17 +266,17 @@ anims/dash = SubResource( 3 )
 anims/hurt = SubResource( 4 )
 anims/jumpsqa = SubResource( 5 )
 anims/run = SubResource( 6 )
-anims/stand = SubResource( 7 )
+anims/stand = ExtResource( 5 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Sprite/AnimationPlayer"]
 anims/jump = SubResource( 8 )
 
-[node name="hat" type="Sprite" parent="Sprite"]
-position = Vector2( -25.7977, -24.6394 )
-rotation = -0.785398
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( 11.37, -20.8597 )
+scale = Vector2( -1, 1 )
 texture = ExtResource( 3 )
 hframes = 15
-frame = 14
+frame = 10
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

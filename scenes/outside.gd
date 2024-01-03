@@ -26,6 +26,7 @@ func _process(delta):
 	if Input.is_action_pressed("up"):
 		if vend:
 			$Sprite/Panel.visible=true
+			$AnimationPlayer.play("store popin")
 			$KinematicBody2D.velocity.x =0
 			#player.velocity=Vector2.ZERO
 			
@@ -54,7 +55,8 @@ func _on_Area2D_body_exited(body):
 	
 	if body.is_in_group("player"):
 		vend =false
-		$Sprite/Panel.visible=false
+		#$Sprite/Panel.visible=false
+		$AnimationPlayer.play("store popout")
 	pass # Replace with function body.
 
 
@@ -65,13 +67,7 @@ func _on_door_body_entered(body):
 	pass # Replace with function body.
 
 
-func _on_Areawell_body_entered(body):
-	pass # Replace with function body.
 
-
-func _on_well_changehats():
-
-	pass # Replace with function body.
 
 
 func _on_well_ch():
