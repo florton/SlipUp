@@ -8,7 +8,8 @@ onready var BonusFly = preload("res://scenes/bonusfly.tscn")
 onready var BonusWalk = preload("res://scenes/bonuswalk.tscn")
 
 var y_start = 36.0
-var y_end = -500.0
+#var y_end = -500.0
+var y_end = -100.0
 
 var x_start = 2
 var x_end = 20
@@ -24,6 +25,9 @@ func floorGen(gap, spawnEnemies):
 		var floorStart = rng.randi_range(x_start, x_end)
 		var progress =(1 - (y / y_end))
 		var floorLen = rng.randi_range(clamp(10 * progress,2,20), clamp(20 * progress,2,20))
+		if progress < 0.01:
+			floorLen = 60
+			floorStart = 0
 		var coordArray = []
 		var worldCoordArray = []
 		for x in range(floorLen):
@@ -37,7 +41,8 @@ func floorGen(gap, spawnEnemies):
 	
 func loadEntities(coordArray, y):
 	var progress =(y / y_end)
-	var enemyChance = 0.015 + (progress / 10)
+	print(progress)
+	var enemyChance = 0.04 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):

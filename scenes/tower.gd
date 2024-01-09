@@ -76,6 +76,7 @@ func _process(delta):
 			$purse.visible = false
 			pget=true
 		if score > highScore:
+			$UI/Sprite/AnimationPlayer.play("pb")
 			scoreLabel.add_color_override("font_color", '00ff28')
 	scoreLabel.text = str("LVL.",score)
 	if player.global_position.y - camera_offset_y < cam.global_position.y:
@@ -90,6 +91,7 @@ func _on_KinematicBody2D_dead():
 	Global.savedata.purse.lvl=score
 	Global.savedata.purse.coins=coins
 	if score > highScore:
+
 		Global.savedata.highscore=score
 		Global.savedata.coins+=coins
 		Global.savedata.purse.lvl=0
@@ -102,3 +104,8 @@ func _on_KinematicBody2D_dead():
 func _on_KinematicBody2D_get_coin():
 	coins = coins + 1
 	coinsLabel.text = str("$",coins)
+
+
+func _on_Checkpoint_body_entered(body):
+	if body.is_in_group("player"):
+		get_tree().change_scene("res://scenes/checkpoint.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/BackgroundMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://sprite/dot.png" type="Texture" id=9]
 [ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=10]
 [ext_resource path="res://sprite/purse.png" type="Texture" id=11]
+[ext_resource path="res://scenes/hole.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprite/pb.png" type="Texture" id=13]
+[ext_resource path="res://ani/pb.tres" type="Animation" id=14]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -38,6 +41,7 @@ animations = [ {
 
 [sub_resource type="Animation" id=6]
 resource_name = "idle"
+length = 0.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -46,10 +50,26 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "pbbar"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.0117647 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -116,6 +136,15 @@ position = Vector2( 985.391, 562.906 )
 scale = Vector2( 2.27441, 2.27441 )
 frames = SubResource( 5 )
 
+[node name="Sprite" type="Sprite" parent="UI"]
+position = Vector2( 533.042, 200.119 )
+texture = ExtResource( 13 )
+vframes = 10
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Sprite"]
+anims/pb = ExtResource( 14 )
+
 [node name="last life bar" type="Sprite" parent="."]
 position = Vector2( 1304.65, 54.544 )
 scale = Vector2( 200, 2.684 )
@@ -139,6 +168,10 @@ position = Vector2( 275.414, 0 )
 scale = Vector2( 126.929, 2.68369 )
 texture = ExtResource( 9 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pbbar/pb bar"]
+autoplay = "pbbar"
+anims/pbbar = SubResource( 7 )
+
 [node name="Label" type="Label" parent="pbbar"]
 margin_left = 20.4454
 margin_top = -5.66366
@@ -151,3 +184,7 @@ valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Checkpoint" parent="." instance=ExtResource( 12 )]
+position = Vector2( 408.182, 532.011 )
+[connection signal="body_entered" from="Checkpoint" to="." method="_on_Checkpoint_body_entered"]

@@ -63,7 +63,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 80, 0, 80 )
 } ]
 0/z_index = 0
 
-[node name="WallMap" type="TileMap" groups=["wall"]]
+[node name="WallMap" type="TileMap" groups=[
+"wall",
+]]
 tile_set = SubResource( 5 )
 cell_size = Vector2( 32, 80 )
 collision_use_kinematic = true

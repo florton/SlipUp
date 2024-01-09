@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bgggg it.png-1b44dbd2578321916f7a281a80b229f9.stex"
+path="res://.import/rockketman.png-89ac401cf25e76fedb3388eb78839604.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/bgggg it.png"
-dest_files=[ "res://.import/bgggg it.png-1b44dbd2578321916f7a281a80b229f9.stex" ]
+source_file="res://sprite/rockketman.png"
+dest_files=[ "res://.import/rockketman.png-89ac401cf25e76fedb3388eb78839604.stex" ]
 
 [params]
 
