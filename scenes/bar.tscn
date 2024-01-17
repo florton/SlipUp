@@ -11,15 +11,15 @@
 [ext_resource path="res://sprite/ninja.png" type="Texture" id=9]
 [ext_resource path="res://scenes/dailoge.tscn" type="PackedScene" id=10]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.2952, 69.4972 )
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 31.0016, 46.3834 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 40
 font_data = ExtResource( 8 )
 
@@ -49,7 +49,7 @@ hframes = 2
 [node name="bman" type="Area2D" parent="barman"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barman/bman"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="ninja" type="Sprite" parent="."]
 visible = false
@@ -66,7 +66,7 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ninja/ninjabox"]
 position = Vector2( 1, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="door" type="Sprite" parent="."]
 position = Vector2( 241.406, 457.325 )
@@ -79,7 +79,7 @@ scale = Vector2( 1.02575, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door/Area2D"]
 position = Vector2( -117.726, 14.2952 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="bar1" type="Sprite" parent="."]
 position = Vector2( 702.571, 516.602 )
@@ -114,7 +114,7 @@ margin_left = 495.0
 margin_top = 228.0
 margin_right = 1017.0
 margin_bottom = 448.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.552941, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0.0588235, 0.219608, 0.0588235, 1 )

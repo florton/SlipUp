@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/ninja.gd" type="Script" id=1]
 [ext_resource path="res://sprite/ninja.png" type="Texture" id=2]
 [ext_resource path="res://sprite/hats.png" type="Texture" id=3]
 [ext_resource path="res://scenes/nhat.gd" type="Script" id=4]
 [ext_resource path="res://ani/ninSTAND.tres" type="Animation" id=5]
+[ext_resource path="res://scenes/uprompt.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "air idle start"
@@ -204,7 +205,7 @@ tracks/1/keys = {
 "values": [ Vector2( 11.37, -20.8597 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.316667
 step = 0.0166667
 tracks/0/type = "animation"
@@ -232,11 +233,11 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 5.97299
 height = 24.595
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=9]
 radius = 36.0034
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=[
@@ -269,7 +270,7 @@ anims/run = SubResource( 6 )
 anims/stand = ExtResource( 5 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Sprite/AnimationPlayer"]
-anims/jump = SubResource( 8 )
+anims/jump = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Sprite"]
 position = Vector2( 11.37, -20.8597 )
@@ -281,10 +282,12 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7.72984 )
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-shape = SubResource( 10 )
+shape = SubResource( 9 )
+
+[node name="uprompt" parent="." instance=ExtResource( 6 )]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

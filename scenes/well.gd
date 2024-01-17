@@ -48,6 +48,8 @@ func get_hat():
 
 func _on_Areawell_body_entered(body):
 	if body.is_in_group("player"):
+		var uprompt=body.find_node("uprompt")
+		uprompt.visible=true
 		body.velocity.x=0
 		if state=="well":
 			$AnimationPlayer.play("popin")
@@ -83,5 +85,7 @@ func _on_Button_pressed():
 
 func _on_Areawell_body_exited(body):
 	if body.is_in_group("player")and $Panel.visible:
+		var uprompt=body.find_node("uprompt")
+		uprompt.visible=false
 		$AnimationPlayer.play("popout")
 	pass # Replace with function body.

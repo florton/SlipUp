@@ -12,6 +12,7 @@ onready var cam1 = find_node("Camera1")
 var door1 = false
 var door2 = false
 var hubSide = 0
+var pb
 
 var highScore = 0
 var totalCoins = 0
@@ -51,18 +52,28 @@ func _process(delta):
 		if door2:
 			door2 = false
 			get_tree().change_scene("res://scenes/bar.tscn")
+		if pb:
+			var textforpb="            current record   "+str(Global.savedata.highscore)
+			$pb_frame/dailoge._display_text(textforpb,.1)
+			$pb_frame/dailoge/AnimationPlayer.play("dpopin")
+			pass
 
 func _on_Area2D_body_entered(body,name):
 	if body.is_in_group("player"):
+		body.velocity.x=0
+		$KinematicBody2D/uprompt.visible=true
 		if name == "door1":
 			door1=true
 		if name == "door2":
 			door2=true
 
+
 func _on_Area2D_body_exited(body):
+	$KinematicBody2D/uprompt.visible=false
 	door1=false
 
 func _on_door2_body_exited(body):
+	$KinematicBody2D/uprompt.visible=false
 	door2=false
 
 func _on_door3_body_entered(body):
@@ -82,3 +93,18 @@ func _on_door5_body_entered(body):
 	if body.is_in_group("player"):
 		get_tree().change_scene("res://scenes/outside.tscn")
 	pass # Replace with function body.
+
+
+func _on_pb__body_entered(body):
+	if body.is_in_group("player"):
+		body.velocity.x*=0.33
+		$KinematicBody2D/uprompt.visible=true
+		pb=true
+	pass # Replace with function body.
+
+
+func _on_pb__body_exited(body):
+	if body.is_in_group("player"):
+		pb=false
+		$KinematicBody2D/uprompt.visible=false
+		pass # Replace with function body.

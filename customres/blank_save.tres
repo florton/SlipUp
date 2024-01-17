@@ -21,6 +21,7 @@ coins = 0
 highscore = 0
 fpt = true
 highscoresetter = 1
+checkpoint = 0
 guy_data = ExtResource( 2 )
 ninja_data = SubResource( 1 )
 purse = ExtResource( 3 )

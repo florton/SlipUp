@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ani/WALK.tres" type="Animation" id=1]
 [ext_resource path="res://ani/STAND.tres" type="Animation" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ani/grab.tres" type="Animation" id=6]
 [ext_resource path="res://sprite/hats.png" type="Texture" id=7]
 [ext_resource path="res://scenes/hat.gd" type="Script" id=8]
+[ext_resource path="res://scenes/uprompt.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 14.6376
@@ -108,6 +109,9 @@ disabled = true
 
 [node name="prejump" type="Timer" parent="."]
 wait_time = 0.508
+
+[node name="uprompt" parent="." instance=ExtResource( 9 )]
+visible = false
 [connection signal="area_entered" from="grabbox" to="." method="_on_grabbox_area_entered"]
 [connection signal="timeout" from="grab Timer" to="." method="_on_grab_Timer_timeout"]
 [connection signal="timeout" from="prejump" to="." method="_on_prejump_timeout"]

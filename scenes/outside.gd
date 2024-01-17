@@ -41,6 +41,7 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
+		$KinematicBody2D/uprompt.visible=true
 		body.velocity.x *=.5
 		vend =true
 	pass # Replace with function body.
@@ -54,6 +55,7 @@ func _on_Area2D_area_shape_exited(area_id, area, area_shape, self_shape):
 func _on_Area2D_body_exited(body):
 	
 	if body.is_in_group("player"):
+		$KinematicBody2D/uprompt.visible=false
 		vend =false
 		#$Sprite/Panel.visible=false
 		$AnimationPlayer.play("store popout")

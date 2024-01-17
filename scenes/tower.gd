@@ -19,7 +19,7 @@ var coins = 0
 var save1 = "user://save1.res"
 var playerOnScreen = true
 var pget=false
-
+var pbsettingrun=false
 
 #func loadData():
 	#var file = File.new()
@@ -75,9 +75,9 @@ func _process(delta):
 			coinsLabel.text = str("$",coins)
 			$purse.visible = false
 			pget=true
-		if score > highScore:
+		if score > highScore && !pbsettingrun:
 			$UI/Sprite/AnimationPlayer.play("pb")
-			scoreLabel.add_color_override("font_color", '00ff28')
+			pbsettingrun=true
 	scoreLabel.text = str("LVL.",score)
 	if player.global_position.y - camera_offset_y < cam.global_position.y:
 		cam.global_position.y = player.global_position.y - camera_offset_y

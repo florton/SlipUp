@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://themes/sliptheme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/openigg.gd" type="Script" id=2]
 
 [node name="openigg" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1019.0
