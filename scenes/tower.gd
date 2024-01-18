@@ -81,6 +81,7 @@ func _process(delta):
 	scoreLabel.text = str("LVL.",score)
 	if player.global_position.y - camera_offset_y < cam.global_position.y:
 		cam.global_position.y = player.global_position.y - camera_offset_y
+	Global.Music.global_position.y = player.global_position.y
 #
 #	print(player.global_position.y - cam.global_position.y)
 	playerOnScreen = player.global_position.y - death_offset_y <= cam.global_position.y

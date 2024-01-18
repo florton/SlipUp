@@ -1,6 +1,6 @@
 extends Node
 
-
+var Music
 
 # Declare member variables here. Examples:
 export var currentsave = 0
@@ -13,6 +13,7 @@ var backwards = false
 export (Array,Resource) var saves
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Music = $AudioStreamPlayer2D
 	# var save1="res://customres/blank_save.tres"
 	savedata = load_data("res://customres/blank_save.tres")
 	for i in range(100):
@@ -45,7 +46,6 @@ func _process(delta):
 #		print(rngseed.seed)
 		
 		
-	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
