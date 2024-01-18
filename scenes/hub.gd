@@ -33,6 +33,8 @@ func loadData():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !Global.Music.is_playing():
+		Global.Music.play()
 	if !Global.savedata.ninjaunlocked:
 		ninjaframe.queue_free()
 	scoreLabel.text ="highest lvl"+str(Global.savedata.highscore )

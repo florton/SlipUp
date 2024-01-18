@@ -8,8 +8,11 @@ onready var BonusFly = preload("res://scenes/bonusfly.tscn")
 onready var BonusWalk = preload("res://scenes/bonuswalk.tscn")
 
 var y_start = 36.0
-#var y_end = -500.0
+
 var y_end = -5000.0
+
+var y_end = -500.0
+#var y_end = -100.0
 
 var x_start = 2
 var x_end = 20

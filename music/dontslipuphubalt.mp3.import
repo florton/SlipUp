@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dontslipuphubalt.mp3-04b4252eccffdd0b3711f9bae9d36a99.mp3str"
+
+[deps]
+
+source_file="res://music/dontslipuphubalt.mp3"
+dest_files=[ "res://.import/dontslipuphubalt.mp3-04b4252eccffdd0b3711f9bae9d36a99.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
