@@ -63,7 +63,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body,name):
 	if body.is_in_group("player"):
 		body.velocity.x=0
-		$KinematicBody2D/uprompt.visible=true
+		body.find_node("uprompt").visible=true
 		if name == "door1":
 			door1=true
 		if name == "door2":
@@ -71,12 +71,14 @@ func _on_Area2D_body_entered(body,name):
 
 
 func _on_Area2D_body_exited(body):
-	$KinematicBody2D/uprompt.visible=false
-	door1=false
+	if body.is_in_group("player"):
+		body.find_node("uprompt").visible=false
+		door1=false
 
 func _on_door2_body_exited(body):
-	$KinematicBody2D/uprompt.visible=false
-	door2=false
+	if body.is_in_group("player"):
+		body.find_node("uprompt").visible=false
+		door2=false
 
 func _on_door3_body_entered(body):
 	if body.is_in_group("player"):
@@ -100,7 +102,7 @@ func _on_door5_body_entered(body):
 func _on_pb__body_entered(body):
 	if body.is_in_group("player"):
 		body.velocity.x*=0.33
-		$KinematicBody2D/uprompt.visible=true
+		body.find_node("uprompt").visible=true
 		pb=true
 	pass # Replace with function body.
 
@@ -108,5 +110,5 @@ func _on_pb__body_entered(body):
 func _on_pb__body_exited(body):
 	if body.is_in_group("player"):
 		pb=false
-		$KinematicBody2D/uprompt.visible=false
+		body.find_node("uprompt").visible=false
 		pass # Replace with function body.

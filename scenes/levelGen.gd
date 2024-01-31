@@ -10,7 +10,7 @@ onready var checkpoint = preload("res://scenes/hole.tscn")
 
 var y_start = 36.0
 
-var y_end = -5000.0
+var y_end = -2000.0
 
 var cheackpointnum=0
 #var y_end = -500.0
@@ -53,7 +53,7 @@ func floorGen(gap, spawnEnemies):
 func loadEntities(coordArray, y):
 	var progress =(y / y_end)
 	print(progress)
-	var enemyChance = 0.01 + (progress / 10)
+	var enemyChance = 0.015 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):

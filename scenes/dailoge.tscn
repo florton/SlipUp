@@ -65,13 +65,11 @@ anims/dpopin = SubResource( 1 )
 anims/dpopout = SubResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 615.326
 margin_right = 1026.0
 margin_bottom = 788.326
 theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Panel"]
 anchor_left = 0.019
