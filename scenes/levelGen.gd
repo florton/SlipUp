@@ -6,12 +6,14 @@ onready var FlyingCactus = preload("res://scenes/flyingCactus.tscn")
 onready var EyeBird = preload("res://scenes/eyebird.tscn")
 onready var BonusFly = preload("res://scenes/bonusfly.tscn")
 onready var BonusWalk = preload("res://scenes/bonuswalk.tscn")
+onready var checkpoint = preload("res://scenes/hole.tscn")
 
 var y_start = 36.0
 
 var y_end = -5000.0
 
-var y_end = -500.0
+var cheackpointnum=0
+#var y_end = -500.0
 #var y_end = -100.0
 
 var x_start = 2
@@ -28,7 +30,7 @@ func floorGen(gap, spawnEnemies):
 		var floorStart = rng.randi_range(x_start, x_end)
 		var progress =(1 - (y / y_end))
 		var floorLen = rng.randi_range(clamp(10 * progress,2,20), clamp(20 * progress,2,20))
-		if progress < 0.01:
+		if progress < 0.1:
 			floorLen = 60
 			floorStart = 0
 		var coordArray = []
@@ -40,12 +42,18 @@ func floorGen(gap, spawnEnemies):
 		floor_coords[floor(map_to_world(Vector2(0,y - 1)).y)] = worldCoordArray
 		if spawnEnemies:
 			loadEntities(coordArray, y)
+		if y==-100:
+			var newcp=checkpoint.instance()
+			cheackpointnum+=1
+			newcp.checkpoint=cheackpointnum
+			
+			pass
 	update_bitmask_region(Vector2(x_start, y_start), Vector2(x_end, y_end))
 	
 func loadEntities(coordArray, y):
 	var progress =(y / y_end)
 	print(progress)
-	var enemyChance = 0.04 + (progress / 10)
+	var enemyChance = 0.01 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):
