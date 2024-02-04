@@ -5,7 +5,7 @@ resource_name = "popin"
 length = 1.66667
 step = 0.0833333
 tracks/0/type = "value"
-tracks/0/path = NodePath("Panel:visible")
+tracks/0/path = NodePath("WellPanel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Panel:rect_position")
+tracks/1/path = NodePath("WellPanel:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -29,7 +29,7 @@ tracks/1/keys = {
 "values": [ Vector2( 90.3046, -145.827 ), Vector2( 17.9191, -4.23083 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Panel:rect_scale")
+tracks/2/path = NodePath("WellPanel:rect_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false

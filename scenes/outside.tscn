@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://sprite/Outside.png" type="Texture" id=1]
 [ext_resource path="res://sprite/ven.png" type="Texture" id=2]
@@ -27,6 +27,12 @@
 [ext_resource path="res://ani/store popout.tres" type="Animation" id=25]
 [ext_resource path="res://ani/store popin.tres" type="Animation" id=26]
 [ext_resource path="res://font/retro_gaming/Retro Gaming.ttf" type="DynamicFontData" id=27]
+[ext_resource path="res://themes/pressedbuttonstyleboxtexture.tres" type="StyleBox" id=28]
+[ext_resource path="res://themes/panel_styleboxtexture.tres" type="StyleBox" id=29]
+[ext_resource path="res://themes/hover box .tres" type="StyleBox" id=30]
+[ext_resource path="res://sprite/coin.png" type="Texture" id=31]
+[ext_resource path="res://sprite/STYLEBOXbuttons.png" type="Texture" id=32]
+[ext_resource path="res://icon.png" type="Texture" id=33]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -71,8 +77,607 @@ initial_velocity = 255.56
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("spritecoin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/nice:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -130.111, 9.39702 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/nice:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.552941, 0.67451, 0.0588235, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("spritecoin:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2, 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("spritecoin:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "coin"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("spritecoin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "coin in"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("spritecoin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.101, 1.7, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 0.138696, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.1, 0.1 ), Vector2( -2, 2 ), Vector2( -2, 2 ), Vector2( -0.1, 0.1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spritecoin:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "nice swoop"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/nice:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.9, 2.4, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -178.932, -83.2564 ), Vector2( 364.71, 425.62 ), Vector2( 479.722, 473.164 ), Vector2( 541.366, 374.247 ), Vector2( 673.252, 383.029 ), Vector2( 673.252, 383.029 ), Vector2( 846.808, -107.041 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/nice:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 1.4, 1.6, 1.9, 2.1, 2.3, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.0588235, 0.219608, 0.0588235, 1 ), Color( 0.552941, 0.67451, 0.0588235, 1 ), Color( 0.0588235, 0.219608, 0.0588235, 1 ), Color( 0.552941, 0.67451, 0.0588235, 1 ), Color( 0.0588235, 0.219608, 0.0588235, 1 ), Color( 0.552941, 0.67451, 0.0588235, 1 ), Color( 0.0588235, 0.219608, 0.0588235, 1 ), Color( 0.552941, 0.67451, 0.0588235, 1 ), Color( 0.0588235, 0.219608, 0.0588235, 1 ) ]
+}
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 32 )
+region_rect = Rect2( 4, 89, 185, 38 )
+draw_center = false
+
+[sub_resource type="Theme" id=13]
+default_font = ExtResource( 19 )
+Button/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Button/colors/font_color_disabled = Color( 0.188235, 0.384314, 0.188235, 1 )
+Button/colors/font_color_hover = Color( 0.552941, 0.67451, 0.0588235, 1 )
+Button/colors/font_color_pressed = Color( 0.552941, 0.67451, 0.0588235, 1 )
+Button/colors/panel = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 19 )
+Button/styles/disabled = SubResource( 11 )
+Button/styles/focus = null
+Button/styles/hover = ExtResource( 30 )
+Button/styles/normal = ExtResource( 28 )
+Button/styles/pressed = SubResource( 12 )
+CheckBox/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+CheckBox/colors/font_color_hover = Color( 0.552941, 0.67451, 0.0588235, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 0.552941, 0.67451, 0.0588235, 1 )
+CheckBox/colors/font_color_pressed = Color( 0.552941, 0.67451, 0.0588235, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = ExtResource( 19 )
+CheckBox/icons/checked = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/unchecked = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+CheckButton/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+CheckButton/colors/font_color_disabled = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+CheckButton/colors/font_color_hover = Color( 0.552941, 0.67451, 0.0588235, 1 )
+CheckButton/colors/font_color_hover_pressed = Color( 0.552941, 0.67451, 0.0588235, 1 )
+CheckButton/colors/font_color_pressed = Color( 0.552941, 0.67451, 0.0588235, 1 )
+CheckButton/constants/check_vadjust = 0
+CheckButton/constants/hseparation = 4
+CheckButton/fonts/font = ExtResource( 19 )
+CheckButton/icons/off = null
+CheckButton/icons/off_disabled = null
+CheckButton/icons/on = null
+CheckButton/icons/on_disabled = null
+CheckButton/styles/disabled = null
+CheckButton/styles/focus = null
+CheckButton/styles/hover = null
+CheckButton/styles/hover_pressed = null
+CheckButton/styles/normal = null
+CheckButton/styles/pressed = null
+ColorPicker/constants/h_width = 30
+ColorPicker/constants/label_width = 10
+ColorPicker/constants/margin = 4
+ColorPicker/constants/sv_height = 256
+ColorPicker/constants/sv_width = 256
+ColorPicker/icons/add_preset = null
+ColorPicker/icons/color_hue = null
+ColorPicker/icons/color_sample = null
+ColorPicker/icons/overbright_indicator = null
+ColorPicker/icons/preset_bg = null
+ColorPicker/icons/screen_picker = null
+ColorPickerButton/colors/font_color = Color( 0.552941, 0.67451, 0.0588235, 1 )
+ColorPickerButton/colors/font_color_disabled = Color( 0.552941, 0.67451, 0.0588235, 1 )
+ColorPickerButton/colors/font_color_hover = Color( 0.552941, 0.67451, 0.0588235, 1 )
+ColorPickerButton/colors/font_color_pressed = Color( 0.552941, 0.67451, 0.0588235, 1 )
+ColorPickerButton/constants/hseparation = 2
+ColorPickerButton/fonts/font = ExtResource( 19 )
+ColorPickerButton/icons/bg = ExtResource( 33 )
+ColorPickerButton/styles/disabled = null
+ColorPickerButton/styles/focus = null
+ColorPickerButton/styles/hover = null
+ColorPickerButton/styles/normal = null
+ColorPickerButton/styles/pressed = null
+Dialogs/constants/button_margin = 32
+Dialogs/constants/margin = 8
+FileDialog/colors/file_icon_modulate = Color( 0, 0, 0, 1 )
+FileDialog/colors/files_disabled = Color( 0, 0, 0, 1 )
+FileDialog/colors/folder_icon_modulate = Color( 0, 0, 0, 1 )
+FileDialog/icons/file = null
+FileDialog/icons/folder = null
+FileDialog/icons/parent_folder = null
+FileDialog/icons/reload = null
+FileDialog/icons/toggle_hidden = null
+Fonts/fonts/font = ExtResource( 19 )
+Fonts/fonts/large = ExtResource( 19 )
+Fonts/fonts/normal = ExtResource( 19 )
+GraphEdit/colors/activity = Color( 0, 0, 0, 1 )
+GraphEdit/colors/grid_major = Color( 0, 0, 0, 1 )
+GraphEdit/colors/grid_minor = Color( 0, 0, 0, 1 )
+GraphEdit/colors/selection_fill = Color( 0, 0, 0, 1 )
+GraphEdit/colors/selection_stroke = Color( 0, 0, 0, 1 )
+GraphEdit/constants/bezier_len_neg = 160
+GraphEdit/constants/bezier_len_pos = 80
+GraphEdit/constants/port_grab_distance_horizontal = 48
+GraphEdit/constants/port_grab_distance_vertical = 6
+GraphEdit/icons/minus = null
+GraphEdit/icons/more = null
+GraphEdit/icons/reset = null
+GraphEdit/icons/snap = null
+GraphEdit/styles/bg = null
+GraphNode/colors/close_color = Color( 0, 0, 0, 1 )
+GraphNode/colors/resizer_color = Color( 0, 0, 0, 1 )
+GraphNode/colors/title_color = Color( 0, 0, 0, 1 )
+GraphNode/constants/close_offset = 18
+GraphNode/constants/port_offset = 3
+GraphNode/constants/separation = 1
+GraphNode/constants/title_offset = 20
+GraphNode/fonts/title_font = ExtResource( 19 )
+GraphNode/icons/close = null
+GraphNode/icons/port = null
+GraphNode/icons/resizer = null
+GraphNode/styles/breakpoint = null
+GraphNode/styles/comment = null
+GraphNode/styles/commentfocus = null
+GraphNode/styles/defaultfocus = null
+GraphNode/styles/defaultframe = null
+GraphNode/styles/frame = null
+GraphNode/styles/position = null
+GraphNode/styles/selectedframe = null
+GridContainer/constants/hseparation = 4
+GridContainer/constants/vseparation = 4
+HBoxContainer/constants/separation = 4
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = null
+HScrollBar/styles/grabber_highlight = null
+HScrollBar/styles/grabber_pressed = null
+HScrollBar/styles/scroll = null
+HScrollBar/styles/scroll_focus = null
+HSeparator/constants/separation = 4
+HSeparator/styles/separator = null
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = null
+HSlider/styles/grabber_area_highlight = null
+HSlider/styles/slider = null
+HSplitContainer/constants/autohide = 1
+HSplitContainer/constants/separation = 12
+HSplitContainer/icons/grabber = null
+HSplitContainer/styles/bg = null
+Icons/icons/close = null
+ItemList/colors/font_color = Color( 0.552941, 0.67451, 0.0588235, 1 )
+ItemList/colors/font_color_selected = Color( 0.552941, 0.67451, 0.0588235, 1 )
+ItemList/colors/guide_color = Color( 0.552941, 0.67451, 0.0588235, 1 )
+ItemList/constants/hseparation = 4
+ItemList/constants/icon_margin = 4
+ItemList/constants/line_separation = 2
+ItemList/constants/vseparation = 2
+ItemList/fonts/font = ExtResource( 19 )
+ItemList/styles/bg = ExtResource( 29 )
+ItemList/styles/bg_focus = null
+ItemList/styles/cursor = null
+ItemList/styles/cursor_unfocused = null
+ItemList/styles/selected = null
+ItemList/styles/selected_focus = null
+Label/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Label/colors/font_color_shadow = Color( 0.552941, 0.67451, 0.0588235, 1 )
+Label/colors/font_outline_modulate = Color( 0.552941, 0.67451, 0.0588235, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 19 )
+Label/styles/normal = null
+LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0, 0, 0, 1 )
+LineEdit/colors/selection_color = Color( 0, 0, 0, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = ExtResource( 19 )
+LineEdit/icons/clear = null
+LineEdit/styles/focus = null
+LineEdit/styles/normal = null
+LineEdit/styles/read_only = null
+LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
+LinkButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+LinkButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+LinkButton/constants/underline_spacing = 2
+LinkButton/fonts/font = ExtResource( 19 )
+LinkButton/styles/focus = null
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+MenuButton/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+MenuButton/colors/font_color_disabled = Color( 0.552941, 0.67451, 0.0588235, 1 )
+MenuButton/colors/font_color_hover = Color( 0.552941, 0.67451, 0.0588235, 1 )
+MenuButton/colors/font_color_pressed = Color( 0.552941, 0.67451, 0.0588235, 1 )
+MenuButton/constants/hseparation = 3
+MenuButton/fonts/font = ExtResource( 19 )
+MenuButton/styles/disabled = null
+MenuButton/styles/focus = ExtResource( 30 )
+MenuButton/styles/hover = ExtResource( 30 )
+MenuButton/styles/normal = ExtResource( 28 )
+MenuButton/styles/pressed = null
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/constants/arrow_margin = 2
+OptionButton/constants/hseparation = 2
+OptionButton/fonts/font = ExtResource( 19 )
+OptionButton/icons/arrow = null
+OptionButton/styles/disabled = null
+OptionButton/styles/focus = null
+OptionButton/styles/hover = null
+OptionButton/styles/normal = null
+OptionButton/styles/pressed = null
+Panel/colors/panel = Color( 0.188235, 0.384314, 0.188235, 1 )
+Panel/styles/panel = ExtResource( 29 )
+PanelContainer/styles/panel = null
+PopupDialog/styles/panel = null
+PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = ExtResource( 19 )
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = null
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = null
+ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = ExtResource( 19 )
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = null
+RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/selection_color = Color( 0, 0, 0, 1 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = ExtResource( 19 )
+RichTextLabel/fonts/bold_italics_font = ExtResource( 19 )
+RichTextLabel/fonts/italics_font = ExtResource( 19 )
+RichTextLabel/fonts/mono_font = ExtResource( 19 )
+RichTextLabel/fonts/normal_font = ExtResource( 19 )
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+ScrollContainer/styles/bg = null
+SpinBox/icons/updown = null
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
+TabContainer/constants/hseparation = 4
+TabContainer/constants/label_valign_bg = 2
+TabContainer/constants/label_valign_fg = 0
+TabContainer/constants/side_margin = 8
+TabContainer/constants/top_margin = 24
+TabContainer/fonts/font = ExtResource( 19 )
+TabContainer/icons/decrement = null
+TabContainer/icons/decrement_highlight = null
+TabContainer/icons/increment = null
+TabContainer/icons/increment_highlight = null
+TabContainer/icons/menu = null
+TabContainer/icons/menu_highlight = null
+TabContainer/styles/panel = null
+TabContainer/styles/tab_bg = null
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_fg = null
+Tabs/colors/font_color_bg = Color( 0, 0, 0, 1 )
+Tabs/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+Tabs/colors/font_color_fg = Color( 0, 0, 0, 1 )
+Tabs/constants/hseparation = 4
+Tabs/constants/label_valign_bg = 2
+Tabs/constants/label_valign_fg = 0
+Tabs/constants/top_margin = 24
+Tabs/fonts/font = ExtResource( 19 )
+Tabs/icons/close = null
+Tabs/icons/decrement = null
+Tabs/icons/decrement_highlight = null
+Tabs/icons/increment = null
+Tabs/icons/increment_highlight = null
+Tabs/styles/button = null
+Tabs/styles/button_pressed = null
+Tabs/styles/panel = null
+Tabs/styles/tab_bg = null
+Tabs/styles/tab_disabled = null
+Tabs/styles/tab_fg = null
+TextEdit/colors/background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/bookmark_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/brace_mismatch_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/breakpoint_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/code_folding_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_existing_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_font_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_scroll_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/completion_selected_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/current_line_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/executing_line_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+TextEdit/colors/font_color_readonly = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+TextEdit/colors/font_color_selected = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+TextEdit/colors/function_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+TextEdit/colors/line_number_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/mark_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/member_variable_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/number_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/safe_line_number_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/selection_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/symbol_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0, 0, 0, 1 )
+TextEdit/constants/completion_lines = 7
+TextEdit/constants/completion_max_width = 24
+TextEdit/constants/completion_scroll_width = 3
+TextEdit/constants/line_spacing = 4
+TextEdit/fonts/font = ExtResource( 19 )
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/completion = null
+TextEdit/styles/focus = null
+TextEdit/styles/normal = ExtResource( 29 )
+TextEdit/styles/read_only = null
+ToolButton/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+ToolButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
+ToolButton/colors/font_color_hover = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+ToolButton/colors/font_color_pressed = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+ToolButton/constants/hseparation = 3
+ToolButton/fonts/font = ExtResource( 19 )
+ToolButton/styles/disabled = null
+ToolButton/styles/focus = null
+ToolButton/styles/hover = ExtResource( 30 )
+ToolButton/styles/normal = null
+ToolButton/styles/pressed = null
+TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/fonts/font = ExtResource( 19 )
+TooltipPanel/styles/panel = null
+Tree/colors/custom_button_font_highlight = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Tree/colors/drop_position_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Tree/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Tree/colors/font_color_selected = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Tree/colors/guide_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Tree/colors/relationship_line_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Tree/colors/title_button_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Tree/constants/button_margin = 16
+Tree/constants/draw_guides = 1
+Tree/constants/draw_relationship_lines = 0
+Tree/constants/hseparation = 4
+Tree/constants/item_margin = 12
+Tree/constants/scroll_border = 4
+Tree/constants/scroll_speed = 12
+Tree/constants/vseparation = 4
+Tree/fonts/font = ExtResource( 19 )
+Tree/fonts/title_button_font = ExtResource( 19 )
+Tree/icons/arrow = null
+Tree/icons/arrow_collapsed = null
+Tree/icons/checked = null
+Tree/icons/select_arrow = null
+Tree/icons/unchecked = null
+Tree/icons/updown = null
+Tree/styles/bg = ExtResource( 29 )
+Tree/styles/bg_focus = null
+Tree/styles/button_pressed = null
+Tree/styles/cursor = null
+Tree/styles/cursor_unfocused = null
+Tree/styles/custom_button = null
+Tree/styles/custom_button_hover = null
+Tree/styles/custom_button_pressed = null
+Tree/styles/selected = null
+Tree/styles/selected_focus = null
+Tree/styles/title_button_hover = null
+Tree/styles/title_button_normal = null
+Tree/styles/title_button_pressed = null
+VBoxContainer/constants/separation = 4
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = null
+VScrollBar/styles/scroll_focus = null
+VSeparator/constants/separation = 4
+VSeparator/styles/separator = null
+VSlider/icons/grabber = null
+VSlider/icons/grabber_disabled = null
+VSlider/icons/grabber_highlight = null
+VSlider/icons/tick = null
+VSlider/styles/grabber_area = null
+VSlider/styles/grabber_area_highlight = null
+VSlider/styles/slider = null
+VSplitContainer/constants/autohide = 1
+VSplitContainer/constants/separation = 12
+VSplitContainer/icons/grabber = null
+VSplitContainer/styles/bg = null
+WindowDialog/colors/title_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+WindowDialog/constants/close_h_ofs = 18
+WindowDialog/constants/close_v_ofs = 18
+WindowDialog/constants/scaleborder_size = 4
+WindowDialog/constants/title_height = 20
+WindowDialog/fonts/title_font = ExtResource( 19 )
+WindowDialog/icons/close = null
+WindowDialog/icons/close_highlight = null
+WindowDialog/styles/panel = ExtResource( 29 )
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 44.9521, 63.5602 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "New Anim"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1023, -10 )
@@ -250,26 +855,25 @@ scale = Vector2( 0.46, 0.44 )
 position = Vector2( 10.6908, 31.1815 )
 shape = SubResource( 2 )
 
-[node name="Panel" type="Panel" parent="well"]
+[node name="WellPanel" type="Panel" parent="well"]
 visible = false
-margin_left = 90.3046
-margin_top = -145.827
-margin_right = 216.305
-margin_bottom = -55.8271
-rect_scale = Vector2( -1, 1 )
+margin_left = 50.6937
+margin_top = -68.3425
+margin_right = 176.694
+margin_bottom = 21.6574
+rect_scale = Vector2( -0.864257, 0.815008 )
 theme = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="well/Panel"]
+[node name="WellLabel" type="Label" parent="well/WellPanel"]
 margin_left = 7.0
 margin_top = 10.0
 margin_right = 352.0
 margin_bottom = 237.0
 rect_scale = Vector2( 0.33, 0.33 )
-text = "throw
-coins?"
+text = "thr0"
 align = 1
 valign = 1
 autowrap = true
@@ -277,21 +881,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="well/Panel"]
+[node name="WellButton" type="Button" parent="well/WellPanel"]
 margin_left = 13.5003
 margin_top = 90.8469
 margin_right = 118.041
 margin_bottom = 134.847
 rect_scale = Vector2( 0.733, 0.801 )
+theme = ExtResource( 8 )
 custom_fonts/font = SubResource( 4 )
 action_mode = 0
 keep_pressed_outside = true
 text = "sure"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Particles2D" type="Particles2D" parent="well"]
+[node name="water" type="Particles2D" parent="well"]
 position = Vector2( -0.599274, -2.99663 )
 emitting = false
 amount = 330
@@ -300,7 +902,7 @@ one_shot = true
 process_material = SubResource( 5 )
 texture = ExtResource( 20 )
 
-[node name="Sprite" type="Sprite" parent="well"]
+[node name="hatsprite" type="Sprite" parent="well"]
 visible = false
 position = Vector2( -4.52243, -3.3542 )
 scale = Vector2( 0.5, 0.5 )
@@ -308,7 +910,7 @@ z_index = 1
 texture = ExtResource( 21 )
 hframes = 15
 
-[node name="Label" type="Label" parent="well/Sprite"]
+[node name="hatlable" type="Label" parent="well/hatsprite"]
 margin_left = 44.9187
 margin_top = -8.29116
 margin_right = 218.18
@@ -316,20 +918,49 @@ margin_bottom = 35.7088
 rect_scale = Vector2( -0.5, 0.5 )
 rect_pivot_offset = Vector2( 0.036, 0 )
 theme = ExtResource( 8 )
-custom_fonts/font = ExtResource( 19 )
 custom_colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_constants/line_spacing = 0
+custom_fonts/font = ExtResource( 19 )
 text = "HAT GET"
 align = 1
 uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="well"]
+autoplay = "coin"
+anims/RESET = SubResource( 7 )
+anims/coin = SubResource( 8 )
+"anims/coin in" = SubResource( 9 )
 anims/hat = ExtResource( 22 )
+"anims/nice swoop" = SubResource( 10 )
 anims/popin = ExtResource( 23 )
 anims/popout = ExtResource( 24 )
+
+[node name="nice" type="Label" parent="well/AnimationPlayer"]
+margin_left = -130.111
+margin_top = 9.39702
+margin_right = 6.88896
+margin_bottom = 68.3971
+rect_rotation = -20.3892
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0.552941, 0.67451, 0.0588235, 1 )
+text = "NICE"
+
+[node name="spritecoin" type="Sprite" parent="well"]
+visible = false
+position = Vector2( 1.06787, -83.8279 )
+scale = Vector2( -2, 2 )
+texture = ExtResource( 31 )
+hframes = 6
+
+[node name="coinget" type="Label" parent="well/spritecoin"]
+margin_left = -14.2693
+margin_top = -6.87781
+margin_right = 109.731
+margin_bottom = 52.1222
+rect_scale = Vector2( 0.210801, 0.218531 )
+theme = SubResource( 13 )
+text = "+100"
+align = 1
 
 [node name="door" type="Area2D" parent="."]
 
@@ -340,6 +971,28 @@ shape = SubResource( 6 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/store popin" = ExtResource( 26 )
 "anims/store popout" = ExtResource( 25 )
+
+[node name="coinsLabel" type="Label" parent="."]
+margin_left = 415.031
+margin_top = 31.4645
+margin_right = 600.031
+margin_bottom = 90.4645
+rect_scale = Vector2( -1, 1 )
+theme = ExtResource( 8 )
+text = "COINS:"
+
+[node name="spritecoin2" type="Sprite" parent="coinsLabel"]
+position = Vector2( -56.2559, 29.8973 )
+rotation = 3.14159
+scale = Vector2( 2.89252, 2.72703 )
+texture = ExtResource( 31 )
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="coinsLabel/spritecoin2"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+
 [connection signal="pressed" from="Sprite/Panel/Button" to="Sprite/Panel/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Sprite/Panel/Button2" to="Sprite/Panel/Button2" method="_on_Button2_pressed"]
 [connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_Area2D_body_entered"]
@@ -347,5 +1000,5 @@ shape = SubResource( 6 )
 [connection signal="ch" from="well" to="." method="_on_well_ch"]
 [connection signal="body_entered" from="well/Areawell" to="well" method="_on_Areawell_body_entered"]
 [connection signal="body_exited" from="well/Areawell" to="well" method="_on_Areawell_body_exited"]
-[connection signal="pressed" from="well/Panel/Button" to="well" method="_on_Button_pressed"]
+[connection signal="pressed" from="well/WellPanel/WellButton" to="well" method="_on_Button_pressed"]
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]

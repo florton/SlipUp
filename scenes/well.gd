@@ -4,14 +4,14 @@ extends Sprite
 # Declare member variables here. Examples:
 signal ch
 var state = ""
-var wellmax =60
+var wellmax =0
 
 # var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var i = 99#abs(Global.rngseed.seed %100)
+	var i = 90#abs(Global.rngseed.seed %100)
 	
 	if i<25:
 		state="mushroom"
@@ -22,7 +22,7 @@ func _ready():
 		self.frame=1
 		pass
 	if i  >52:
-		wellmax=Global.rngseed.randi()%21+60
+		wellmax=Global.rngseed.randi()%21+1
 		state="well"
 		self.frame=0
 		pass
@@ -30,8 +30,8 @@ func _ready():
 
 func get_hat():
 	var hats=Global.rngseed.randi()%14
-	$Sprite.frame=hats
-	$Sprite.visible=true
+	$hatsprite.frame=hats
+	$hatsprite.visible=true
 	$AnimationPlayer.play("hat")
 	if Global.savedata.character=="guy":
 		Global.savedata.guy_data.hat=hats
@@ -53,38 +53,86 @@ func _on_Areawell_body_entered(body):
 		body.velocity.x=0
 		if state=="well":
 			$AnimationPlayer.play("popin")
-			if wellmax<0:
-				$Panel/Label.text="no more coins pls"
-				$Panel/Button.disabled=false
+			$WellPanel/WellLabel.text="throw coin?"
+			if wellmax<=0 :
+				$WellPanel/WellLabel.text="no more coins for now, thank you"
+				$WellPanel/WellButton.disabled=true
+				$WellPanel/WellButton.visible=false
+			if !Global.savedata.coins>0:
+				$WellPanel/WellLabel.text="no coins to throw"
+				$WellPanel/WellButton.disabled=true
+				$WellPanel/WellButton.visible=false
 		
 		if state=="grave":
-			$Panel.visible =true
-		pass
+			$AnimationPlayer.play("popin")
+			$WellPanel/WellLabel.text="pay respest"
+			$WellPanel/WellButton.disabled=false
+		if state=="mushroom":
+			$AnimationPlayer.play("popin")
+			$WellPanel/WellLabel.text="say hi"
+			$WellPanel/WellButton.disabled=false
+			
 	pass # Replace with function body.
 
 
 func _on_Button_pressed():
-	wellmax-=1
-	$Panel/Button.disabled=true
-	$Panel.visible=false
-	$Particles2D.emitting=true
-	yield(get_tree().create_timer(1.5),"timeout")
-	var hat=Global.rngseed.randi()%10
-	if hat <10:
-		get_hat()
-		yield(get_tree().create_timer(1.5),"timeout")
-	$Panel.visible=true
-	if wellmax<=0:
-		$Panel/Button.visible=false
-		$Panel/Label.text="no more coins pls"
-	$Panel/Button.disabled=false
-	
+	if state=="well":
+		wellmax-=1
+		$WellPanel/WellButton.disabled=true
+		$WellPanel.visible=false
 		
+		Global.savedata.coins-=1
+		var hat=Global.rngseed.randi()%100
+		$water.amount=hat
+		$water.emitting=true
+		yield(get_tree().create_timer(1.5),"timeout")
+
+
+		if hat==99:
+			Global.savedata.coins+=100
+			$AnimationPlayer.play("coin in")
+			$spritecoin/coinget.text="+100"
+			$spritecoin.visible=true
+			yield(get_tree().create_timer(3),"timeout")
+		if hat >90 and hat<99:
+			Global.savedata.coins+=10
+			$spritecoin.visible=true
+			$AnimationPlayer.play("coin in")
+			$spritecoin/coinget.text="+10"
+			yield(get_tree().create_timer(3),"timeout")
+		if hat >60 and hat<91:
+			Global.savedata.coins+=2
+			$spritecoin.visible=true
+			$AnimationPlayer.play("coin in")
+			$spritecoin/coinget.text="+2"
+			yield(get_tree().create_timer(3),"timeout")
+		if hat <2:
+			get_hat()
+			yield(get_tree().create_timer(1.5),"timeout")
+		$WellPanel.visible=true
+		if wellmax<=0 or Global.savedata.coins<=0:
+			$WellPanel/WellButton.visible=false
+			$WellPanel/WellLabel.text="no more coins"
+		$WellPanel/WellButton.disabled=false
+		
+	if state=="grave":
+		$AnimationPlayer.play("popout")
+		yield(get_tree().create_timer(1.5),"timeout")
+		$AnimationPlayer.play("nice swoop")
+		$AnimationPlayer/nice.text="Thanks, BUD!"
+
+		
+	if state=="mushroom":
+		$AnimationPlayer.play("popout")
+		yield(get_tree().create_timer(1.5),"timeout")
+		$AnimationPlayer.play("nice swoop")
+		$AnimationPlayer/nice.text="hi there ;)!"
+
 	pass # Replace with function body.
 
 
 func _on_Areawell_body_exited(body):
-	if body.is_in_group("player")and $Panel.visible:
+	if body.is_in_group("player")and $WellPanel.visible:
 		var uprompt=body.find_node("uprompt")
 		uprompt.visible=false
 		$AnimationPlayer.play("popout")

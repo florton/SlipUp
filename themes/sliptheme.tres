@@ -7,11 +7,12 @@
 [ext_resource path="res://themes/hover box .tres" type="StyleBox" id=5]
 [ext_resource path="res://themes/pressedbuttonstyleboxtexture.tres" type="StyleBox" id=6]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=11]
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 1 )
 region_rect = Rect2( 4, 89, 185, 38 )
+draw_center = false
 
 [resource]
 default_font = ExtResource( 2 )
@@ -22,11 +23,11 @@ Button/colors/font_color_pressed = Color( 0.552941, 0.67451, 0.0588235, 1 )
 Button/colors/panel = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = ExtResource( 2 )
-Button/styles/disabled = SubResource( 1 )
+Button/styles/disabled = SubResource( 11 )
 Button/styles/focus = null
 Button/styles/hover = ExtResource( 5 )
 Button/styles/normal = ExtResource( 6 )
-Button/styles/pressed = SubResource( 2 )
+Button/styles/pressed = SubResource( 12 )
 CheckBox/colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 CheckBox/colors/font_color_disabled = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 CheckBox/colors/font_color_hover = Color( 0.552941, 0.67451, 0.0588235, 1 )

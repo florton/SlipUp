@@ -23,6 +23,7 @@ func _ready():
 		pass
 	pass # Replace with function body.
 func _process(delta):
+	$coinsLabel.text="Coins: "+str(Global.savedata.coins)
 	if Input.is_action_pressed("up"):
 		if vend:
 			$Sprite/Panel.visible=true

@@ -344,9 +344,6 @@ custom_colors/font_color_shadow = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Coins:0"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="Coins"]
 position = Vector2( -37.7549, 27.3915 )
