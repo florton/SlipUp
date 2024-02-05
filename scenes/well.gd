@@ -11,7 +11,7 @@ var wellmax =0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var i = 90#abs(Global.rngseed.seed %100)
+	var i = abs(Global.rngseed.seed %100)
 	
 	if i<25:
 		state="mushroom"
@@ -21,11 +21,13 @@ func _ready():
 		state="grave"
 		self.frame=1
 		pass
-	if i  >52:
+	if i  >52 and i <89:
 		wellmax=Global.rngseed.randi()%21+1
 		state="well"
 		self.frame=0
 		pass
+	if i <88:
+		self.queue_free()
 	pass # Replace with function body.
 
 func get_hat():

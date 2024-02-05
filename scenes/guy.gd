@@ -46,7 +46,7 @@ func _on_grabbox_area_entered(area):
 
 func _on_grab_Timer_timeout():
 	grab = false
-	gravity=2000
+	gravity=1100
 	enemy._throw_up()
 
 func _grab():
@@ -55,43 +55,43 @@ func _grab():
 	if Input.is_action_pressed("move_right") and ! Input.is_action_pressed("up") and ! Input.is_action_pressed("down"):
 		enemy._throw_right()
 		grab=false
-		gravity=2000
+		gravity=1100
 		velocity=Vector2(-200,-600)
 	if Input.is_action_pressed("move_left")  and ! Input.is_action_pressed("up") and ! Input.is_action_pressed("down"):
 		enemy._throw_left()
 		grab=false
-		gravity=2000
+		gravity=1100
 		velocity=Vector2(200,-600)
 	if Input.is_action_pressed("up") and ! Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left"):
 		enemy._throw_up()
 		grab=false
-		gravity=2000
+		gravity=1100
 		velocity=Vector2(0,-600)
 	if Input.is_action_pressed("down")and ! Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left"):
 		enemy._throw_down()
 		grab=false
-		gravity=2000
+		gravity=1100
 		velocity=Vector2(0,-800)
 		
 	if Input.is_action_pressed("move_right") and  Input.is_action_pressed("up") and ! Input.is_action_pressed("down"):
 		enemy._throw_upright()
 		grab=false
-		gravity=2000
+		gravity=1100
 		velocity=Vector2(-200,-600)
 	if Input.is_action_pressed("move_left")  and ! Input.is_action_pressed("up") and  Input.is_action_pressed("down"):
 		enemy._throw_downleft()
 		grab=false
-		gravity=2000
+		gravity=1100
 		velocity=Vector2(200,-800)
 	if Input.is_action_pressed("up") and ! Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
 		enemy._throw_upleft()
 		grab=false
-		gravity=2000
+		gravity=1100
 		velocity=Vector2(-200,-600)
 	if Input.is_action_pressed("down")and Input.is_action_pressed("move_right") and ! Input.is_action_pressed("move_left"):
 		enemy._throw_downright()
 		grab=false
-		gravity=2000
+		gravity=1100
 		velocity=Vector2(200,-800)
 
 

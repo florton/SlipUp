@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var move_speed := 3
 export var acc_speed := 2
 export var vertical_speed_modifier := 50
-export var gravity := 1500
+export var gravity := 1199
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
 var in_turnaround =false
@@ -101,7 +101,7 @@ func _physics_process(delta: float) -> void:
 
 
 func fullhop():
-	velocity.y= -jump_speed - 75
+	velocity.y= -jump_speed - 30
 	
 func takeDamage():
 	if !hitstun and !invinc:

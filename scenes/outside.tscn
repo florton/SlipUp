@@ -938,7 +938,7 @@ anims/popout = ExtResource( 24 )
 [node name="nice" type="Label" parent="well/AnimationPlayer"]
 margin_left = -130.111
 margin_top = 9.39702
-margin_right = 6.88896
+margin_right = 6.88901
 margin_bottom = 68.3971
 rect_rotation = -20.3892
 theme = ExtResource( 8 )
