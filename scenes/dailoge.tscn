@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 615.326 ), Vector2( 0, 419 ) ]
+"values": [ Vector2( 0, 615.326 ), Vector2( 0, 180 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Panel:modulate")
@@ -42,7 +42,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 419 ), Vector2( 0, 615.326 ) ]
+"values": [ Vector2( 0, 180 ), Vector2( 0, 615.326 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Panel:modulate")
@@ -81,10 +81,10 @@ margin_top = -12.583
 margin_right = -0.558044
 margin_bottom = 1.18599
 text = "ygfhgkhgggkgkjhjhljhlhlhhhhkggnbvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+align = 1
 autowrap = true
 clip_text = true
 percent_visible = 0.84
 max_lines_visible = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

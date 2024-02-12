@@ -3,7 +3,7 @@
 [resource]
 resource_name = "store popin"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite/Panel:rect_scale")
+tracks/0/path = NodePath("Vend/Panel:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "values": [ Vector2( -1, 1 ), Vector2( 0.2, 0.05 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite/Panel:rect_position")
+tracks/1/path = NodePath("Vend/Panel:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -27,7 +27,7 @@ tracks/1/keys = {
 "values": [ Vector2( 393, -394 ), Vector2( -62.001, 89.6074 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite/Panel:visible")
+tracks/2/path = NodePath("Vend/Panel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false

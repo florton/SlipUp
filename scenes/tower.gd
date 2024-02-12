@@ -45,6 +45,7 @@ func _ready():
 	cam.global_position.y = player.global_position.y - camera_offset_y
 	Global.load_data("res://customres/save1.tres")
 	highScore = Global.savedata.highscore
+	pbar.position.x = 1
 	pbar.position.y=(1 - (highScore * 48)) + playerStart - 50
 	var showPurse = Global.savedata.purse.coins!=0
 	if showPurse:
@@ -64,6 +65,9 @@ func _ready():
 	if Global.savedata.character=="guy":
 		player.move_speed+=Global.savedata.guy_data.speed
 		player.jump_speed+=Global.savedata.guy_data.jump_str*50
+	if Global.checkpoint:
+		player.global_position=Global.checkpoint
+		player.global_position.x -= 50
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	healthSprite.frame = player.heath
@@ -87,12 +91,11 @@ func _process(delta):
 	playerOnScreen = player.global_position.y - death_offset_y <= cam.global_position.y
 	if !playerOnScreen:
 		player.fallDown()
-	
-func _on_KinematicBody2D_dead():
+
+func dead():
 	Global.savedata.purse.lvl=score
 	Global.savedata.purse.coins=coins
 	if score > highScore:
-
 		Global.savedata.highscore=score
 		Global.savedata.coins+=coins
 		Global.savedata.purse.lvl=0
@@ -100,7 +103,13 @@ func _on_KinematicBody2D_dead():
 		scoreLabel.add_color_override("font_color", '00ff28')
 	Global.save_data()
 	player.queue_free()
-	get_tree().change_scene("res://scenes/hub.tscn")
+
+func _on_KinematicBody2D_dead():
+	dead()
+	if Global.checkpoint:
+		get_tree().change_scene("res://scenes/checkpoint.tscn")
+	else:
+		get_tree().change_scene("res://scenes/hub.tscn")
 
 func _on_KinematicBody2D_get_coin():
 	coins = coins + 1
@@ -109,4 +118,6 @@ func _on_KinematicBody2D_get_coin():
 
 func _on_Checkpoint_body_entered(body):
 	if body.is_in_group("player"):
+		Global.checkpoint = body.global_position
+		dead()
 		get_tree().change_scene("res://scenes/checkpoint.tscn")

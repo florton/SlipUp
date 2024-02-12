@@ -26,7 +26,7 @@ func _process(delta):
 	$coinsLabel.text="Coins: "+str(Global.savedata.coins)
 	if Input.is_action_pressed("up"):
 		if vend:
-			$Sprite/Panel.visible=true
+			$Vend/Panel.visible=true
 			$AnimationPlayer.play("store popin")
 			$KinematicBody2D.velocity.x =0
 			#player.velocity=Vector2.ZERO

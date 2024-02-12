@@ -12,7 +12,6 @@ var y_start = 36.0
 
 var y_end = -2000.0
 
-var cheackpointnum=0
 #var y_end = -500.0
 #var y_end = -100.0
 
@@ -35,6 +34,13 @@ func floorGen(gap, spawnEnemies):
 			floorStart = 0
 		var coordArray = []
 		var worldCoordArray = []
+		if int(progress * 1000) % 100 == 0:
+			var newcp=checkpoint.instance()
+			newcp.global_position = map_to_world(Vector2(x_end+10,y - 1))
+			newcp.connect("body_entered", get_parent(), "_on_Checkpoint_body_entered")
+			add_child(newcp)
+			floorStart = -5
+			floorLen = 40
 		for x in range(floorLen):
 			set_cell(floorStart + x,y,0)
 			coordArray.append(Vector2(floorStart + x,y - 1))
@@ -42,17 +48,12 @@ func floorGen(gap, spawnEnemies):
 		floor_coords[floor(map_to_world(Vector2(0,y - 1)).y)] = worldCoordArray
 		if spawnEnemies:
 			loadEntities(coordArray, y)
-		if y==-100:
-			var newcp=checkpoint.instance()
-			cheackpointnum+=1
-			newcp.checkpoint=cheackpointnum
+
 			
-			pass
 	update_bitmask_region(Vector2(x_start, y_start), Vector2(x_end, y_end))
 	
 func loadEntities(coordArray, y):
 	var progress =(y / y_end)
-	print(progress)
 	var enemyChance = 0.015 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false

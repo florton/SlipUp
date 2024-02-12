@@ -14,10 +14,10 @@ texture = ExtResource( 3 )
 hframes = 4
 
 [node name="savelabel" type="Label" parent="."]
-margin_left = 132.584
-margin_top = 21.8811
-margin_right = 559.584
-margin_bottom = 143.881
+margin_left = 129.0
+margin_top = 14.0
+margin_right = 288.0
+margin_bottom = 136.0
 theme = ExtResource( 1 )
 text = "save"
 
@@ -35,8 +35,5 @@ margin_left = 12.0
 margin_top = 21.0
 margin_right = 288.0
 margin_bottom = 108.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

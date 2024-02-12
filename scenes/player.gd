@@ -67,7 +67,6 @@ func _physics_process(delta: float) -> void:
 			if turntimer<0&&turntimer>-.4:
 				velocity.x*=.2
 				turntimer=0
-				print("ok")
 		if Input.is_action_just_released("move_right") :
 			if turntimer>0&&turntimer<.4:
 				velocity.x*=.2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://sprite/hole.png" type="Texture" id=1]
-[ext_resource path="res://scenes/hole.gd" type="Script" id=2]
+[ext_resource path="res://scenes/checkpoint.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.3213, 21.0941 )
@@ -10,10 +10,10 @@ extents = Vector2( 13.3213, 21.0941 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 12.2498, 21.827 )
+position = Vector2( 15.25, -5.174 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 12.6953, 18.7089 )
+position = Vector2( 12.695, -7.298 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )

@@ -40,6 +40,11 @@ func _ready():
 	scoreLabel.text ="highest lvl"+str(Global.savedata.highscore )
 	coinsLabel.text = "coins"+str(Global.savedata.coins )
 	pbFrame.frame = int(Global.savedata.highscoresetter)
+	for child in get_children():
+		if child is KinematicBody2D:
+			if Global.checkpoint:
+				child.global_position = $Elevator.global_position
+				Global.checkpoint = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -55,9 +60,8 @@ func _process(delta):
 			door2 = false
 			get_tree().change_scene("res://scenes/bar.tscn")
 		if pb:
-			var textforpb="            current record   "+str(Global.savedata.highscore)
+			var textforpb="current record   "+str(Global.savedata.highscore)
 			$pb_frame/dailoge._display_text(textforpb,.1)
-			$pb_frame/dailoge/AnimationPlayer.play("dpopin")
 			pass
 
 func _on_Area2D_body_entered(body,name):

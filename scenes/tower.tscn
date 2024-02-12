@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/BackgroundMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://sprite/dot.png" type="Texture" id=9]
 [ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=10]
 [ext_resource path="res://sprite/purse.png" type="Texture" id=11]
-[ext_resource path="res://scenes/hole.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprite/pb.png" type="Texture" id=13]
 [ext_resource path="res://ani/pb.tres" type="Animation" id=14]
 
@@ -86,9 +85,6 @@ script = ExtResource( 7 )
 [node name="FloorMap" parent="." instance=ExtResource( 2 )]
 tile_data = PoolIntArray( 2359296, 0, 0, 2359297, 0, 1, 2359298, 536870912, 1, 2359299, 536870912, 1, 2359300, 536870912, 1, 2359301, 536870912, 1, 2359302, 536870912, 1, 2359303, 536870912, 1, 2359304, 536870912, 1, 2359305, 536870912, 1, 2359306, 536870912, 1, 2359307, 536870912, 1, 2359308, 536870912, 1, 2359309, 536870912, 1, 2359310, 536870912, 1, 2359311, 536870912, 1, 2359312, 536870912, 1, 2359313, 536870912, 1, 2359314, 536870912, 1, 2359315, 536870912, 1, 2359316, 536870912, 1, 2359317, 536870912, 1, 2359318, 536870912, 1, 2359319, 536870912, 1, 2359320, 536870912, 1, 2359321, 536870912, 1, 2359322, 536870912, 1, 2359323, 536870912, 1, 2359324, 536870912, 1, 2359325, 536870912, 1, 2359326, 536870912, 1, 2359327, 536870912, 1, 2359328, 536870912, 1, 2359329, 536870912, 1, 2359330, 0, 1, 2359331, 0, 1, 2359332, 0, 1, 2359333, 0, 1, 2359334, 0, 1, 2359335, 0, 1, 2359336, 0, 1, 2359337, 0, 1, 2359338, 0, 1, 2359339, 0, 1, 2359340, 0, 1, 2359341, 0, 1, 2359342, 0, 1, 2359343, 0, 1, 2359344, 0, 1, 2359345, 0, 1, 2359346, 0, 2, 2818050, 536870912, 1, 2818051, 536870912, 1, 2818052, 536870912, 1, 2818053, 536870912, 1, 2818054, 536870912, 1, 2818055, 536870912, 1, 2818056, 536870912, 1, 2818057, 536870912, 1, 2818058, 536870912, 1, 2818059, 536870912, 1, 2818060, 536870912, 1, 2818061, 536870912, 1, 2818062, 536870912, 1, 2818063, 536870912, 1, 2818064, 536870912, 1, 2818065, 536870912, 1, 2818066, 536870912, 1, 2818067, 536870912, 1, 2818068, 536870912, 1, 2818069, 536870912, 1, 2818070, 536870912, 1, 2818071, 536870912, 1, 2818072, 536870912, 1, 2818073, 536870912, 1, 2818074, 536870912, 1, 2818075, 536870912, 1, 2818076, 536870912, 1, 2818077, 536870912, 1, 2818078, 536870912, 1, 2818079, 536870912, 1, 2818080, 536870912, 1, 2818081, 536870912, 1, 2818082, 536870912, 1, 2818083, 536870912, 1, 2818084, 536870912, 1, 2818085, 536870912, 1, 2818086, 536870912, 1, 2818087, 536870912, 1, 2818088, 536870912, 1, 2818089, 536870912, 1, 2818090, 536870912, 1, 2818091, 536870912, 1, 2818092, 536870912, 1, 2818093, 536870912, 1, 2818094, 536870912, 1, 2818095, 536870912, 1, 2818096, 536870912, 1, 2818097, 536870912, 1, 2818098, 536870912, 1, 2818099, 536870912, 1, 2818100, 536870912, 1, 2818101, 536870912, 1, 2818102, 536870912, 1, 2818103, 536870912, 1, 2818104, 536870912, 1, 2818105, 536870912, 1, 2818106, 536870912, 1, 2818107, 536870912, 1, 2818108, 536870912, 1, 2818109, 536870912, 1, 2818110, 536870912, 1, 2818111, 536870912, 1 )
 
-[node name="Checkpoint" parent="FloorMap" instance=ExtResource( 12 )]
-position = Vector2( 408.182, 532.011 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 272, 496 )
 current = true
@@ -144,6 +140,7 @@ position = Vector2( 533.042, 200.119 )
 texture = ExtResource( 13 )
 hframes = 3
 vframes = 10
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Sprite"]
 anims/pb = ExtResource( 14 )
@@ -164,9 +161,10 @@ autoplay = "idle"
 anims/idle = SubResource( 6 )
 
 [node name="pbbar" type="Node2D" parent="."]
-position = Vector2( 15.102, 3.7755 )
+position = Vector2( -12.901, 3.776 )
 
 [node name="pb bar" type="Sprite" parent="pbbar"]
+modulate = Color( 1, 1, 1, 0.976872 )
 position = Vector2( 275.414, 0 )
 scale = Vector2( 126.929, 2.68369 )
 texture = ExtResource( 9 )
@@ -184,12 +182,3 @@ custom_colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 text = "PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     "
 align = 1
 valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Checkpoint" parent="." instance=ExtResource( 12 )]
-position = Vector2( 408.182, 532.011 )
-
-[connection signal="body_entered" from="FloorMap/Checkpoint" to="." method="_on_Checkpoint_body_entered"]
-[connection signal="body_entered" from="Checkpoint" to="." method="_on_Checkpoint_body_entered"]

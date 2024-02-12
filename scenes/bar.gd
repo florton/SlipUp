@@ -108,7 +108,6 @@ func _process(delta):
 			Global.save_data()
 			pass
 		if barmanbox:
-			$dailoge/AnimationPlayer.play("dpopin")
 			$dailoge._display_text(bargguystuff,.1)
 	pass
 
@@ -126,7 +125,6 @@ func _on_Area2D_body_exited(body):
 
 func _on_ninjabox_body_entered(body):
 	if body.is_in_group("player") && !Global.savedata.ninjaunlocked:
-		$dailoge/AnimationPlayer.play("dpopin")
 		$dailoge._display_text("For ten coins I'll join you.",.1)
 		ninjabox = true
 		pass

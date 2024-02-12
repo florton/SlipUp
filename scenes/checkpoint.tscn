@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://checkpoint.gd" type="Script" id=1]
+[ext_resource path="res://scenes/checkpoint.gd" type="Script" id=1]
 [ext_resource path="res://scenes/WallMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/BackgroundMap.tscn" type="PackedScene" id=4]
@@ -60,4 +60,6 @@ texture = ExtResource( 7 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/scenesdor = ExtResource( 8 )
 
+[connection signal="body_entered" from="Elevator" to="." method="_on_Elevator_body_entered"]
+[connection signal="body_exited" from="Elevator" to="." method="_on_Elevator_body_exited"]
 [connection signal="body_entered" from="Hole" to="." method="_on_Hole_body_entered"]
