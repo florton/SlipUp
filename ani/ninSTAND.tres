@@ -15,7 +15,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
+tracks/1/path = NodePath("Hat:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -27,7 +27,7 @@ tracks/1/keys = {
 "values": [ Vector2( -1.22926, -32.1989 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:visible")
+tracks/2/path = NodePath("Hat:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false

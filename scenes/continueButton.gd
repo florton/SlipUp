@@ -13,6 +13,27 @@ func _ready():
 	sprite = $Sprite
 	label=$savelabel
 	pass # Replace with function body.
+	
+func allowOldSaves():
+	var blank_save = ResourceLoader.load(("res://customres/blank_save.tres"))
+	var save_copy = blank_save.duplicate()
+	for prop1 in blank_save.get_property_list():
+		var character = Global.savedata.get(prop1.name)
+		if character is Object:
+			for prop2 in character.get_property_list():
+				if character.get(prop2.name):
+					pass
+				else:
+					save_copy.get(prop1.name).set(prop2.name, blank_save.get(prop1.name).get(prop2.name))
+		else:
+			save_copy.set(prop1.name, blank_save.get(prop1.name))
+	Global.savedata= save_copy
+
+#	var characters = ["guy_data", ]
+#	cons save
+#	blank_save.
+	print()
+#	savedata
 
 func set_data(save,numb):
 	data = save
@@ -32,5 +53,6 @@ func set_data(save,numb):
 func _on_Button_pressed():
 	Global.currentsave = curntsave
 	Global.savedata = data
+	allowOldSaves()
 	get_tree().change_scene("res://scenes/hub.tscn")
 	pass # Replace with function body.

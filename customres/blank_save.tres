@@ -11,7 +11,7 @@ speed = 0
 health = 3
 jump_str = 0
 characther = 1
-hat = 15
+hat = 14
 
 [resource]
 script = ExtResource( 1 )
