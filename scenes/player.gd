@@ -12,7 +12,7 @@ var turntimer=0
 var velocity := Vector2.ZERO
 var jump_speed = 450
 #var lasgroundpos= Array()
-var invinc = false
+# var invinc = false
 var hitstun=false
 var acceleration = 0
 var gpymod =0
@@ -103,7 +103,8 @@ func fullhop():
 	velocity.y= -jump_speed - 30
 	
 func takeDamage():
-	if !hitstun and !invinc:
+	# if !hitstun and !invinc:
+	if !hitstun:
 		velocity=Vector2.ZERO
 		hitstun=true
 		ap.play("hurt")
@@ -123,7 +124,7 @@ func hitstunend():
 	sprite.modulate = Color("#FFFFFF")
 
 func fallDown():
-	invinc=false
+	# invinc=false
 	takeDamage()
 	if heath <= 0:
 		return

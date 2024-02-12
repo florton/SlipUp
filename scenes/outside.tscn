@@ -985,13 +985,13 @@ shape = SubResource( 6 )
 "anims/store popout" = ExtResource( 25 )
 
 [node name="coinsLabel" type="Label" parent="."]
-margin_left = 415.031
-margin_top = 31.4645
-margin_right = 600.031
-margin_bottom = 90.4645
+margin_left = 316.0
+margin_top = 30.0
+margin_right = 633.0
+margin_bottom = 89.0
 rect_scale = Vector2( -1, 1 )
 theme = ExtResource( 8 )
-text = "COINS:"
+text = "Coins: 1441"
 
 [node name="spritecoin2" type="Sprite" parent="coinsLabel"]
 position = Vector2( -56.2559, 29.8973 )

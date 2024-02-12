@@ -107,11 +107,12 @@ gravity = 1000
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="UI"]
-margin_left = 370.235
+margin_left = 356.235
 margin_top = 7.0
-margin_right = 428.235
-margin_bottom = 43.0
+margin_right = 651.235
+margin_bottom = 66.0
 custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "score :100"
 align = 1
@@ -120,11 +121,10 @@ __meta__ = {
 }
 
 [node name="Coins" type="Label" parent="UI"]
-margin_left = 26.0
-margin_top = 511.0
-margin_right = 70.0
-margin_bottom = 547.0
-rect_scale = Vector2( 2, 2 )
+margin_left = 21.0
+margin_top = 522.0
+margin_right = 91.0
+margin_bottom = 581.0
 custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 custom_fonts/font = ExtResource( 10 )

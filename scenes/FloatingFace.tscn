@@ -1,0 +1,89 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/enemy.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Particles2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprite/Cactus.png" type="Texture" id=3]
+[ext_resource path="res://sprite/fACE.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 30, 60 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 30, 0, 30, 60 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 60, 0, 30, 60 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 90, 0, 30, 60 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 60, 30, 60 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 30, 60, 30, 60 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 60, 60, 30, 60 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 90, 60, 30, 60 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=13]
+radius = 10.5
+
+[node name="Area2D" type="Area2D" groups=["enemy"]]
+script = ExtResource( 1 )
+speed = 1.5
+does_move = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "New Anim"
+frame = 5
+speed_scale = 0.75
+playing = true
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, -2.5 )
+shape = SubResource( 13 )
+
+[node name="Particles2D" parent="." instance=ExtResource( 2 )]
+lifetime = 1.0
+
+[connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

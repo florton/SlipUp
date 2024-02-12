@@ -18,7 +18,6 @@ func allowOldSaves():
 	var blank_save = ResourceLoader.load(("res://customres/blank_save.tres"))
 	var save_copy = blank_save.duplicate()
 	for prop1 in blank_save.get_property_list():
-		print(prop1.name, typeof(save_copy.get(prop1.name)))
 		if Global.savedata.get(prop1.name):
 			if typeof(save_copy.get(prop1.name)) == 17:
 				var character_copy = save_copy.get(prop1.name).duplicate()

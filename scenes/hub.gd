@@ -13,6 +13,7 @@ var door1 = false
 var door2 = false
 var hubSide = 0
 var pb
+var elevator = false
 
 var highScore = 0
 var totalCoins = 0
@@ -38,7 +39,7 @@ func _ready():
 	if !Global.savedata.ninjaunlocked:
 		ninjaframe.queue_free()
 	scoreLabel.text ="highest lvl"+str(Global.savedata.highscore )
-	coinsLabel.text = "coins"+str(Global.savedata.coins )
+	coinsLabel.text = str(Global.savedata.coins) + " coins"
 	pbFrame.frame = int(Global.savedata.highscoresetter)
 	for child in get_children():
 		if child is KinematicBody2D:
@@ -52,7 +53,7 @@ func _process(delta):
 		if child is KinematicBody2D:
 			if child.global_position.y>=620:
 				child.global_position.y=300
-	if Input.is_action_pressed("up"):
+	if Input.is_action_just_pressed("up"):
 		if door1:
 			door1 = false
 			get_tree().change_scene("res://scenes/tower.tscn")
@@ -62,11 +63,12 @@ func _process(delta):
 		if pb:
 			var textforpb="current record   "+str(Global.savedata.highscore)
 			$pb_frame/dailoge._display_text(textforpb,.1)
-			pass
+		if elevator:
+			$BrokenAnimation.play("broken")
 
 func _on_Area2D_body_entered(body,name):
 	if body.is_in_group("player"):
-		body.velocity.x=0
+		body.velocity.x*=0.33
 		body.find_node("uprompt").visible=true
 		if name == "door1":
 			door1=true
@@ -100,7 +102,6 @@ func _on_door4_body_entered(body):
 func _on_door5_body_entered(body):
 	if body.is_in_group("player"):
 		get_tree().change_scene("res://scenes/outside.tscn")
-	pass # Replace with function body.
 
 
 func _on_pb__body_entered(body):
@@ -108,11 +109,19 @@ func _on_pb__body_entered(body):
 		body.velocity.x*=0.33
 		body.find_node("uprompt").visible=true
 		pb=true
-	pass # Replace with function body.
 
 
 func _on_pb__body_exited(body):
 	if body.is_in_group("player"):
 		pb=false
 		body.find_node("uprompt").visible=false
-		pass # Replace with function body.
+
+
+func _on_Elevator_body_entered(body):
+	if body.is_in_group("player"):
+		elevator = true
+
+
+func _on_Elevator_body_exited(body):
+	if body.is_in_group("player"):
+		elevator = false

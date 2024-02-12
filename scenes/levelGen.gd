@@ -2,7 +2,8 @@ extends TileMap
 
 onready var Cactus = preload("res://scenes/cactus.tscn")
 onready var Spider = preload("res://scenes/spider.tscn")
-onready var FlyingCactus = preload("res://scenes/flyingCactus.tscn")
+onready var StuckCactus = preload("res://scenes/StuckCactus.tscn")
+onready var Face = preload("res://scenes/FloatingFace.tscn")
 onready var EyeBird = preload("res://scenes/eyebird.tscn")
 onready var BonusFly = preload("res://scenes/bonusfly.tscn")
 onready var BonusWalk = preload("res://scenes/bonuswalk.tscn")
@@ -16,7 +17,7 @@ var y_end = -2000.0
 #var y_end = -100.0
 
 var x_start = 2
-var x_end = 20
+var x_end = 19
 
 var floor_coords = {}
 
@@ -34,7 +35,9 @@ func floorGen(gap, spawnEnemies):
 			floorStart = 0
 		var coordArray = []
 		var worldCoordArray = []
+#		if int(progress * 1000) % 100 == 0 && progress < 1:
 		if int(progress * 1000) % 100 == 0:
+			print(progress)
 			var newcp=checkpoint.instance()
 			newcp.global_position = map_to_world(Vector2(x_end+10,y - 1))
 			newcp.connect("body_entered", get_parent(), "_on_Checkpoint_body_entered")
@@ -54,7 +57,7 @@ func floorGen(gap, spawnEnemies):
 	
 func loadEntities(coordArray, y):
 	var progress =(y / y_end)
-	var enemyChance = 0.015 + (progress / 10)
+	var enemyChance = 0.03 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):
@@ -80,10 +83,12 @@ func flyingEnemyGen(positon, x_min, x_max, y):
 	var progress =(y / y_end)
 	var num = rng.randi_range(0, progress*10)
 	var enemy = null
-	if num < 3:
-		enemy = FlyingCactus.instance()
-	elif num < 6:
+	if num < 1:
+		return
+	elif num < 4:
 		enemy = EyeBird.instance()
+	elif num < 7:
+		enemy = Face.instance()
 	else:
 		enemy = BonusFly.instance()
 	add_child(enemy)
@@ -97,7 +102,10 @@ func walkingEnemyGen(positon, x_min, x_max, y):
 	var num = rng.randi_range(0, progress*10)
 	var enemy = null
 	if num < 3:
-		enemy = Cactus.instance()
+		if rng.randi_range(0, 1) > 0:
+			enemy = StuckCactus.instance()
+		else:
+			enemy = Cactus.instance()
 	elif num < 5:
 		enemy = Spider.instance()
 	else:

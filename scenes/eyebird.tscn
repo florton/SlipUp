@@ -47,6 +47,7 @@ extents = Vector2( 11.5, 12 )
 
 [node name="Area2D" type="Area2D" groups=["enemy"]]
 script = ExtResource( 3 )
+does_move = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
