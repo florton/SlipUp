@@ -26,7 +26,7 @@ func _ready():
 		state="well"
 		self.frame=0
 		pass
-	if i <88:
+	if i >88:
 		self.queue_free()
 	pass # Replace with function body.
 
