@@ -245,7 +245,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -192.558 ]
 }
-vertical_speed_modifier = 35
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.297302, 0 )
@@ -287,5 +286,6 @@ shape = SubResource( 8 )
 shape = SubResource( 9 )
 
 [node name="uprompt" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

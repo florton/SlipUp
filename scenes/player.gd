@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-export var move_speed := 3
-export var acc_speed := 2
-export var vertical_speed_modifier := 50
-export var gravity := 1199
+var move_speed := 3
+var acc_speed := 2
+var vertical_speed_modifier := 50
+var gravity := 1200
 onready var sprite = get_node("Sprite")
 onready var ap = get_node("Sprite/AnimationPlayer")
 var in_turnaround =false

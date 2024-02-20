@@ -102,7 +102,6 @@ editor_draw_drag_margin = true
 [node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 113.802, 517.732 )
 scale = Vector2( 0.7, 0.7 )
-gravity = 1000
 
 [node name="UI" type="CanvasLayer" parent="."]
 
