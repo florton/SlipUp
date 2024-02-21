@@ -81,7 +81,8 @@ func loadData():
 		totalCoins = int(values[1])
 func _ready():
 	rng.randomize()
-	loadDrink()
+	loadRandFrame($drink, 5)
+	loadRandFrame($pet, 12)
 	bargguystuff = phrases[rng.randi_range(0, len(phrases)-1)]
 	Global.savedata.coins 
 	if !Global.savedata.ninjaunlocked:
@@ -112,18 +113,9 @@ func _process(delta):
 			$dailoge._display_text(bargguystuff,.1)
 	pass
 
-func loadDrink():
+func loadRandFrame(node, num):
 	var i = abs(Global.rngseed.seed %100)
-	if i<20:
-		$drink.frame = 0
-	if i >20 and i<40:
-		$drink.frame = 1
-	if i  >40 and i <60:
-		$drink.frame = 2
-	if i  >60 and i <80:
-		$drink.frame = 3
-	else:
-		$drink.frame = 4
+	node.frame = i % num
 		
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):

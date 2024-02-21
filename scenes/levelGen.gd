@@ -16,7 +16,7 @@ var y_end = -2000.0
 #var y_end = -500.0
 #var y_end = -100.0
 
-var x_start = 2
+var x_start = 1
 var x_end = 19
 
 var floor_coords = {}
@@ -57,7 +57,7 @@ func floorGen(gap, spawnEnemies):
 	
 func loadEntities(coordArray, y):
 	var progress =(y / y_end)
-	var enemyChance = 0.03 + (progress / 10)
+	var enemyChance = 0.025 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):

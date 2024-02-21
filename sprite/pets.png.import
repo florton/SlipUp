@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/up prompt.png-6b8269f61980cae0b5ac5b04106f4cc2.stex"
+path="res://.import/pets.png-bee4eaf2eac29ca290cedc5e5297466b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/up prompt.png"
-dest_files=[ "res://.import/up prompt.png-6b8269f61980cae0b5ac5b04106f4cc2.stex" ]
+source_file="res://sprite/pets.png"
+dest_files=[ "res://.import/pets.png-bee4eaf2eac29ca290cedc5e5297466b.stex" ]
 
 [params]
 

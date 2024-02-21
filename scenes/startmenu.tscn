@@ -96,17 +96,19 @@ autoplay = true
 position = Vector2( -59.8388, -3.75684 )
 scale = Vector2( 3.4, 3.4 )
 frames = SubResource( 15 )
-frame = 6
+frame = 13
 playing = true
 offset = Vector2( 160.156, 89.5595 )
 
 [node name="New" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="New"]
 position = Vector2( 850, 417.5 )
 shape = SubResource( 16 )
 
 [node name="continue" type="Area2D" parent="."]
+visible = false
 position = Vector2( 1.68176, -57.1809 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="continue"]
@@ -114,6 +116,7 @@ position = Vector2( 270.622, 281.275 )
 shape = SubResource( 16 )
 
 [node name="Quit" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quit"]
 position = Vector2( 835, 474.5 )
