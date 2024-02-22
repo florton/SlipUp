@@ -87,7 +87,7 @@ func _ready():
 	Global.savedata.coins 
 	if !Global.savedata.ninjaunlocked:
 		var ninja = get_child(4)
-		ninja.visible = true
+		ninja.queue_free()
 		pass 
 	if Global.savedata.character == "ninja":
 		var ninja = Ninja.instance()
@@ -110,6 +110,7 @@ func _process(delta):
 			Global.save_data()
 			pass
 		if barmanbox:
+			$bmanSprite/AnimationPlayer.play("fade in")
 			$dailoge._display_text(bargguystuff,.1)
 	pass
 
@@ -131,14 +132,18 @@ func _on_Area2D_body_exited(body):
 func _on_ninjabox_body_entered(body):
 	if body.is_in_group("player") && !Global.savedata.ninjaunlocked:
 		$dailoge._display_text("For ten coins I'll join you.",.1)
+		$ninja/AnimatedSprite/AnimationPlayer.play("lodin")
 		ninjabox = true
+		body.velocity.x*=0
 		pass
 	pass # Replace with function body.
 
 
 func _on_ninjabox_body_exited(body):
 	if body.is_in_group("player"):
+		body.velocity.x*=0
 		ninjabox = false
+		$ninja/AnimatedSprite/AnimationPlayer.play("lodout")
 	pass # Replace with function body.
 
 
