@@ -42,7 +42,7 @@ func _on_newgamebutton_pressed():
 	Global.currentsave+=1 
 	Global.save_data()
 # Load opening here
-	get_tree().change_scene_to(load('res://scenes/hub.tscn'))
+	get_tree().change_scene_to(load('res://scenes/openigg.tscn'))
 	pass # Replace with function body.
 
 

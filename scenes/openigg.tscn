@@ -1,26 +1,459 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://themes/sliptheme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/openigg.gd" type="Script" id=2]
+[ext_resource path="res://sprite/building.png" type="Texture" id=3]
+[ext_resource path="res://sprite/flashback.png" type="Texture" id=4]
+[ext_resource path="res://sprite/carop.png" type="Texture" id=5]
+[ext_resource path="res://sprite/baroon.png" type="Texture" id=6]
+[ext_resource path="res://sprite/baroonnobg.png" type="Texture" id=7]
+[ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 192.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/carSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000208262, 4.89165, 182.443, 188.254 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.00032503, 4.88652, 7.81393, 182.79, 186.866 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.000482835, 7.02906, 12.2609 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("AnimationPlayer/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "text" ),
+"times": PoolRealArray( 11.8162 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimationPlayer/flashbacksprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 15.0956, 15.3177, 15.3362 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimationPlayer/flashbacksprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 15.6138, 15.7938, 29.2119, 30.6587 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 541.938, 770.624 ), Vector2( 539.268, 199.312 ), Vector2( 539.268, 199.312 ), Vector2( 539.109, 1400 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimationPlayer/bbaonSprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 56.807, 59.2609, 130.116, 133.473 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("AnimationPlayer/buildingSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.17346, 66.4752, 144.405 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("AnimationPlayer/buildingSprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 62.2055, 66.4752 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 171.588, 556.221 ), Vector2( 511.701, 287.46 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("AnimationPlayer/buildingSprite:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 62.2055, 66.4752 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.0217137, 0.0217137 ), Vector2( 2.72472, 2.72472 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("AnimationPlayer/Sprite:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 84.9186, 86.7344, 140.41, 143.451 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("AnimationPlayer/Sprite:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 87.2772, 93.3628, 95.3259, 101.411, 103.782, 109.868, 111.831, 117.917, 119.741, 125.826, 127.789, 133.875 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4 ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 188.774 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "changescene"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/carSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/Panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer/flashbacksprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimationPlayer/flashbacksprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 541.938, 770.624 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimationPlayer/bbaonSprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimationPlayer/buildingSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("AnimationPlayer/buildingSprite:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 511.701, 287.46 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("AnimationPlayer/buildingSprite:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.72472, 2.72472 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("AnimationPlayer/Sprite:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("AnimationPlayer/Sprite:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:lines_skipped")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "text"
+length = 180.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:lines_skipped")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 179.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 65 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 1.5
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.708333, 1.41667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 6, 12 ]
+}
 
 [node name="openigg" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Panel" type="Panel" parent="."]
-margin_right = 1019.0
-margin_bottom = 592.0
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 26.2788, 15.7295 )
+color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 
-[node name="Label" type="Label" parent="Panel"]
-anchor_right = 0.02
-margin_left = 163.88
-margin_top = 114.491
-margin_right = 385.5
-margin_bottom = 391.491
-text = "label explaininggg story"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationPlayer"]
+anims/RESET = SubResource( 3 )
+anims/text = SubResource( 4 )
+
+[node name="carSprite" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 537.214, 193.842 )
+scale = Vector2( 1.53975, 1.53341 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationPlayer/carSprite"]
+autoplay = "idle"
+anims/RESET = SubResource( 5 )
+anims/idle = SubResource( 6 )
+
+[node name="flashbacksprite" type="Sprite" parent="AnimationPlayer"]
+visible = false
+position = Vector2( 541.938, 770.624 )
+texture = ExtResource( 4 )
+
+[node name="bbaonSprite" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 538.103, 210.252 )
+scale = Vector2( 1.56694, 1.56694 )
+texture = ExtResource( 6 )
+hframes = 3
+vframes = 2
+
+[node name="buildingSprite" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 511.701, 287.46 )
+scale = Vector2( 2.72472, 2.72472 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 630.28, 176.003 )
+scale = Vector2( 1.9363, 1.9363 )
+texture = ExtResource( 7 )
+hframes = 3
+vframes = 2
+
+[node name="Panel" type="Panel" parent="AnimationPlayer"]
+margin_left = 150.97
+margin_top = 360.811
+margin_right = 746.97
+margin_bottom = 858.811
+rect_scale = Vector2( 1.36829, 0.404578 )
+theme = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="AnimationPlayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 170.595
+margin_top = -189.951
+margin_right = 97.5946
+margin_bottom = 5610.05
+rect_scale = Vector2( 0.816607, 0.906268 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "\"who am i you ask guy manly, i traveled the world in search of fame and fortune as an oil wersler. 
+I rose to the top ranks of the oil wrestling world. The oWW for short. I beat many a man and many a womens.i loved many a man and many a womens.thru all these rumblings thru the urban jungles and their dark seedy undergrounds wrestlin . Considering the many sanctions and regulations that pushed the oww and its affiliates down there.
+I came into contact with many a myth and legends. Most false mind you but one stood out in both frequency and validity.
+They spoke of a man. It goes something like,there was a rich baron who was just coming over to the new world. Once here deep in the mountains of somewhere not too far from here, he began constructing a grand monolith. It was to be a great tower the likes of which the world has never seen. This babble would have one special feature. ALL THE Floors were SLiPERy. Once it was completed the man child with a quite frankly weird dream locked himself up at the top and just before that. He proclaimed “ I am going to the top of the tower today and I'm taking my greatest treasure. If anyone dares to climb the tower and join me the treasure is yours. It's a very nice treasure, it's cool i'm told. I asked my son the other day and he was like yeah very cool. And for those wondering no it is not the friends i made along the way. 
+They all died
+ So
+ you can debunk that theory 
+And for those wondering 
+Not all of them died in the construction of the the tower. Yes probably far too many did die in its construction if I'm being quite honest.
+But nevertheless come and get my treasure”
+ This is kinda a paraphrase of what he said due to not many people were in the room and they were not sure who he was talking to. He also could have me doing that weird thing where he just kinda thinks out loud really loud which i guess is better the really quietly, I don’t know
+Sooo.
+Anyways I found the location of the tower and with my awesome oil wrestling skills I will be able to handle the slippery floors and get that treasure. Even Though it's not the friends I make along the way which not gonna lie would be nice.
+I'm a lonely guy “
+"
+align = 1
+autowrap = true
+max_lines_visible = 2

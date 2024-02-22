@@ -1,6 +1,6 @@
 extends Node2D
 
-var openingtext="who am i you ask guy firsty, i travel the world in shearch "
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -10,7 +10,10 @@ var openingtext="who am i you ask guy firsty, i travel the world in shearch "
 func _ready():
 	pass # Replace with function body.
 
-
+func changescene():
+	get_tree().change_scene("res://scenes/hub.tscn")
+	pass
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
