@@ -253,7 +253,7 @@ z_index = 1
 texture = ExtResource( 2 )
 hframes = 3
 vframes = 7
-frame = 3
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "stand"
@@ -269,7 +269,8 @@ anims/stand = ExtResource( 5 )
 anims/jump = SubResource( 7 )
 
 [node name="Hat" type="Sprite" parent="Sprite"]
-position = Vector2( 11.37, -20.8597 )
+position = Vector2( -25.7977, -24.6394 )
+rotation = -0.785398
 scale = Vector2( -1, 1 )
 texture = ExtResource( 3 )
 hframes = 15

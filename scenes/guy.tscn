@@ -73,7 +73,6 @@ shape = SubResource( 1 )
 texture = ExtResource( 5 )
 hframes = 6
 vframes = 3
-frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/STAND = ExtResource( 2 )

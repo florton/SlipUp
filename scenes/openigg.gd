@@ -17,3 +17,9 @@ func changescene():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func runtext():
+	for s in 26:
+		$AnimationPlayer/Label.lines_skipped+=3
+		yield(get_tree().create_timer(7),"timeout")
+		pass
+	pass
