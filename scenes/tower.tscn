@@ -184,4 +184,4 @@ align = 1
 valign = 2
 
 [node name="Node2D2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 473.045, 520.667 )
+position = Vector2( 212.034, 530.976 )

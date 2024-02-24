@@ -268,7 +268,6 @@ texture = ExtResource( 4 )
 hframes = 2
 
 [node name="bman" type="Area2D" parent="barman"]
-scale = Vector2( 1, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barman/bman"]
 shape = SubResource( 1 )
