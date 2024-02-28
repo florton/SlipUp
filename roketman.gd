@@ -15,22 +15,30 @@ func _ready():
 func _process(delta):
 	if is_on_floor():
 		state=0
+		if $Sprite.flip_v:
+			$Sprite.flip_v=false
 		if state==0 and Input.is_action_pressed("move_left") or state==0 and Input.is_action_pressed("move_right"):
 			state=1
-			$Path2D/PathFollow2D/Sprite.animation="running"
+			$Sprite.animation="running"
 			pass
 		if state==0:
-			$Path2D/PathFollow2D/Sprite.animation="default"
+			$Sprite.animation="default"
 		pass
 		
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor() and state<2:
 			state=2
-			$Path2D/PathFollow2D/Sprite/AnimationPlayer.play("jsquat")
-		else:
+			$Sprite/AnimationPlayer.play("jsquat")
+		if state!=3 and !is_on_floor():
+			state=3
+			$Sprite.animation="dive"
 			velocity=Vector2.ZERO
-			$Path2D/PathFollow2D.offset+=1
+			velocity.y-=500
 			
 			
+	if state==3:
+		velocity.x=0
+		if velocity.y>0:
+			$Sprite.flip_v=true
 		
 	pass

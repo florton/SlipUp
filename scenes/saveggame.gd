@@ -10,6 +10,7 @@ export var highscoresetter =1
 export var checkpoint=0
 export (Resource) var guy_data
 export (Resource) var ninja_data
+export (Resource) var rocket_data
 export (Resource) var purse
 
 

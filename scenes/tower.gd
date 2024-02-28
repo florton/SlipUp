@@ -1,6 +1,7 @@
 extends Node2D
 
 const Ninja = preload("res://scenes/ninja.tscn")
+const Rman = preload("res://scenes/rocketman.tscn")
 
 onready var player = get_node("KinematicBody2D")
 onready var healthSprite = get_node("UI/HP")
@@ -60,6 +61,19 @@ func _ready():
 		player.move_speed+=Global.savedata.ninja_data.speed
 		player.jump_speed+=Global.savedata.ninja_data.jump_str*50
 		add_child(ninja)
+		
+
+	if Global.savedata.character == "rman":
+		var rman = Rman.instance()
+		rman.global_position = player.global_position
+		rman.scale = player.scale
+		player.queue_free()
+		player = rman
+		player.move_speed+=Global.savedata.rocket_data.speed
+		player.jump_speed+=Global.savedata.rocket_data.jump_str*50
+		add_child(rman)
+
+
 	player.connect("dead", self, "_on_KinematicBody2D_dead")
 	player.connect("get_coin", self, "_on_KinematicBody2D_get_coin")
 	if Global.savedata.character=="guy":

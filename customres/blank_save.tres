@@ -15,7 +15,7 @@ hat = 14
 
 [resource]
 script = ExtResource( 1 )
-character = "guy"
+character = "rman"
 ninjaunlocked = false
 coins = 23
 highscore = 0
@@ -24,4 +24,5 @@ highscoresetter = 1
 checkpoint = 0
 guy_data = ExtResource( 2 )
 ninja_data = SubResource( 1 )
+rocket_data = ExtResource( 2 )
 purse = ExtResource( 3 )
