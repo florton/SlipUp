@@ -37,9 +37,10 @@ func get_hat():
 	$AnimationPlayer.play("hat")
 	if Global.savedata.character=="guy":
 		Global.savedata.guy_data.hat=hats
-		print(Global.savedata.guy_data.hat)
 	if Global.savedata.character=="ninja":
 		Global.savedata.ninja_data.hat=hats
+	if Global.savedata.character=="rman":
+		Global.savedata.rocket_data.hat=hats
 	emit_signal("ch")
 	
 	pass

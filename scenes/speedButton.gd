@@ -36,8 +36,16 @@ func set_cost():
 			$Label.text = "speed maxxed"
 			$Label/costLabel.text=""
 		$Sprite.frame =Global.savedata.ninja_data.speed
+	if Global.savedata.character=="rman":
+		var lvl = Global.savedata.rocket_data.speed+1
+		cost = lvl*20
+		$Label/costLabel.text="+"+str(lvl)+"\n"+str(cost)
+		if cost == 120:
+			self.disabled=true
+			$Label.text = "speed maxxed"
+			$Label/costLabel.text=""
+		$Sprite.frame =Global.savedata.rocket_data.speed
 	
-		
 		 
 
 func _on_Button_pressed():
@@ -47,6 +55,8 @@ func _on_Button_pressed():
 			Global.savedata.guy_data.speed+=1
 		if Global.savedata.character=="ninja":
 			Global.savedata.ninja_data.speed+=1
+		if Global.savedata.character=="rman":
+			Global.savedata.rocket_data.speed+=1
 		set_cost()
 		Global.save_data()
 	pass # Replace with function body.

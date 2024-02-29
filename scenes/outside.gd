@@ -2,6 +2,7 @@ extends Node2D
 
 const Guy= preload("res://scenes/guy.tscn") 
 const Ninja= preload("res://scenes/ninja.tscn") 
+const rman= preload("res://scenes/rocketman.tscn") 
 var vend=false
 var player
 # Declare member variables here. Examples:
@@ -20,6 +21,11 @@ func _ready():
 		var player=Ninja.instance()
 		player.global_position=Vector2(798,528)
 		self.add_child(player)
+	if Global.savedata.character=="rman":
+		var player=rman.instance()
+		player.global_position=Vector2(798,528)
+		self.add_child(player)
+		
 		pass
 	pass # Replace with function body.
 func _process(delta):

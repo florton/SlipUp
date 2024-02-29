@@ -292,7 +292,6 @@ shape = SubResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ninja"]
 position = Vector2( -110.124, -156.351 )
 frames = SubResource( 30 )
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ninja/AnimatedSprite"]
