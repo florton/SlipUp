@@ -273,7 +273,6 @@ hframes = 2
 shape = SubResource( 1 )
 
 [node name="ninja" type="Sprite" parent="."]
-visible = false
 position = Vector2( 714.69, 517.97 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
@@ -281,7 +280,6 @@ hframes = 3
 vframes = 6
 
 [node name="ninjabox" type="Area2D" parent="ninja"]
-visible = false
 position = Vector2( 0.76651, -1.61697 )
 scale = Vector2( 0.5, 0.5 )
 

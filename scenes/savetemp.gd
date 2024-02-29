@@ -5,6 +5,7 @@ class_name saveres
 export var save_file=1
 export var character="guy"
 export var ninjaunlocked=false 
+export var rmanunlocked=false 
 export var coins=0
 export var highscore=0
 export var highscoresetter=1

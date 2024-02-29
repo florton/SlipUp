@@ -1,11 +1,14 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://roketman.gd" type="Script" id=1]
 [ext_resource path="res://sprite/rockketman.png" type="Texture" id=2]
 [ext_resource path="res://scenes/uprompt.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprite/hats.png" type="Texture" id=4]
+[ext_resource path="res://scenes/rHat.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape2D" id=29]
+radius = 10.9445
+height = 34.3675
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -168,17 +171,18 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="CircleShape2D" id=32]
+
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.14577e-06, -1.90735e-06 )
+position = Vector2( -2.14577e-06, 0.333708 )
 shape = SubResource( 29 )
 
 [node name="Sprite" type="AnimatedSprite" parent="." groups=["player"]]
 position = Vector2( -2.14577e-06, -1.90735e-06 )
 frames = SubResource( 27 )
-frame = 1
 playing = true
 flip_h = true
 
@@ -190,6 +194,16 @@ anims/jsquat = SubResource( 31 )
 position = Vector2( 2.1691, -17.1861 )
 texture = ExtResource( 4 )
 hframes = 15
+frame = 14
+script = ExtResource( 5 )
 
 [node name="uprompt" parent="." instance=ExtResource( 3 )]
 visible = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( -1.83268, -3.31953 )
+shape = SubResource( 32 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

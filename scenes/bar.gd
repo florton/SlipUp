@@ -1,6 +1,7 @@
 extends Node2D
 
 const Ninja = preload("res://scenes/ninja.tscn")
+const Rman= preload("res://scenes/rocketman.tscn")
 
 onready var player = get_node("KinematicBody2D")
 onready var text = get_node("Text")
@@ -85,7 +86,7 @@ func _ready():
 	loadRandFrame($pet, 12)
 	bargguystuff = phrases[rng.randi_range(0, len(phrases)-1)]
 	Global.savedata.coins 
-	if !Global.savedata.ninjaunlocked:
+	if Global.savedata.ninjaunlocked:
 		var ninja = get_child(4)
 		ninja.queue_free()
 		pass 
@@ -97,7 +98,13 @@ func _ready():
 		player = ninja
 		get_parent().call_deferred("add_child", ninja)
 	
-
+	if Global.savedata.character == "rman":
+		var rman = Rman.instance()
+		rman.global_position = player.global_position
+		rman.scale = player.scale
+		player.queue_free()
+		player = rman
+		get_parent().call_deferred("add_child", rman)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("up"):

@@ -3,6 +3,7 @@ class_name saveggame
 
 export var character = "guy"
 export var ninjaunlocked = false
+export var rmanunlocked=false 
 export var coins = 0
 export var highscore = 0
 export var fpt = false

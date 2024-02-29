@@ -1,28 +1,20 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://scenes/saveggame.gd" type="Script" id=1]
 [ext_resource path="res://customres/char_data.tres" type="Resource" id=2]
 [ext_resource path="res://customres/pruse.tres" type="Resource" id=3]
-[ext_resource path="res://scenes/PlayerData.gd" type="Script" id=4]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 4 )
-speed = 0
-health = 3
-jump_str = 0
-characther = 1
-hat = 14
 
 [resource]
 script = ExtResource( 1 )
-character = "rman"
+character = "guy"
 ninjaunlocked = false
-coins = 23
+rmanunlocked = false
+coins = 0
 highscore = 0
 fpt = true
 highscoresetter = 1
 checkpoint = 0
 guy_data = ExtResource( 2 )
-ninja_data = SubResource( 1 )
+ninja_data = ExtResource( 2 )
 rocket_data = ExtResource( 2 )
 purse = ExtResource( 3 )

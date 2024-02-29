@@ -13,6 +13,13 @@ func _ready():
 		player.queue_free()
 		player = ninja
 		get_parent().call_deferred("add_child", ninja)
+	if Global.savedata.character == "rman":
+		var rman = Rman.instance()
+		rman.global_position =Vector2 (player.global_position.x,player.global_position.y-20)
+		player.queue_free()
+		player = rman
+		player.scale=Vector2 (1.3,1.3)
+		get_parent().call_deferred("add_child", rman)
 
 func _on_Guy_body_entered(body):
 	if body.is_in_group("player"):

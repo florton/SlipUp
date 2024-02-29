@@ -42,3 +42,11 @@ func _process(delta):
 			$Sprite.flip_v=true
 		
 	pass
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("enemy") && state==3:
+		area._throw_up()
+		pass
+		
+	pass # Replace with function body.
