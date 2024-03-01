@@ -38,7 +38,7 @@ func _ready():
 		Global.Music.play()
 	if !Global.savedata.ninjaunlocked:
 		ninjaframe.queue_free()
-	if !Global.savedata.ninjaunlocked:
+	if !Global.savedata.rmanunlocked:
 		$Select/rman.queue_free()
 	scoreLabel.text ="highest lvl"+str(Global.savedata.highscore )
 	coinsLabel.text = str(Global.savedata.coins) + " coins"

@@ -2,7 +2,8 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-const Guy= preload("res://scenes/guy.tscn") 
+const Guy= preload("res://scenes/guy.tscn")
+const Rman=preload("res://scenes/rocketman.tscn") 
 const Ninja= preload("res://scenes/ninja.tscn") 
 var player
 
@@ -18,7 +19,10 @@ func _ready():
 		var player=Ninja.instance()
 		player.global_position=Vector2(500,500)
 		self.add_child(player)
-
+	if Global.savedata.character=="rman":
+		var player=Rman.instance()
+		player.global_position=Vector2(500,500)
+		self.add_child(player)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

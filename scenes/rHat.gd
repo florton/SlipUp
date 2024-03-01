@@ -8,7 +8,7 @@ extends Sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.frame= Global.savedata.rman_data.hat
+	self.frame= Global.savedata.rocket_data.hat
 	pass # Replace with function body.
 
 
