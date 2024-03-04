@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 character = "rman"
-ninjaunlocked = true
+ninjaunlocked = false
 rmanunlocked = false
 coins = 0
 highscore = 0

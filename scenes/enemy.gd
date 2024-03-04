@@ -57,41 +57,50 @@ func _on_Area2D_area_entered(area):
 		_die()
 
 func _throw_up():
+	does_move=true
 	thrown=true
 	direction=0
 	ydirection=-5
 	
 func _throw_down():
+	
+	does_move=true
 	thrown=true
 	direction=0
 	ydirection=5
 
 func _throw_right():
+	does_move=true
 	thrown=true
 	direction=5
 	ydirection=0
 
 func _throw_left():
+	does_move=true
 	thrown=true
 	direction=-5
 	ydirection=0
 
 func _throw_upright():
+	does_move=true
 	thrown=true
 	direction=1
 	ydirection=-1
 
 func _throw_upleft():
+	does_move=true
 	thrown=true
 	direction=-1
 	ydirection=-1
 	
 func _throw_downright():
+	does_move=true
 	thrown=true
 	direction=1
 	ydirection=1
 	
 func _throw_downleft():
+	does_move=true
 	thrown=true
 	direction=-1
 	ydirection=1

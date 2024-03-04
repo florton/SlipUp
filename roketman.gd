@@ -46,7 +46,11 @@ func _process(delta):
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("enemy") && state==3:
-		area._throw_up()
+		if velocity.y<0:
+			area._throw_up()
+		else:
+			area._throw_down()
+			
 		pass
 		
 	pass # Replace with function body.

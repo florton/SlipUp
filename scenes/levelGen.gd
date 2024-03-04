@@ -5,6 +5,7 @@ onready var Spider = preload("res://scenes/spider.tscn")
 onready var StuckCactus = preload("res://scenes/StuckCactus.tscn")
 onready var Face = preload("res://scenes/FloatingFace.tscn")
 onready var EyeBird = preload("res://scenes/eyebird.tscn")
+onready var Waxer = preload("res://scenes/waxer.tscn")
 onready var BonusFly = preload("res://scenes/bonusfly.tscn")
 onready var BonusWalk = preload("res://scenes/bonuswalk.tscn")
 onready var checkpoint = preload("res://scenes/hole.tscn")
@@ -102,11 +103,15 @@ func walkingEnemyGen(positon, x_min, x_max, y):
 	var num = rng.randi_range(0, progress*10)
 	var enemy = null
 	if num < 3:
-		if rng.randi_range(0, 1) > 0:
+		if rng.randi_range(0, 3) < 2:
 			enemy = StuckCactus.instance()
-		else:
+		elif rng.randi_range(0, 3)<2:
 			enemy = Cactus.instance()
+		else:
+			enemy = Waxer.instance()
 	elif num < 5:
+#		if rng.randi_range(0, 1) > 0:
+#		else:
 		enemy = Spider.instance()
 	else:
 		enemy = BonusWalk.instance()
