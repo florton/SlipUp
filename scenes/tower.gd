@@ -9,7 +9,7 @@ onready var scoreLabel = get_node("UI/Score")
 onready var coinsLabel = get_node("UI/Coins")
 onready var cam = get_node("Camera2D")
 onready var pbar= get_node("pbbar")
-const camera_offset_y = 100
+const camera_offset_y = 80
 const death_offset_y = 250
 
 var playerStart = 525
@@ -81,7 +81,7 @@ func _ready():
 		player.jump_speed+=Global.savedata.guy_data.jump_str*50
 	if Global.checkpoint:
 		player.global_position=Global.checkpoint
-		player.global_position.x -= 50
+		player.global_position.x -= 75
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	healthSprite.frame = player.heath

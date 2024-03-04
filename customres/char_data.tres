@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-speed = 5
-health = 5
-jump_str = 5
+speed = 0
+health = 3
+jump_str = 0
 characther = 1
 hat = 14

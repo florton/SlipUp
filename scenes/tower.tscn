@@ -115,9 +115,6 @@ custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "score :100"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Coins" type="Label" parent="UI"]
 margin_left = 21.0
@@ -181,3 +178,6 @@ custom_colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
 text = "PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     PB     PB     "
 align = 1
 valign = 2
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2( 0, -2 )

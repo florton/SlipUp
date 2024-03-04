@@ -41,20 +41,20 @@ zoom = Vector2( 0.35, 0.35 )
 polygon = PoolVector2Array( 125.27, 255.786, 885.964, 245.191, 884.904, 628.717, 696.32, 620.241, 684.666, 506.878, 599.909, 511.116, 586.136, 527.008, 573.422, 511.116, 568.125, 445.43, 373.184, 450.727, 364.708, 623.419, 128.448, 634.014 )
 
 [node name="Elevator" parent="." instance=ExtResource( 5 )]
-position = Vector2( 395.76, 563.128 )
+position = Vector2( 600, 563 )
 
 [node name="Sprite" type="Sprite" parent="Elevator"]
-position = Vector2( 26.6968, 0 )
+position = Vector2( 9.99999, -5.99994 )
 texture = ExtResource( 6 )
 hframes = 6
 
 [node name="Sprite2" type="Sprite" parent="Elevator"]
 
 [node name="Hole" parent="." instance=ExtResource( 5 )]
-position = Vector2( 615.047, 564.963 )
+position = Vector2( 403, 565 )
 
 [node name="Sprite" type="Sprite" parent="Hole"]
-position = Vector2( 0, -4.672 )
+position = Vector2( 17, -5 )
 texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
