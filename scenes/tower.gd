@@ -9,7 +9,7 @@ onready var scoreLabel = get_node("UI/Score")
 onready var coinsLabel = get_node("UI/Coins")
 onready var cam = get_node("Camera2D")
 onready var pbar= get_node("pbbar")
-const camera_offset_y = 50
+const camera_offset_y = 100
 const death_offset_y = 250
 
 var playerStart = 525

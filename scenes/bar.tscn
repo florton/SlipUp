@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/WallMap.tscn" type="PackedScene" id=2]
@@ -14,11 +14,23 @@
 [ext_resource path="res://sprite/pets.png" type="Texture" id=12]
 [ext_resource path="res://sprite/bartender.png" type="Texture" id=13]
 [ext_resource path="res://sprite/ninja dailog port.png" type="Texture" id=14]
+[ext_resource path="res://sprite/rockketman.png" type="Texture" id=15]
+[ext_resource path="res://sprite/Moose.png" type="Texture" id=16]
+[ext_resource path="res://sprite/Rmandailog.png" type="Texture" id=17]
+[ext_resource path="res://sprite/Moose port.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.2952, 69.4972 )
 
 [sub_resource type="CapsuleShape2D" id=2]
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 64, 80 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 80, 64, 80 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 14 )
@@ -34,6 +46,16 @@ region = Rect2( 120, 0, 60, 100 )
 
 [sub_resource type="SpriteFrames" id=30]
 animations = [ {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ) ],
+"loop": true,
+"name": "New Anim 1",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
 "loop": true,
 "name": "default",
@@ -86,6 +108,128 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=33]
+resource_name = "lodout"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.958977 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=46]
+
+[sub_resource type="Animation" id=38]
+resource_name = "New Anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "lodin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0130178, 0.985013 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=41]
+resource_name = "lodout"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.958977 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=42]
+resource_name = "New Anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=43]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=44]
+resource_name = "lodin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0130178, 0.985013 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=45]
 resource_name = "lodout"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -289,7 +433,9 @@ shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ninja"]
 position = Vector2( -110.124, -156.351 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 30 )
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ninja/AnimatedSprite"]
@@ -298,6 +444,66 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 31 )
 anims/lodin = SubResource( 32 )
 anims/lodout = SubResource( 33 )
+
+[node name="rman" type="Sprite" parent="."]
+position = Vector2( 714.69, 517.97 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+hframes = 4
+vframes = 6
+
+[node name="rmanbox" type="Area2D" parent="rman"]
+position = Vector2( 0.76651, -1.61697 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rman/rmanbox"]
+position = Vector2( 1, 0 )
+shape = SubResource( 46 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="rman"]
+position = Vector2( -110.124, -156.351 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 30 )
+animation = "New Anim"
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="rman/AnimatedSprite"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 38 )
+anims/RESET = SubResource( 39 )
+anims/lodin = SubResource( 40 )
+anims/lodout = SubResource( 41 )
+
+[node name="moose" type="Sprite" parent="."]
+visible = false
+position = Vector2( 714.69, 517.97 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 16 )
+hframes = 4
+vframes = 4
+
+[node name="ninjabox" type="Area2D" parent="moose"]
+position = Vector2( 0.76651, -1.61697 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="moose/ninjabox"]
+position = Vector2( 1, 0 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="moose"]
+position = Vector2( -110.124, -156.351 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 30 )
+animation = "New Anim 1"
+frame = 1
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moose/AnimatedSprite"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 42 )
+anims/RESET = SubResource( 43 )
+anims/lodin = SubResource( 44 )
+anims/lodout = SubResource( 45 )
 
 [node name="door" type="Sprite" parent="."]
 position = Vector2( 241.406, 457.325 )
@@ -392,5 +598,7 @@ frame = 9
 [connection signal="body_exited" from="barman/bman" to="." method="_on_bman_body_exited"]
 [connection signal="body_entered" from="ninja/ninjabox" to="." method="_on_ninjabox_body_entered"]
 [connection signal="body_exited" from="ninja/ninjabox" to="." method="_on_ninjabox_body_exited"]
+[connection signal="body_entered" from="rman/rmanbox" to="." method="_on_rmanbox_body_entered"]
+[connection signal="body_exited" from="rman/rmanbox" to="." method="_on_rmanbox_body_exited"]
 [connection signal="body_entered" from="door/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="door/Area2D" to="." method="_on_Area2D_body_exited"]

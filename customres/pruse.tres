@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-coins = 0
-lvl = 0
+coins = 23
+lvl = 7

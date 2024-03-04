@@ -87,9 +87,11 @@ func _ready():
 	bargguystuff = phrases[rng.randi_range(0, len(phrases)-1)]
 	Global.savedata.coins 
 	if Global.savedata.ninjaunlocked:
-		var ninja = get_child(4)
-		ninja.queue_free()
-		pass 
+		var ninja = $ninja
+		ninja.queue_free()	
+	if Global.savedata.rmanunlocked or !Global.savedata.ninjaunlocked:
+			var rman = $rman
+			rman.queue_free()     
 	if Global.savedata.character == "ninja":
 		var ninja = Ninja.instance()
 		ninja.global_position = player.global_position
@@ -162,4 +164,22 @@ func _on_bman_body_entered(body):
 
 func _on_bman_body_exited(body):
 	barmanbox=false
+	pass # Replace with function body.
+
+
+func _on_rmanbox_body_entered(body):
+	if body.is_in_group("player") && !Global.savedata.rmanunlocked:
+		$dailoge._display_text("For ten coins I'll join you.",.1)
+		$rman/AnimatedSprite/AnimationPlayer.play("lodin")
+		ninjabox = true
+		body.velocity.x*=0
+		pass
+	pass # Replace with function body.
+
+
+func _on_rmanbox_body_exited(body):
+	if body.is_in_group("player"):
+		body.velocity.x*=0
+		ninjabox = false
+		$rman/AnimatedSprite/AnimationPlayer.play("lodout")
 	pass # Replace with function body.

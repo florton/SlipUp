@@ -8,3 +8,4 @@ class_name purse
 
 export var coins=0
 export var lvl=0
+

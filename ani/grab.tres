@@ -30,14 +30,14 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../grabbox/grabbox:polygon")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.05, 0.133333 ),
+"times": PoolRealArray( 0, 0.068 ),
 "transitions": PoolRealArray( 0.0947326, 2.07053 ),
-"update": 1,
+"update": 0,
 "values": [ PoolVector2Array( 3, 6.5, 15.25, 7, 12.25, 4.25, 5, 3.25 ), PoolVector2Array( -5.75, 34.25, 36.75, 31.75, 29.25, -31, 2, -32.25, -19.75, -24.75, -15.75, 28.5 ) ]
 }
 tracks/3/type = "value"
@@ -47,7 +47,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = false
 tracks/3/keys = {
-"times": PoolRealArray( 0.05, 0.15 ),
+"times": PoolRealArray( 0.05, 0.183333 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
