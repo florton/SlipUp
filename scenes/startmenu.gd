@@ -14,6 +14,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
+	$newgamebutton.grab_focus()
+	
 #	Global.load_data("res://customres/save1.tres")
 #	var s1 = "user://customres/save1.tres"
 #	var loaddata = Global.load_data(s1)

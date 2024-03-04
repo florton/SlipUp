@@ -17,6 +17,7 @@ func _ready():
 			var button= savebutton.instance()
 			button.set_data(save,c)
 			$ScrollContainer/VBoxContainer.add_child(button)
+			button.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
