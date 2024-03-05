@@ -24,6 +24,6 @@ func changescene():
 func runtext():
 	for s in 26:
 		$AnimationPlayer/Label.lines_skipped+=3
-		yield(get_tree().create_timer(7),"timeout")
+		yield(get_tree().create_timer(6),"timeout")
 		pass
 	pass

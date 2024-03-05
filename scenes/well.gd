@@ -11,6 +11,9 @@ var inwell= false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$WellPanel/WellButton.disabled=true
+	$WellPanel/WellButton.visible=false
+					
 	var i = abs(Global.rngseed.seed %100)
 	
 	if i<25:

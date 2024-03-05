@@ -96,7 +96,6 @@ autoplay = true
 position = Vector2( -59.8388, -3.75684 )
 scale = Vector2( 3.4, 3.4 )
 frames = SubResource( 15 )
-frame = 5
 playing = true
 offset = Vector2( 160.156, 89.5595 )
 
