@@ -96,6 +96,7 @@ autoplay = true
 position = Vector2( -59.8388, -3.75684 )
 scale = Vector2( 3.4, 3.4 )
 frames = SubResource( 15 )
+frame = 7
 playing = true
 offset = Vector2( 160.156, 89.5595 )
 
@@ -136,10 +137,10 @@ __meta__ = {
 }
 
 [node name="newgamebutton" type="Button" parent="."]
-margin_left = 720.464
-margin_top = 386.393
-margin_right = 970.464
-margin_bottom = 457.393
+margin_left = 698.251
+margin_top = 374.227
+margin_right = 958.251
+margin_bottom = 437.227
 focus_neighbour_top = NodePath("../countbutton")
 focus_neighbour_bottom = NodePath("../quitbutton")
 theme = ExtResource( 4 )
@@ -196,10 +197,10 @@ __meta__ = {
 }
 
 [node name="quitbutton" type="Button" parent="."]
-margin_left = 726.0
-margin_top = 456.0
-margin_right = 976.0
-margin_bottom = 527.0
+margin_left = 736.204
+margin_top = 446.53
+margin_right = 923.204
+margin_bottom = 509.53
 focus_neighbour_top = NodePath("../newgamebutton")
 focus_neighbour_bottom = NodePath("../countbutton")
 theme = ExtResource( 4 )
