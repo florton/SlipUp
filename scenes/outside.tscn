@@ -706,24 +706,18 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="Vend"]
 visible = false
-margin_left = -62.001
-margin_top = 89.6074
-margin_right = 456.999
-margin_bottom = 455.607
-rect_scale = Vector2( 0.2, 0.05 )
+margin_left = 393.0
+margin_top = -394.0
+margin_right = 912.0
+margin_bottom = -28.0004
+rect_scale = Vector2( -1, 1 )
 theme = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="Vend/Panel"]
 margin_left = 128.0
 margin_top = 3.0
 margin_right = 396.0
 margin_bottom = 66.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Vend/Panel/Panel"]
 anchor_right = 0.077
@@ -741,6 +735,8 @@ margin_left = 17.0
 margin_top = 90.0
 margin_right = 492.0
 margin_bottom = 214.0
+focus_neighbour_top = NodePath("../Button3")
+focus_neighbour_bottom = NodePath("../Button2")
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -779,6 +775,8 @@ margin_left = 18.0
 margin_top = 219.0
 margin_right = 493.0
 margin_bottom = 338.0
+focus_neighbour_top = NodePath("../Button")
+focus_neighbour_bottom = NodePath("../Button3")
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -815,6 +813,15 @@ margin_right = 127.324
 margin_bottom = 67.7841
 text = "coins"
 script = ExtResource( 11 )
+
+[node name="Button3" type="Button" parent="Vend/Panel"]
+margin_left = 482.601
+margin_top = 333.301
+margin_right = 522.601
+margin_bottom = 379.301
+focus_neighbour_top = NodePath("../Button2")
+focus_neighbour_bottom = NodePath("../Button")
+text = "X"
 
 [node name="Area2D" type="Area2D" parent="Vend"]
 
@@ -868,7 +875,6 @@ position = Vector2( 10.6908, 31.1815 )
 shape = SubResource( 2 )
 
 [node name="WellPanel" type="Panel" parent="well"]
-visible = false
 margin_left = 50.6937
 margin_top = -68.3425
 margin_right = 176.694
@@ -894,16 +900,24 @@ __meta__ = {
 }
 
 [node name="WellButton" type="Button" parent="well/WellPanel"]
-margin_left = 13.5003
-margin_top = 90.8469
-margin_right = 118.041
-margin_bottom = 134.847
+margin_left = 23.3073
+margin_top = 71.0878
+margin_right = 127.848
+margin_bottom = 115.088
 rect_scale = Vector2( 0.733, 0.801 )
 theme = ExtResource( 8 )
 custom_fonts/font = SubResource( 4 )
 action_mode = 0
 keep_pressed_outside = true
 text = "sure"
+
+[node name="xButton" type="Button" parent="well/WellPanel"]
+margin_left = 34.939
+margin_top = 107.156
+margin_right = 147.479
+margin_bottom = 153.156
+rect_scale = Vector2( 0.5, 0.5 )
+text = "nope"
 
 [node name="water" type="Particles2D" parent="well"]
 position = Vector2( -0.599274, -2.99663 )
@@ -1007,10 +1021,12 @@ anims/RESET = SubResource( 15 )
 
 [connection signal="pressed" from="Vend/Panel/Button" to="Vend/Panel/Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Vend/Panel/Button2" to="Vend/Panel/Button2" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Vend/Panel/Button3" to="." method="_on_Button3_pressed"]
 [connection signal="body_entered" from="Vend/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Vend/Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="ch" from="well" to="." method="_on_well_ch"]
 [connection signal="body_entered" from="well/Areawell" to="well" method="_on_Areawell_body_entered"]
 [connection signal="body_exited" from="well/Areawell" to="well" method="_on_Areawell_body_exited"]
 [connection signal="pressed" from="well/WellPanel/WellButton" to="well" method="_on_Button_pressed"]
+[connection signal="pressed" from="well/WellPanel/xButton" to="well" method="_on_xButton_pressed"]
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]

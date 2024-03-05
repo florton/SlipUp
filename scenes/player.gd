@@ -31,9 +31,10 @@ func _physics_process(delta: float) -> void:
 	
 	if hitstun:
 		acceleration = 0
-	
+	if Global.paused:
+		acceleration=0
 	# set horizontal velocity
-	if !hitstun and ! moveDisabled and !in_turnaround:
+	if !hitstun and ! moveDisabled and !in_turnaround and !Global.paused:
 		if Input.is_action_pressed("move_right"):
 			
 			if velocity.x <=-200 :

@@ -5,7 +5,7 @@ extends Sprite
 signal ch
 var state = ""
 var wellmax =0
-
+var inwell= false
 # var b = "text"
 
 
@@ -53,19 +53,21 @@ func _on_Areawell_body_entered(body):
 	if body.is_in_group("player"):
 		var uprompt=body.find_node("uprompt")
 		uprompt.visible=true
-		body.velocity.x=0
-		if state=="well":
-			$AnimationPlayer.play("popin")
-			$WellPanel/WellLabel.text="throw coin?"
-			if wellmax<=0 :
-				$WellPanel/WellLabel.text="no more coins for now, thank you"
-				$WellPanel/WellButton.disabled=true
-				$WellPanel/WellButton.visible=false
-			if !Global.savedata.coins>0:
-				$WellPanel/WellLabel.text="no coins to throw"
-				$WellPanel/WellButton.disabled=true
-				$WellPanel/WellButton.visible=false
-		
+		if Input.is_action_just_pressed("up"):
+			body.velocity.x=0
+			Global.paused=true
+			if state=="well":
+				$AnimationPlayer.play("popin")
+				$WellPanel/WellLabel.text="throw coin?"
+				if wellmax<=0 :
+					$WellPanel/WellLabel.text="no more coins for now, thank you"
+					$WellPanel/WellButton.disabled=true
+					$WellPanel/WellButton.visible=false
+				if !Global.savedata.coins>0:
+					$WellPanel/WellLabel.text="no coins to throw"
+					$WellPanel/WellButton.disabled=true
+					$WellPanel/WellButton.visible=false
+			
 		if state=="grave":
 			$AnimationPlayer.play("popin")
 			$WellPanel/WellLabel.text="pay respest"
@@ -139,4 +141,10 @@ func _on_Areawell_body_exited(body):
 		var uprompt=body.find_node("uprompt")
 		uprompt.visible=false
 		$AnimationPlayer.play("popout")
+	pass # Replace with function body.
+
+
+func _on_xButton_pressed():
+	Global.paused=false
+	$AnimationPlayer.play("popout")
 	pass # Replace with function body.

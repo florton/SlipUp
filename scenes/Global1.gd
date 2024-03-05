@@ -9,7 +9,7 @@ var playtime  = 0
 var rngseed=RandomNumberGenerator.new()
 var backwards = false
 var checkpoint = null
-
+var paused=false
 # var b = "text"
 #var saveresource = get_child(0)
 export (Array,Resource) var saves

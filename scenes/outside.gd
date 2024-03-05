@@ -34,7 +34,8 @@ func _process(delta):
 		if vend:
 			$Vend/Panel.visible=true
 			$AnimationPlayer.play("store popin")
-			$KinematicBody2D.velocity.x =0
+			Global.paused=true
+			$Vend/Panel/Button.grab_focus()
 			#player.velocity=Vector2.ZERO
 			
 			pass
@@ -65,7 +66,7 @@ func _on_Area2D_body_exited(body):
 		$KinematicBody2D/uprompt.visible=false
 		vend =false
 		#$Sprite/Panel.visible=false
-		$AnimationPlayer.play("store popout")
+		#$AnimationPlayer.play("store popout")
 	pass # Replace with function body.
 
 
@@ -81,4 +82,18 @@ func _on_door_body_entered(body):
 
 func _on_well_ch():
 	$KinematicBody2D.change_hat()
+	pass # Replace with function body.
+
+
+func _on_Button3_pressed():
+	$AnimationPlayer.play("store popout")
+	Global.paused=false
+	
+	pass # Replace with function body.
+
+
+
+
+
+func _on_xButton_pressed():
 	pass # Replace with function body.
