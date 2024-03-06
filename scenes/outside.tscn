@@ -875,6 +875,7 @@ position = Vector2( 10.6908, 31.1815 )
 shape = SubResource( 2 )
 
 [node name="WellPanel" type="Panel" parent="well"]
+visible = false
 margin_left = 50.6937
 margin_top = -68.3425
 margin_right = 176.694
@@ -900,23 +901,34 @@ __meta__ = {
 }
 
 [node name="WellButton" type="Button" parent="well/WellPanel"]
-margin_left = 23.3073
-margin_top = 71.0878
-margin_right = 127.848
-margin_bottom = 115.088
-rect_scale = Vector2( 0.733, 0.801 )
+margin_left = -13.9687
+margin_top = 74.2871
+margin_right = 147.031
+margin_bottom = 125.287
+rect_scale = Vector2( 0.5, 0.5 )
+focus_neighbour_left = NodePath("../xButton")
+focus_neighbour_top = NodePath("../xButton")
+focus_neighbour_right = NodePath("../xButton")
+focus_neighbour_bottom = NodePath("../xButton")
+focus_next = NodePath("../xButton")
+focus_previous = NodePath("../xButton")
 theme = ExtResource( 8 )
 custom_fonts/font = SubResource( 4 )
 action_mode = 0
-keep_pressed_outside = true
 text = "sure"
 
 [node name="xButton" type="Button" parent="well/WellPanel"]
-margin_left = 34.939
-margin_top = 107.156
-margin_right = 147.479
-margin_bottom = 153.156
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = 21.2467
+margin_top = 100.846
+margin_right = 198.247
+margin_bottom = 163.846
+rect_scale = Vector2( 0.25, 0.25 )
+focus_neighbour_left = NodePath("../WellButton")
+focus_neighbour_top = NodePath("../WellButton")
+focus_neighbour_right = NodePath("../WellButton")
+focus_neighbour_bottom = NodePath("../WellButton")
+focus_next = NodePath("../WellButton")
+focus_previous = NodePath("../WellButton")
 text = "nope"
 
 [node name="water" type="Particles2D" parent="well"]

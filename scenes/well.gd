@@ -12,7 +12,7 @@ var inwell= false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$WellPanel/WellButton.disabled=true
-	$WellPanel/WellButton.visible=false
+	#$WellPanel/WellButton.visible=false
 					
 	var i = abs(Global.rngseed.seed %100)
 	
@@ -48,29 +48,22 @@ func get_hat():
 	
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if inwell and Input.is_action_just_pressed("up") and !Global.paused:
+		Global.paused=true
+		$WellPanel/xButton.grab_focus()
+		if state=="well":
+			$AnimationPlayer.play("popin")
 
-
-func _on_Areawell_body_entered(body):
-	if body.is_in_group("player"):
-		var uprompt=body.find_node("uprompt")
-		uprompt.visible=true
-		if Input.is_action_just_pressed("up"):
-			body.velocity.x=0
-			Global.paused=true
-			if state=="well":
-				$AnimationPlayer.play("popin")
-				$WellPanel/WellLabel.text="throw coin?"
-				if wellmax<=0 :
-					$WellPanel/WellLabel.text="no more coins for now, thank you"
-					$WellPanel/WellButton.disabled=true
-					$WellPanel/WellButton.visible=false
-				if !Global.savedata.coins>0:
-					$WellPanel/WellLabel.text="no coins to throw"
-					$WellPanel/WellButton.disabled=true
-					$WellPanel/WellButton.visible=false
-			
+			$WellPanel/WellLabel.text="throw coin?"
+			if wellmax<=0 :
+				$WellPanel/WellLabel.text="no more coins for now, thank you"
+				$WellPanel/WellButton.disabled=true
+				$WellPanel/WellButton.visible=false
+			if !Global.savedata.coins>0:
+				$WellPanel/WellLabel.text="no coins to throw"
+				$WellPanel/WellButton.disabled=true
+				$WellPanel/WellButton.visible=false
 		if state=="grave":
 			$AnimationPlayer.play("popin")
 			$WellPanel/WellLabel.text="pay respest"
@@ -79,7 +72,18 @@ func _on_Areawell_body_entered(body):
 			$AnimationPlayer.play("popin")
 			$WellPanel/WellLabel.text="say hi"
 			$WellPanel/WellButton.disabled=false
-			
+		
+		
+
+
+func _on_Areawell_body_entered(body):
+	if body.is_in_group("player"):
+		var uprompt=body.find_node("uprompt")
+		body.velocity.x=0
+		uprompt.visible=true
+		inwell=true
+	
+		
 	pass # Replace with function body.
 
 
@@ -128,22 +132,24 @@ func _on_Button_pressed():
 		yield(get_tree().create_timer(1.5),"timeout")
 		$AnimationPlayer.play("nice swoop")
 		$AnimationPlayer/nice.text="Thanks, BUD!"
-
+		yield(get_tree().create_timer(1),"timeout")
+		$WellPanel.visible=true
 		
 	if state=="mushroom":
 		$AnimationPlayer.play("popout")
 		yield(get_tree().create_timer(1.5),"timeout")
 		$AnimationPlayer.play("nice swoop")
 		$AnimationPlayer/nice.text="hi there ;)!"
-
+		yield(get_tree().create_timer(1),"timeout")
+		$WellPanel.visible=true
 	pass # Replace with function body.
 
 
 func _on_Areawell_body_exited(body):
-	if body.is_in_group("player")and $WellPanel.visible:
-		var uprompt=body.find_node("uprompt")
-		uprompt.visible=false
-		$AnimationPlayer.play("popout")
+	#if body.is_in_group("player")and $WellPanel.visible:
+	#	var uprompt=body.find_node("uprompt")
+	#	uprompt.visible=false
+	#	$AnimationPlayer.play("popout")
 	pass # Replace with function body.
 
 
