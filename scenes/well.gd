@@ -51,7 +51,7 @@ func get_hat():
 func _process(delta):
 	if inwell and Input.is_action_just_pressed("up") and !Global.paused:
 		Global.paused=true
-		$WellPanel/xButton.grab_focus()
+
 		if state=="well":
 			$AnimationPlayer.play("popin")
 
@@ -82,7 +82,7 @@ func _on_Areawell_body_entered(body):
 		body.velocity.x=0
 		uprompt.visible=true
 		inwell=true
-	
+		$WellPanel/xButton.grab_focus()
 		
 	pass # Replace with function body.
 
@@ -140,8 +140,9 @@ func _on_Button_pressed():
 		yield(get_tree().create_timer(1.5),"timeout")
 		$AnimationPlayer.play("nice swoop")
 		$AnimationPlayer/nice.text="hi there ;)!"
-		yield(get_tree().create_timer(1),"timeout")
+		yield(get_tree().create_timer(3),"timeout")
 		$WellPanel.visible=true
+		$AnimationPlayer.play("popin")
 	pass # Replace with function body.
 
 

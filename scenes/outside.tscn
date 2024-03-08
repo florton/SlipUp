@@ -876,11 +876,11 @@ shape = SubResource( 2 )
 
 [node name="WellPanel" type="Panel" parent="well"]
 visible = false
-margin_left = 50.6937
-margin_top = -68.3425
-margin_right = 176.694
-margin_bottom = 21.6574
-rect_scale = Vector2( -0.864257, 0.815008 )
+margin_left = 17.9191
+margin_top = -4.23088
+margin_right = 143.919
+margin_bottom = 85.769
+rect_scale = Vector2( -0.342564, 0.104034 )
 theme = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
