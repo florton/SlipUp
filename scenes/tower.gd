@@ -43,6 +43,7 @@ var pbsettingrun=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.playMusic('tower')
 	cam.global_position.y = player.global_position.y - camera_offset_y
 	Global.load_data("res://customres/save1.tres")
 	highScore = Global.savedata.highscore

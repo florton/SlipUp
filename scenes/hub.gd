@@ -34,8 +34,7 @@ func loadData():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !Global.Music.is_playing():
-		Global.Music.play()
+	Global.playMusic('hub')
 	if !Global.savedata.ninjaunlocked:
 		ninjaframe.queue_free()
 	if !Global.savedata.rmanunlocked:

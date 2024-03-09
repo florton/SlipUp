@@ -173,13 +173,10 @@ func _on_rmanbox_body_entered(body):
 		$rman/AnimatedSprite/AnimationPlayer.play("lodin")
 		ninjabox = true
 		body.velocity.x*=0
-		pass
-	pass # Replace with function body.
 
 
 func _on_rmanbox_body_exited(body):
 	if body.is_in_group("player"):
 		body.velocity.x*=0
 		ninjabox = false
-		$rman/AnimatedSprite/AnimationPlayer.play("lodout")
-	pass # Replace with function body.
+#		$rman/AnimatedSprite/AnimationPlayer.play("lodout")

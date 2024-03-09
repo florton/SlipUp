@@ -94,6 +94,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=32]
 resource_name = "lodin"
+length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -101,10 +102,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.0130178, 0.985013 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.0130178, 1, 2.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=33]
@@ -156,6 +157,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=40]
 resource_name = "lodin"
+length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -163,10 +165,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.0130178, 0.985013 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.0130178, 0.985013, 2.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=41]
@@ -216,6 +218,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=44]
 resource_name = "lodin"
+length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -223,10 +226,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.0130178, 0.985013 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.0130178, 0.1, 0.985013, 2.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=45]
@@ -311,7 +314,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=25]
 resource_name = "fade in"
-length = 5.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -319,7 +322,7 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( -0.0134336, 1, 4.01078, 4.92422 ),
+"times": PoolRealArray( -0.0134336, 1, 2.5, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -435,7 +438,7 @@ shape = SubResource( 2 )
 position = Vector2( -110.124, -156.351 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 30 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ninja/AnimatedSprite"]
