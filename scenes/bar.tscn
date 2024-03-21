@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/WallMap.tscn" type="PackedScene" id=2]
@@ -185,6 +185,8 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+
+[sub_resource type="CapsuleShape2D" id=47]
 
 [sub_resource type="Animation" id=42]
 resource_name = "New Anim"
@@ -485,13 +487,13 @@ texture = ExtResource( 16 )
 hframes = 4
 vframes = 4
 
-[node name="ninjabox" type="Area2D" parent="moose"]
+[node name="moosebox" type="Area2D" parent="moose"]
 position = Vector2( 0.76651, -1.61697 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="moose/ninjabox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="moose/moosebox"]
 position = Vector2( 1, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 47 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="moose"]
 position = Vector2( -110.124, -156.351 )

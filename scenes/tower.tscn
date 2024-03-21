@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/BackgroundMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/FloorMap.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://sprite/dot.png" type="Texture" id=9]
 [ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=10]
 [ext_resource path="res://sprite/purse.png" type="Texture" id=11]
+[ext_resource path="res://scenes/topfloor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprite/pb.png" type="Texture" id=13]
 [ext_resource path="res://ani/pb.tres" type="Animation" id=14]
 
@@ -160,7 +161,6 @@ anims/idle = SubResource( 6 )
 position = Vector2( -12.901, 3.776 )
 
 [node name="pb bar" type="Sprite" parent="pbbar"]
-modulate = Color( 1, 1, 1, 0.976872 )
 position = Vector2( 275.414, 0 )
 scale = Vector2( 126.929, 2.68369 )
 texture = ExtResource( 9 )
@@ -181,3 +181,6 @@ valign = 2
 
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2( 0, -2 )
+
+[node name="Area2D" parent="." instance=ExtResource( 12 )]
+position = Vector2( 251, 557 )
