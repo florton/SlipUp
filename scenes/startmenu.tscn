@@ -85,7 +85,7 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="CanvasItemMaterial" id=19]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -96,7 +96,7 @@ autoplay = true
 position = Vector2( -59.8388, -3.75684 )
 scale = Vector2( 3.4, 3.4 )
 frames = SubResource( 15 )
-frame = 3
+frame = 8
 playing = true
 offset = Vector2( 160.156, 89.5595 )
 
