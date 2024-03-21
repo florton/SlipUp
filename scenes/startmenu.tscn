@@ -137,10 +137,10 @@ __meta__ = {
 }
 
 [node name="newgamebutton" type="Button" parent="."]
-margin_left = 720.464
-margin_top = 386.393
-margin_right = 970.464
-margin_bottom = 457.393
+margin_left = 698.251
+margin_top = 374.227
+margin_right = 958.251
+margin_bottom = 437.227
 focus_neighbour_top = NodePath("../countbutton")
 focus_neighbour_bottom = NodePath("../quitbutton")
 theme = ExtResource( 4 )
@@ -148,10 +148,10 @@ text = "new game?"
 script = ExtResource( 6 )
 
 [node name="countbutton" type="Button" parent="."]
-margin_left = 719.624
-margin_top = 313.235
-margin_right = 969.624
-margin_bottom = 384.235
+margin_left = 703.578
+margin_top = 298.133
+margin_right = 953.578
+margin_bottom = 369.133
 focus_neighbour_top = NodePath("../quitbutton")
 focus_neighbour_bottom = NodePath("../newgamebutton")
 theme = ExtResource( 4 )
@@ -197,10 +197,10 @@ __meta__ = {
 }
 
 [node name="quitbutton" type="Button" parent="."]
-margin_left = 726.0
-margin_top = 456.0
-margin_right = 976.0
-margin_bottom = 527.0
+margin_left = 736.204
+margin_top = 446.53
+margin_right = 923.204
+margin_bottom = 509.53
 focus_neighbour_top = NodePath("../newgamebutton")
 focus_neighbour_bottom = NodePath("../countbutton")
 theme = ExtResource( 4 )

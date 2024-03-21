@@ -442,13 +442,13 @@ anims/text = SubResource( 4 )
 position = Vector2( 514.214, 197.842 )
 scale = Vector2( 1.53975, 1.53341 )
 frames = SubResource( 24 )
-frame = 16
+frame = 3
 playing = true
 
 [node name="flashbacksprite" type="Sprite" parent="AnimationPlayer"]
 visible = false
 position = Vector2( 541.938, 770.624 )
-scale = Vector2( 1.296, 1.296 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="bbaonSprite" type="Sprite" parent="AnimationPlayer"]

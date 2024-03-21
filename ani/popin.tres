@@ -58,3 +58,17 @@ coin", "throw
 coins", "throw
 coins?" ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("WellPanel/WellButton")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2.573 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}

@@ -22,6 +22,7 @@ func _ready():
 #	print(loaddata)
 	if ResourceLoader.exists("user://save1.tres"):
 		$countbutton.disabled=false
+		$countbutton.call_deferred(grab_focus())
 #		print(loaddata)
 #		pass
 

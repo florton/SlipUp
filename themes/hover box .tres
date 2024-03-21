@@ -5,4 +5,9 @@
 [resource]
 texture = ExtResource( 1 )
 region_rect = Rect2( 3, 46, 185, 38 )
-margin_left = 0.397214
+margin_left = 130.517
+margin_right = 48.3024
+margin_top = 6.24058
+margin_bottom = 7.82617
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

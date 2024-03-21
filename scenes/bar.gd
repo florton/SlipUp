@@ -119,8 +119,13 @@ func _process(delta):
 			Global.save_data()
 			pass
 		if barmanbox:
+			Global.paused=true
+			player.velocity=Vector2.ZERO
 			$bmanSprite/AnimationPlayer.play("fade in")
 			$dailoge._display_text(bargguystuff,.1)
+			yield(get_tree().create_timer(3),"timeout")
+			Global.paused=false
+			
 	pass
 
 func loadRandFrame(node, num):

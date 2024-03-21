@@ -498,7 +498,6 @@ position = Vector2( -110.124, -156.351 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 30 )
 animation = "New Anim 1"
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="moose/AnimatedSprite"]
