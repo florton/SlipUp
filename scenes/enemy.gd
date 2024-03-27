@@ -11,6 +11,7 @@ export var speed = 1.0
 export var can_hurt = true
 export var is_bonus = false
 export var does_move = false
+export var push_player = false
 
 var direction = 1
 var ydirection = 0
@@ -48,6 +49,9 @@ func _on_Area2D_body_entered(body):
 	if can_hurt and !dying:
 		if body.is_in_group("player") && !thrown:
 			body.takeDamage()
+	if push_player:
+		if body.is_in_group("player"):
+			body._push_player()
 
 func _on_Area2D_area_entered(area):
 	if area.get_name()== "grabbox":

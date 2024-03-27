@@ -10,12 +10,12 @@ var rngseed=RandomNumberGenerator.new()
 var backwards = false
 var checkpoint = null
 var paused=false
-# var b = "text"
+
 #var saveresource = get_child(0)
 export (Array,Resource) var saves
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Music = $AudioStreamPlayer2D
+	Music = $Music
 	# var save1="res://customres/blank_save.tres"
 	savedata = load_data("res://customres/blank_save.tres")
 	for i in range(100):
@@ -23,7 +23,14 @@ func _ready():
 		if data:
 			currentsave += 1
 			saves.append(data)
-	
+
+func playMusic(name):
+	if name == 'hub' && !$Music/HubTrack.is_playing():
+		$Music/TowerTrack.stop()
+		$Music/HubTrack.play()
+	if name == 'tower' && !$Music/TowerTrack.is_playing():
+		$Music/TowerTrack.play()
+		$Music/HubTrack.stop()
 	
 func add_a_save():
 	var savedatta2 = savedata

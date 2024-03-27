@@ -99,6 +99,8 @@ func _physics_process(delta: float) -> void:
 		ap.play("air idle")
 		velocity.y= -jump_speed 
 
+func _push_player():
+	velocity.x *= -0.8
 
 func fullhop():
 	velocity.y= -jump_speed - 30
@@ -185,6 +187,7 @@ func air_turn_around():
 	velocity.x = curntvelo*-.5
 	t.queue_free()
 	in_turnaround=false
+	
 	
 func change_hat():
 	

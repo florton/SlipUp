@@ -14,13 +14,14 @@ func _ready():
 	#_display_text(b,2)
 	pass # Replace with function body.
 
-func _display_text(text,textspeed):
+func _display_text(text,textspeed,linesVisible=2):
 	if !isPlaying || text != prevText:
 		prevText = text
 		isPlaying = true
 		$Panel.visible = true
 		$AnimationPlayer.play("dpopin")
 		$Panel/Label.text=text
+		$Panel/Label.max_lines_visible = linesVisible
 		for c in text.length():
 			if text != prevText:
 				return

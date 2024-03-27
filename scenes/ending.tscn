@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://font/dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://themes/sliptheme.tres" type="Theme" id=2]
+[ext_resource path="res://scenes/ending.gd" type="Script" id=3]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 1033.0
-margin_bottom = 609.0
+margin_right = 1024.0
+margin_bottom = 600.0
 theme = ExtResource( 2 )
 
 [node name="Score" type="Label" parent="."]
 margin_left = 358.0
-margin_top = 192.0
+margin_top = 138.0
 margin_right = 678.0
-margin_bottom = 251.0
+margin_bottom = 197.0
 rect_pivot_offset = Vector2( 219, 30 )
 custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -23,10 +25,10 @@ text = "Coglatuations"
 align = 1
 
 [node name="Score2" type="Label" parent="."]
-margin_left = 266.0
-margin_top = 261.0
-margin_right = 785.0
-margin_bottom = 356.0
+margin_left = 250.0
+margin_top = 229.0
+margin_right = 769.0
+margin_bottom = 324.0
 custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
@@ -35,21 +37,21 @@ good demo"
 align = 1
 
 [node name="LinkButton" type="LinkButton" parent="."]
-margin_left = 369.0
-margin_top = 406.0
-margin_right = 734.0
-margin_bottom = 481.0
+margin_left = 271.0
+margin_top = 399.0
+margin_right = 771.0
+margin_bottom = 530.0
 theme = ExtResource( 2 )
-text = "Wishlist Now!!!"
+text = "Play the Full Version"
 
-[node name="Score3" type="Label" parent="."]
-margin_left = 354.0
-margin_top = 450.0
-margin_right = 674.0
-margin_bottom = 509.0
-rect_pivot_offset = Vector2( 219, 30 )
-custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 1 )
-text = "Or else!"
-align = 1
+[node name="LinkButton2" type="LinkButton" parent="."]
+margin_left = 356.0
+margin_top = 461.0
+margin_right = 856.0
+margin_bottom = 592.0
+focus_mode = 2
+theme = ExtResource( 2 )
+text = " Coming Soon"
+
+[connection signal="pressed" from="LinkButton" to="." method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="LinkButton2" to="." method="_on_LinkButton2_pressed"]
