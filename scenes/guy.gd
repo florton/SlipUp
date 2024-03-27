@@ -4,7 +4,6 @@ onready var gb= get_node("grabbox/grabbox")
 
 var grab = false
 onready var grabtimer= get_node("grab Timer")
-
 func _physics_process(delta: float) -> void:
 	moveDisabled = grab
 	if ap.current_animation != "jsqaut" and !hitstun and is_on_floor():
