@@ -10,6 +10,7 @@ var rngseed=RandomNumberGenerator.new()
 var backwards = false
 var checkpoint = null
 var paused=false
+var top_floor = Vector2.ZERO
 
 #var saveresource = get_child(0)
 export (Array,Resource) var saves

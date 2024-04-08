@@ -62,6 +62,8 @@ func _ready():
 		player.move_speed+=Global.savedata.ninja_data.speed
 		player.jump_speed+=Global.savedata.ninja_data.jump_str*50
 		add_child(ninja)
+	$TopFloor.global_position =  Global.top_floor
+	$TopFloor.global_position .y -= 5
 		
 
 	if Global.savedata.character == "rman":
@@ -98,8 +100,9 @@ func _process(delta):
 			$UI/Sprite/AnimationPlayer.play("pb")
 			pbsettingrun=true
 	scoreLabel.text = str("LVL.",score)
-	if player.global_position.y - camera_offset_y < cam.global_position.y:
-		cam.global_position.y = player.global_position.y - camera_offset_y
+	if player.global_position.y > Global.top_floor.y - 100:
+		if player.global_position.y - camera_offset_y < cam.global_position.y:
+			cam.global_position.y = player.global_position.y - camera_offset_y
 	Global.Music.global_position.y = player.global_position.y
 #
 #	print(player.global_position.y - cam.global_position.y)

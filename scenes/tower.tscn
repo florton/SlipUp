@@ -179,8 +179,5 @@ text = "PB     PB     PB       PB     PB     PB    PB     PB     PB     PB     P
 align = 1
 valign = 2
 
-[node name="Node2D2" type="Node2D" parent="."]
-position = Vector2( 0, -2 )
-
-[node name="Area2D" parent="." instance=ExtResource( 12 )]
+[node name="TopFloor" parent="." instance=ExtResource( 12 )]
 position = Vector2( 251, 557 )

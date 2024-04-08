@@ -52,6 +52,7 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 
 [node name="Door" type="Area2D" parent="."]
+position = Vector2( 39, 0 )
 
 [node name="Sprite" type="Sprite" parent="Door"]
 position = Vector2( 17, -7 )
@@ -65,7 +66,7 @@ shape = SubResource( 5 )
 [node name="Kramer" type="Area2D" parent="."]
 
 [node name="Face" type="AnimatedSprite" parent="Kramer"]
-position = Vector2( -51, -106 )
+position = Vector2( -51, -98 )
 frames = SubResource( 4 )
 frame = 2
 playing = true
@@ -82,7 +83,7 @@ shape = SubResource( 6 )
 anims/fadein = SubResource( 7 )
 
 [node name="dailoge" parent="." instance=ExtResource( 4 )]
-position = Vector2( -18, -160 )
+position = Vector2( -18, -147 )
 scale = Vector2( 0.25, 0.25 )
 
 [connection signal="body_entered" from="Door" to="." method="_on_Door_body_entered"]

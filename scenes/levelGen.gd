@@ -12,7 +12,7 @@ onready var checkpoint = preload("res://scenes/hole.tscn")
 
 var y_start = 36.0
 
-var y_end = -50.0
+var y_end = -500.0
 #var y_end = -2000.0
 
 var x_start = 1
@@ -48,9 +48,9 @@ func floorGen(gap, spawnEnemies):
 			coordArray.append(Vector2(floorStart + x,y - 1))
 			worldCoordArray.append(map_to_world(Vector2(floorStart + x,y - 1)))
 		floor_coords[floor(map_to_world(Vector2(0,y - 1)).y)] = worldCoordArray
-		if spawnEnemies:
+		if spawnEnemies && progress > 0:
 			loadEntities(coordArray, y)
-
+		Global.top_floor = map_to_world(Vector2(x_start + (x_end / 1.5), y-1))
 			
 	update_bitmask_region(Vector2(x_start, y_start), Vector2(x_end, y_end))
 	
