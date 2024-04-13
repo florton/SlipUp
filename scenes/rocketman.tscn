@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://roketman.gd" type="Script" id=1]
 [ext_resource path="res://sprite/rockketman.png" type="Texture" id=2]
@@ -140,6 +140,21 @@ animations = [ {
 [sub_resource type="Animation" id=30]
 resource_name = "airidle"
 
+[sub_resource type="Animation" id=33]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0.2, 0.5, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0627451, 0.227451, 0.0627451, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0627451, 0.227451, 0.0627451, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=31]
 resource_name = "jsquat"
 length = 0.116667
@@ -183,12 +198,14 @@ shape = SubResource( 29 )
 [node name="Sprite" type="AnimatedSprite" parent="." groups=["player"]]
 position = Vector2( -2.14577e-06, -1.90735e-06 )
 frames = SubResource( 27 )
-frame = 1
+animation = "running"
+frame = 2
 playing = true
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/airidle = SubResource( 30 )
+anims/hurt = SubResource( 33 )
 anims/jsquat = SubResource( 31 )
 
 [node name="Hat" type="Sprite" parent="Sprite"]

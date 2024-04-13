@@ -6,14 +6,14 @@ onready var StuckCactus = preload("res://scenes/StuckCactus.tscn")
 onready var Face = preload("res://scenes/FloatingFace.tscn")
 onready var EyeBird = preload("res://scenes/eyebird.tscn")
 onready var Waxer = preload("res://scenes/waxer.tscn")
+onready var Baloon = preload("res://scenes/baloon.tscn")
 onready var BonusFly = preload("res://scenes/bonusfly.tscn")
 onready var BonusWalk = preload("res://scenes/bonuswalk.tscn")
 onready var checkpoint = preload("res://scenes/hole.tscn")
 
 var y_start = 36.0
 
-var y_end = -500.0
-#var y_end = -2000.0
+var y_end = -2000.0
 
 var x_start = 1
 var x_end = 19
@@ -34,9 +34,7 @@ func floorGen(gap, spawnEnemies):
 			floorStart = 0
 		var coordArray = []
 		var worldCoordArray = []
-#		if int(progress * 1000) % 100 == 0 && progress < 1:
 		if int(progress * 1000) % 100 == 0:
-			print(progress)
 			var newcp=checkpoint.instance()
 			newcp.global_position = map_to_world(Vector2(x_end+10,y - 1))
 			newcp.connect("body_entered", get_parent(), "_on_Checkpoint_body_entered")
@@ -56,7 +54,7 @@ func floorGen(gap, spawnEnemies):
 	
 func loadEntities(coordArray, y):
 	var progress =(y / y_end)
-	var enemyChance = 0.02 + (progress / 10)
+	var enemyChance = 0.025 + (progress / 10)
 	var walkingEnemy = false
 	var flyingEnemy = false
 	for x in range(len(coordArray)):
@@ -84,6 +82,8 @@ func flyingEnemyGen(positon, x_min, x_max, y):
 	var enemy = null
 	if num < 1:
 		return
+	if num == 1:
+		enemy = Baloon.instance()
 	elif num < 4:
 		enemy = EyeBird.instance()
 	elif num < 7:
