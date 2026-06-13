@@ -64,25 +64,25 @@ func _throw_up():
 	does_move=true
 	thrown=true
 	direction=0
-	ydirection=-5
+	ydirection=-6
 	
 func _throw_down():
 	
 	does_move=true
 	thrown=true
 	direction=0
-	ydirection=5
+	ydirection=6
 
 func _throw_right():
 	does_move=true
 	thrown=true
-	direction=5
+	direction=6
 	ydirection=0
 
 func _throw_left():
 	does_move=true
 	thrown=true
-	direction=-5
+	direction=-6
 	ydirection=0
 
 func _throw_upright():

@@ -31,7 +31,6 @@ func _ready():
 		pass
 	if i >88:
 		self.queue_free()
-	pass # Replace with function body.
 
 func get_hat():
 	var hats=Global.rngseed.randi()%14

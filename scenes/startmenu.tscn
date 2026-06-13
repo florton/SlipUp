@@ -95,7 +95,6 @@ autoplay = true
 position = Vector2( -59.8388, -3.75684 )
 scale = Vector2( 3.4, 3.4 )
 frames = SubResource( 15 )
-frame = 3
 playing = true
 offset = Vector2( 160.156, 89.5595 )
 
@@ -146,6 +145,7 @@ theme = ExtResource( 4 )
 text = "new game?"
 
 [node name="countbutton" type="Button" parent="."]
+visible = false
 margin_left = 703.578
 margin_top = 298.133
 margin_right = 953.578

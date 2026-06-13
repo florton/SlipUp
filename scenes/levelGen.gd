@@ -16,7 +16,7 @@ var y_start = 36.0
 var y_end = -2000.0
 
 var x_start = 1
-var x_end = 19
+var x_end = 18
 
 var floor_coords = {}
 

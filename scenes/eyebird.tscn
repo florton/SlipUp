@@ -52,7 +52,7 @@ does_move = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "eyebird"
-frame = 1
+frame = 2
 speed_scale = 0.7
 playing = true
 

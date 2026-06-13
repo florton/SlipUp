@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://themes/sliptheme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/openigg.gd" type="Script" id=2]
@@ -420,6 +420,12 @@ extra_spacing_bottom = 14
 extra_spacing_char = 1
 font_data = ExtResource( 8 )
 
+[sub_resource type="DynamicFont" id=30]
+size = 15
+outline_size = 3
+outline_color = Color( 0.552941, 0.67451, 0.0588235, 1 )
+font_data = ExtResource( 8 )
+
 [node name="openigg" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -442,7 +448,6 @@ anims/text = SubResource( 4 )
 position = Vector2( 514.214, 197.842 )
 scale = Vector2( 1.53975, 1.53341 )
 frames = SubResource( 24 )
-frame = 3
 playing = true
 
 [node name="flashbacksprite" type="Sprite" parent="AnimationPlayer"]
@@ -566,3 +571,11 @@ I'm a lonely guy
 align = 1
 autowrap = true
 max_lines_visible = 3
+
+[node name="Label" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 179.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 30 )
+text = "press esc to skip"
